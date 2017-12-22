@@ -49,7 +49,7 @@ install:
   - chmod +x .travis/run.sh
   - chmod +x .travis/install.sh
   - ./.travis/install.sh
-  - git clone https://github.com/bincrafters/conan-${REPO} ${REPO}
+  - git clone -b ${TRAVIS_BRANCH} https://github.com/bincrafters/conan-${REPO} ${REPO}
   - cd ${REPO}
 
 script:
