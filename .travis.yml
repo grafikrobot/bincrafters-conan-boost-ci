@@ -1,0 +1,56 @@
+
+linux: &linux
+  os: linux
+  sudo: required
+  language: python
+  python: "3.6"
+  services:
+    - docker
+
+osx: &osx
+  os: osx
+  language: generic
+
+matrix:
+  include:
+    - <<: *linux
+      env: CONAN_GCC_VERSIONS=7 CONAN_DOCKER_IMAGE=lasote/conangcc7
+    - <<: *linux
+      env: CONAN_CLANG_VERSIONS=4.0 CONAN_DOCKER_IMAGE=lasote/conanclang40
+
+stages:
+  - bootstrap0
+  - bootstrap1
+  - level0
+  - level1
+  - level2
+  - level3
+  - level4
+  - level5
+  - level6
+  - level7
+  - level8
+  - level9
+  - level10
+  - level11
+  - level12
+  - level13
+  - level14
+  - level15
+
+jobs:
+  include:
+    - stage: bootstrap0
+      env: REPO=boost-build
+    - stage: bootstrap1
+      env: REPO=boost-generator
+
+install:
+  - chmod +x .travis/run.sh
+  - chmod +x .travis/install.sh
+  - ./.travis/install.sh
+  - git clone https://github.com/bincrafters/conan-${REPO} ${REPO}
+  - cd ${REPO}
+
+script:
+  - ../.travis/run.sh
