@@ -1,4 +1,5 @@
-
+# Common Linux config. By default we limit conan building to one variation as
+# that's what we want for source-only packages.
 linux: &linux
   os: linux
   sudo: required
@@ -6,19 +7,11 @@ linux: &linux
   python: "3.6"
   services:
     - docker
+  env: CONAN_BUILD_TYPES=Release CONAN_ARCHS=x86_64 CONAN_GCC_VERSIONS=7 CONAN_DOCKER_IMAGE=lasote/conangcc7
 
 osx: &osx
   os: osx
   language: generic
-
-# env:
-#   global:
-#     - CONAN_STABLE_BRANCH_PATTERN: "release/*"
-#     - CONAN_UPLOAD_ONLY_WHEN_STABLE: 1 # Will only upload when the branch matches "release/*"
-
-# env:
-#   - CONAN_GCC_VERSIONS=7 CONAN_DOCKER_IMAGE=lasote/conangcc7
-#   - CONAN_CLANG_VERSIONS=4.0 CONAN_DOCKER_IMAGE=lasote/conanclang40
 
 stages:
   - bootstrap0
@@ -44,7 +37,7 @@ jobs:
   include:
     - stage: bootstrap0
       <<: *linux
-      env: REPO=boost-build
+      env: REPO=boost-build CONAN_ARCHS=x86,x86_64
     - stage: bootstrap1
       <<: *linux
       env: REPO=boost-generator
