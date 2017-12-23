@@ -1,5 +1,4 @@
-# Common Linux config. By default we limit conan building to one variation as
-# that's what we want for source-only packages.
+# Common Linux config alias.
 linux: &linux
   os: linux
   sudo: required
@@ -7,11 +6,12 @@ linux: &linux
   python: "3.6"
   services:
     - docker
-  env: CONAN_BUILD_TYPES=Release CONAN_ARCHS=x86_64 CONAN_GCC_VERSIONS=7 CONAN_DOCKER_IMAGE=lasote/conangcc7
 
 osx: &osx
   os: osx
   language: generic
+
+language: generic
 
 stages:
   - bootstrap0
@@ -33,14 +33,29 @@ stages:
   - level14
   - level15
 
+script:
+  - &run ../.travis/run.sh
+
+matrix:
+  fast_finish: true
+
+env:
+  global:
+    - GCC_4="CONAN_GCC_VERSIONS=4.9 CONAN_DOCKER_IMAGE=lasote/conangcc49"
+    - GCC_5="CONAN_GCC_VERSIONS=5 CONAN_DOCKER_IMAGE=lasote/conangcc5"
+    - GCC_6="CONAN_GCC_VERSIONS=6 CONAN_DOCKER_IMAGE=lasote/conangcc6"
+    - GCC_7="CONAN_GCC_VERSIONS=7 CONAN_DOCKER_IMAGE=lasote/conangcc7"
+    - CLANG_39="CONAN_CLANG_VERSIONS=3.9 CONAN_DOCKER_IMAGE=lasote/conanclang39"
+    - CLANG_40="CONAN_CLANG_VERSIONS=4.0 CONAN_DOCKER_IMAGE=lasote/conanclang40"
+
 jobs:
   include:
     - stage: bootstrap0
       <<: *linux
-      env: REPO=boost-build CONAN_ARCHS=x86,x86_64
+      env: REPO=boost-build CONAN_ARCHS=x86,x86_64 CONAN_BUILD_TYPES=Release CONAN_ARCHS=x86_64 CONAN_GCC_VERSIONS=7 CONAN_DOCKER_IMAGE=lasote/conangcc7
     - stage: bootstrap1
       <<: *linux
-      env: REPO=boost-generator
+      env: REPO=boost-generator CONAN_ARCHS=x86 CONAN_BUILD_TYPES=Release CONAN_ARCHS=x86_64 CONAN_GCC_VERSIONS=7 CONAN_DOCKER_IMAGE=lasote/conangcc7
 
 install:
   - chmod +x .travis/run.sh
@@ -48,6 +63,3 @@ install:
   - ./.travis/install.sh
   - git clone -b ${TRAVIS_BRANCH} https://github.com/bincrafters/conan-${REPO} ${REPO}
   - cd ${REPO}
-
-script:
-  - ../.travis/run.sh
