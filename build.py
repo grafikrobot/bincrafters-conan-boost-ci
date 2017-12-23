@@ -60,11 +60,11 @@ if __name__ == "__main__":
     upload = "https://api.bintray.com/conan/{0}/public-conan".format(username)
 
     builder = ConanMultiPackager(
-        username=username,
-        channel=channel,
-        reference=reference,
-        upload=upload,
-        remotes=upload)
+        username=os.getenv("CONAN_USERNAME", username),
+        channel=os.getenv("CONAN_CHANNEL", channel),
+        reference=os.getenv("CONAN_REFERENCE", reference),
+        upload=os.getenv("CONAN_UPLOAD", upload),
+        remotes=os.getenv("CONAN_REMOTES", upload))
 
     # builder.add_common_builds(shared_option_name="*:shared")
     builder.add_common_builds()
