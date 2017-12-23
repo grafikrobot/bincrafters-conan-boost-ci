@@ -44,10 +44,10 @@ jobs:
   include:
     - stage: bootstrap0
       <<: *linux
-      env: REPO=boost-build CONAN_GCC_VERSIONS=7 CONAN_DOCKER_IMAGE=lasote/conangcc7
+      env: REPO=boost-build
     - stage: bootstrap1
       <<: *linux
-      env: REPO=boost-generator CONAN_GCC_VERSIONS=7 CONAN_DOCKER_IMAGE=lasote/conangcc7
+      env: REPO=boost-generator
 
 install:
   - chmod +x .travis/run.sh
