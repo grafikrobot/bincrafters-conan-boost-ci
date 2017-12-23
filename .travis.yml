@@ -41,6 +41,7 @@ matrix:
 
 env:
   global:
+    - CONAN_USERNAME=bincrafters
     - GCC_4="CONAN_GCC_VERSIONS=4.9 CONAN_DOCKER_IMAGE=lasote/conangcc49"
     - GCC_5="CONAN_GCC_VERSIONS=5 CONAN_DOCKER_IMAGE=lasote/conangcc5"
     - GCC_6="CONAN_GCC_VERSIONS=6 CONAN_DOCKER_IMAGE=lasote/conangcc6"
@@ -52,7 +53,7 @@ jobs:
   include:
     - stage: bootstrap0
       <<: *linux
-      env: REPO=boost-build CONAN_ARCHS=x86,x86_64 CONAN_BUILD_TYPES=Release CONAN_ARCHS=x86_64 CONAN_GCC_VERSIONS=7 CONAN_DOCKER_IMAGE=lasote/conangcc7
+      env: REPO=boost-build CONAN_BUILD_TYPES=Release CONAN_GCC_VERSIONS=7 CONAN_DOCKER_IMAGE=lasote/conangcc7
     - stage: bootstrap1
       <<: *linux
       env: REPO=boost-generator CONAN_ARCHS=x86 CONAN_BUILD_TYPES=Release CONAN_ARCHS=x86_64 CONAN_GCC_VERSIONS=7 CONAN_DOCKER_IMAGE=lasote/conangcc7
