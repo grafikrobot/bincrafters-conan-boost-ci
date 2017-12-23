@@ -59,6 +59,14 @@ if __name__ == "__main__":
     reference = "{0}/{1}".format(name, version)
     upload = "https://api.bintray.com/conan/{0}/public-conan".format(username)
 
+    build = os.getenv("BUILD", None)
+    if build:
+        build_env = os.getenv(build, None)
+        if build_env:
+            for env_var in build_env.split():
+                name, value = env_var.split("=", 1)
+                os.environ[name] = value
+
     builder = ConanMultiPackager(
         username=os.getenv("CONAN_USERNAME", username),
         channel=os.getenv("CONAN_CHANNEL", channel),
