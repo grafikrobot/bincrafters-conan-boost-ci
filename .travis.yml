@@ -51,22 +51,26 @@ env:
     - CLANG_39="CONAN_CLANG_VERSIONS=3.9 CONAN_DOCKER_IMAGE=lasote/conanclang39"
     - CLANG_40="CONAN_CLANG_VERSIONS=4.0 CONAN_DOCKER_IMAGE=lasote/conanclang40"
 
+
 jobs:
   include:
     - stage: bootstrap0
-      <<: *linux
       env: REPO=boost-build CONAN_BUILD_TYPES=Release CONAN_GCC_VERSIONS=7 CONAN_DOCKER_IMAGE=lasote/conangcc7
+      <<: *linux
     - stage: bootstrap1
-      <<: *linux
       env: REPO=boost-generator BUILD=SOURCE_ONLY
-    - stage: level0
       <<: *linux
-      env:
-        - REPO=boost-callable_traits BUILD=SOURCE_ONLY
-        - REPO=boost-compatibility BUILD=SOURCE_ONLY
-        - REPO=boost-config BUILD=SOURCE_ONLY
-        - REPO=boost-predef BUILD=SOURCE_ONLY
-        - REPO=boost-preprocessor BUILD=SOURCE_ONLY
+    - stage: level0
+      env: REPO=boost-callable_traits BUILD=SOURCE_ONLY
+      <<: *linux
+    - env: REPO=boost-compatibility BUILD=SOURCE_ONLY
+      <<: *linux
+    - env: REPO=boost-config BUILD=SOURCE_ONLY
+      <<: *linux
+    - env: REPO=boost-predef BUILD=SOURCE_ONLY
+      <<: *linux
+    - env: REPO=boost-preprocessor BUILD=SOURCE_ONLY
+      <<: *linux
 
 install:
   - chmod +x .travis/run.sh
