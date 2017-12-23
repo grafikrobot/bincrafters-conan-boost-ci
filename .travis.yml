@@ -97,7 +97,7 @@ jobs:
       <<: *linux
       
     - stage: level3
-      env: REPO=boost-assign BUILD=SOURCE_ONLY
+      env: REPO=boost-align BUILD=SOURCE_ONLY
       <<: *linux
     - env: REPO=boost-array BUILD=SOURCE_ONLY
       <<: *linux
@@ -130,6 +130,10 @@ jobs:
     - env: REPO=boost-timer BUILD=CLANG_40
       <<: *linux
     - env: REPO=boost-tuple BUILD=SOURCE_ONLY
+      <<: *linux
+      
+    - stage: level5group
+    - env: REPO=boost-level5group BUILD=SOURCE_ONLY
       <<: *linux
 
 install:
