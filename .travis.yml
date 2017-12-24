@@ -21,15 +21,19 @@ stages:
   - level2
   - level3
   - level4
+  - level5group
   - level5
   - level6
   - level7
+  - level8group
   - level8
   - level9
   - level10
+  - level11group
   - level11
   - level12
   - level13
+  - level14group
   - level14
   - level15
 
@@ -125,19 +129,47 @@ jobs:
       <<: *linux
     - env: REPO=boost-smart_ptr BUILD=SOURCE_ONLY
       <<: *linux
-    - env: REPO=boost-timer BUILD=GCC_7
-      <<: *linux
-    - env: REPO=boost-timer BUILD=CLANG_40
-      <<: *linux
     - env: REPO=boost-tuple BUILD=SOURCE_ONLY
       <<: *linux
       
-    - stage: level5
+    - stage: level5group
       env: REPO=boost-level5group BUILD=SOURCE_ONLY
       <<: *linux
     - env: REPO=boost-exception BUILD=GCC_7
       <<: *linux
     - env: REPO=boost-exception BUILD=CLANG_40
+      <<: *linux
+      
+    - stage: level5
+      env: REPO=boost-concetp_check BUILD=SOURCE_ONLY
+      <<: *linux
+    - env: REPO=boost-conversion BUILD=SOURCE_ONLY
+      <<: *linux
+    - env: REPO=boost-detail BUILD=SOURCE_ONLY
+      <<: *linux
+    - env: REPO=boost-exception BUILD=GCC_7
+      <<: *linux
+    - env: REPO=boost-exception BUILD=CLANG_40
+      <<: *linux
+    - env: REPO=boost-function BUILD=SOURCE_ONLY
+      <<: *linux
+    - env: REPO=boost-function_types BUILD=SOURCE_ONLY
+      <<: *linux
+    - env: REPO=boost-functional BUILD=SOURCE_ONLY
+      <<: *linux
+    - env: REPO=boost-fusion BUILD=SOURCE_ONLY
+      <<: *linux
+    - env: REPO=boost-iterator BUILD=SOURCE_ONLY
+      <<: *linux
+    - env: REPO=boost-mpl BUILD=SOURCE_ONLY
+      <<: *linux
+    - env: REPO=boost-optional BUILD=SOURCE_ONLY
+      <<: *linux
+    - env: REPO=boost-type_index BUILD=SOURCE_ONLY
+      <<: *linux
+    - env: REPO=boost-typeof BUILD=SOURCE_ONLY
+      <<: *linux
+    - env: REPO=boost-utility BUILD=SOURCE_ONLY
       <<: *linux
 
     - stage: level6
@@ -184,6 +216,90 @@ jobs:
     - env: REPO=boost-type_erasure BUILD=GCC_7
       <<: *linux
     - env: REPO=boost-type_erasure BUILD=CLANG_40
+      <<: *linux
+      
+    - stage: level7
+      env: REPO=boost-container BUILD=GCC_7
+      <<: *linux
+    - env: REPO=boost-container BUILD=CLANG_40
+      <<: *linux
+    - env: REPO=boost-local_function BUILD=SOURCE_ONLY
+      <<: *linux
+    - env: REPO=boost-poly_collection BUILD=SOURCE_ONLY
+      <<: *linux
+    - env: REPO=boost-range BUILD=SOURCE_ONLY
+      <<: *linux
+    - env: REPO=boost-ratio BUILD=SOURCE_ONLY
+      <<: *linux
+    - env: REPO=boost-signals BUILD=GCC_7
+      <<: *linux
+    - env: REPO=boost-signals BUILD=CLANG_40
+      <<: *linux
+      
+    - stage: level8group
+      env: REPO=boost-level8group BUILD=GCC_7
+      <<: *linux
+    - env: REPO=boost-level8group BUILD=CLANG_40
+      <<: *linux
+      
+    - stage: level8
+      env: REPO=boost-chrono BUILD=GCC_7
+      <<: *linux
+    - env: REPO=boost-chrono BUILD=CLANG_40
+      <<: *linux
+    - env: REPO=boost-circular_buffer BUILD=SOURCE_ONLY
+      <<: *linux
+    - env: REPO=boost-filesystem BUILD=GCC_7
+      <<: *linux
+    - env: REPO=boost-filesystem BUILD=CLANG_40
+      <<: *linux
+    - env: REPO=boost-foreach BUILD=SOURCE_ONLY
+      <<: *linux
+    - env: REPO=boost-lexical_cast BUILD=SOURCE_ONLY
+      <<: *linux
+    - env: REPO=boost-math BUILD=GCC_7
+      <<: *linux
+    - env: REPO=boost-math BUILD=CLANG_40
+      <<: *linux
+    - env: REPO=boost-proto BUILD=SOURCE_ONLY
+      <<: *linux
+    - env: REPO=boost-unordered BUILD=SOURCE_ONLY
+      <<: *linux
+      
+    - stage: level9
+      env: REPO=boost-program_options BUILD=GCC_7
+      <<: *linux
+    - env: REPO=boost-program_options BUILD=CLANG_40
+      <<: *linux
+    - env: REPO=boost-python BUILD=GCC_7
+      <<: *linux
+    - env: REPO=boost-python BUILD=CLANG_40
+      <<: *linux
+    - env: REPO=boost-random BUILD=GCC_7
+      <<: *linux
+    - env: REPO=boost-ramdom BUILD=CLANG_40
+      <<: *linux
+    - env: REPO=boost-stacktrace BUILD=GCC_7
+      <<: *linux
+    - env: REPO=boost-stacktrace BUILD=CLANG_40
+      <<: *linux
+    - env: REPO=boost-variant BUILD=SOURCE_ONLY
+      <<: *linux
+    - env: REPO=boost-xpressive BUILD=SOURCE_ONLY
+      <<: *linux
+      
+    - stage: level10
+      env: REPO=boost-iostreams BUILD=GCC_7
+      <<: *linux
+    - env: REPO=boost-iostreams BUILD=CLANG_40
+      <<: *linux
+    - env: REPO=boost-multiprecision BUILD=SOURCE_ONLY
+      <<: *linux
+    - env: REPO=boost-parameter BUILD=SOURCE_ONLY
+      <<: *linux
+    - env: REPO=boost-test BUILD=GCC_7
+      <<: *linux
+    - env: REPO=boost-test BUILD=CLANG_40
       <<: *linux
 
 install:
