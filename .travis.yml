@@ -227,10 +227,6 @@ jobs:
       <<: *linux
     - env: REPO=boost-tti BUILD=SOURCE_ONLY
       <<: *linux
-    - env: REPO=boost-type_erasure BUILD=GCC_7
-      <<: *linux
-    - env: REPO=boost-type_erasure BUILD=CLANG_40
-      <<: *linux
       
     - stage: level7
       env: REPO=boost-container BUILD=GCC_7
@@ -378,6 +374,10 @@ jobs:
     - env: REPO=boost-sort BUILD=SOURCE_ONLY
       <<: *linux
     - env: REPO=boost-statechart BUILD=SOURCE_ONLY
+      <<: *linux
+    - env: REPO=boost-type_erasure BUILD=GCC_7
+      <<: *linux
+    - env: REPO=boost-type_erasure BUILD=CLANG_40
       <<: *linux
     - env: REPO=boost-units BUILD=SOURCE_ONLY
       <<: *linux
