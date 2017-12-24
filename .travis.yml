@@ -301,6 +301,140 @@ jobs:
       <<: *linux
     - env: REPO=boost-test BUILD=CLANG_40
       <<: *linux
+      
+    - stage: level11group
+      env: REPO=boost-level11group BUILD=GCC_7
+      <<: *linux
+    - env: REPO=boost-level11group BUILD=CLANG_40
+      <<: *linux
+      
+    - stage: level11
+      env: REPO=boost-date_time BUILD=GCC_7
+      <<: *linux
+    - env: REPO=boost-date_time BUILD=CLANG_40
+      <<: *linux
+    - env: REPO=boost-heap BUILD=SOURCE_ONLY
+      <<: *linux
+    - env: REPO=boost-locale BUILD=GCC_7
+      <<: *linux
+    - env: REPO=boost-locale BUILD=CLANG_40
+      <<: *linux
+    - env: REPO=boost-lockfree BUILD=SOURCE_ONLY
+      <<: *linux
+    - env: REPO=boost-pool BUILD=SOURCE_ONLY
+      <<: *linux
+    - env: REPO=boost-serialization BUILD=GCC_7
+      <<: *linux
+    - env: REPO=boost-serialization BUILD=CLANG_40
+      <<: *linux
+    - env: REPO=boost-spirit BUILD=SOURCE_ONLY
+      <<: *linux
+    - env: REPO=boost-thread BUILD=GCC_7
+      <<: *linux
+    - env: REPO=boost-thread BUILD=CLANG_40
+      <<: *linux
+      
+    - stage: level12
+      env: REPO=boost-context BUILD=GCC_7
+      <<: *linux
+    - env: REPO=boost-context BUILD=CLANG_40
+      <<: *linux
+    - env: REPO=boost-convert BUILD=SOURCE_ONLY
+      <<: *linux
+    - env: REPO=boost-dll BUILD=SOURCE_ONLY
+      <<: *linux
+    - env: REPO=boost-dynamic_bitset BUILD=SOURCE_ONLY
+      <<: *linux
+    - env: REPO=boost-geometry BUILD=SOURCE_ONLY
+      <<: *linux
+    - env: REPO=boost-icl BUILD=SOURCE_ONLY
+      <<: *linux
+    - env: REPO=boost-interprocess BUILD=SOURCE_ONLY
+      <<: *linux
+    - env: REPO=boost-msm BUILD=SOURCE_ONLY
+      <<: *linux
+    - env: REPO=boost-multi_index BUILD=SOURCE_ONLY
+      <<: *linux
+    - env: REPO=boost-numeric_ublas BUILD=SOURCE_ONLY
+      <<: *linux
+    - env: REPO=boost-ptr_container BUILD=SOURCE_ONLY
+      <<: *linux
+    - env: REPO=boost-sort BUILD=SOURCE_ONLY
+      <<: *linux
+    - env: REPO=boost-statechart BUILD=SOURCE_ONLY
+      <<: *linux
+    - env: REPO=boost-units BUILD=SOURCE_ONLY
+      <<: *linux
+    - env: REPO=boost-uuid BUILD=SOURCE_ONLY
+      <<: *linux
+      
+    - stage: level13
+      env: REPO=boost-accumulators BUILD=SOURCE_ONLY
+      <<: *linux
+    - env: REPO=boost-assign BUILD=SOURCE_ONLY
+      <<: *linux
+    - env: REPO=boost-coroutine BUILD=GCC_7
+      <<: *linux
+    - env: REPO=boost-coroutine BUILD=CLANG_40
+      <<: *linux
+    - env: REPO=boost-coroutine2 BUILD=SOURCE_ONLY
+      <<: *linux
+    - env: REPO=boost-fiber BUILD=GCC_7
+      <<: *linux
+    - env: REPO=boost-fiber BUILD=CLANG_40
+      <<: *linux
+    - env: REPO=boost-flyweight BUILD=SOURCE_ONLY
+      <<: *linux
+    - env: REPO=boost-property_tree BUILD=SOURCE_ONLY
+      <<: *linux
+    - env: REPO=boost-signals BUILD=SOURCE_ONLY
+      <<: *linux
+    - env: REPO=boost-wave BUILD=GCC_7
+      <<: *linux
+    - env: REPO=boost-wave BUILD=CLANG_40
+      <<: *linux
+      
+    - stage: level14group
+      env: REPO=boost-level14group BUILD=GCC_7
+      <<: *linux
+    - env: REPO=boost-level14group BUILD=CLANG_40
+      <<: *linux
+      
+    - stage: level14
+      env: REPO=boost-asio BUILD=SOURCE_ONLY
+      <<: *linux
+    - env: REPO=boost-bimap BUILD=SOURCE_ONLY
+      <<: *linux
+    - env: REPO=boost-compute BUILD=SOURCE_ONLY
+      <<: *linux
+    - env: REPO=boost-disjoint_sets BUILD=SOURCE_ONLY
+      <<: *linux
+    - env: REPO=boost-graph BUILD=GCC_7
+      <<: *linux
+    - env: REPO=boost-graph BUILD=CLANG_40
+      <<: *linux
+    - env: REPO=boost-graph_parallel BUILD=GCC_7
+      <<: *linux
+    - env: REPO=boost-graph_parallel BUILD=CLANG_40
+      <<: *linux
+    - env: REPO=boost-log BUILD=GCC_7
+      <<: *linux
+    - env: REPO=boost-log BUILD=CLANG_40
+      <<: *linux
+    - env: REPO=boost-mpi BUILD=GCC_7
+      <<: *linux
+    - env: REPO=boost-mpi BUILD=CLANG_40
+      <<: *linux
+    - env: REPO=boost-property_map BUILD=SOURCE_ONLY
+      <<: *linux
+      
+    - stage: level15
+      env: REPO=boost-beast BUILD=SOURCE_ONLY
+      <<: *linux
+    - env: REPO=boost-numeric_odeint BUILD=SOURCE_ONLY
+      <<: *linux
+    - env: REPO=boost-process BUILD=SOURCE_ONLY
+      <<: *linux
 
 install:
   - chmod +x .travis/run.sh
