@@ -11,6 +11,18 @@ osx: &osx
   os: osx
   language: generic
 
+xcode73: &xcode73
+  osx_image: xcode7.3
+  <<: *osx
+
+xcode83: &xcode83
+  osx_image: xcode8.3
+  <<: *osx
+
+xcode90: &xcode90
+  osx_image: xcode9
+  <<: *osx
+
 language: generic
 
 stages:
@@ -54,17 +66,23 @@ env:
     - GCC_7="CONAN_GCC_VERSIONS=7 CONAN_DOCKER_IMAGE=lasote/conangcc7"
     - CLANG_39="CONAN_CLANG_VERSIONS=3.9 CONAN_DOCKER_IMAGE=lasote/conanclang39"
     - CLANG_40="CONAN_CLANG_VERSIONS=4.0 CONAN_DOCKER_IMAGE=lasote/conanclang40"
-
+    - XCODE_73="CONAN_APPLE_CLANG_VERSIONS=7.3"
+    - XCODE_81="CONAN_APPLE_CLANG_VERSIONS=8.1"
+    - XCODE_90="CONAN_APPLE_CLANG_VERSIONS=9.0"
 
 jobs:
   include:
     - stage: bootstrap0
       env: REPO=boost-build CONAN_BUILD_TYPES=Release CONAN_GCC_VERSIONS=7 CONAN_DOCKER_IMAGE=lasote/conangcc7
       <<: *linux
+    - env: REPO=boost-build CONAN_BUILD_TYPES=Release CONAN_APPLE_CLANG_VERSIONS=9.0
+      <<: *xcode90
 
     - stage: bootstrap1
       env: REPO=boost-generator BUILD=SOURCE_ONLY
       <<: *linux
+    - env: REPO=boost-generator BUILD=SOURCE_ONLY
+      <<: *xcode90
 
     - stage: level0
       env: REPO=boost-callable_traits BUILD=SOURCE_ONLY
@@ -117,6 +135,8 @@ jobs:
       <<: *linux
     - env: REPO=boost-system BUILD=CLANG_40
       <<: *linux
+    - env: REPO=boost-system BUILD=XCODE_90
+      <<: *xcode90
     - env: REPO=boost-type_traits BUILD=SOURCE_ONLY
       <<: *linux
       
@@ -141,7 +161,7 @@ jobs:
       <<: *linux
       
     - stage: level5
-      env: REPO=boost-concetp_check BUILD=SOURCE_ONLY
+      env: REPO=boost-concept_check BUILD=SOURCE_ONLY
       <<: *linux
     - env: REPO=boost-conversion BUILD=SOURCE_ONLY
       <<: *linux
