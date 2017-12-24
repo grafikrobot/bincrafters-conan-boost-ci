@@ -201,13 +201,9 @@ jobs:
       <<: *linux
     - env: REPO=boost-hana BUILD=SOURCE_ONLY
       <<: *linux
-    - env: REPO=boost-instrusive BUILD=SOURCE_ONLY
+    - env: REPO=boost-intrusive BUILD=SOURCE_ONLY
       <<: *linux
     - env: REPO=boost-lambda BUILD=SOURCE_ONLY
-      <<: *linux
-    - env: REPO=boost-locale BUILD=SOURCE_ONLY
-      <<: *linux
-    - env: REPO=boost-metaparse BUILD=SOURCE_ONLY
       <<: *linux
     - env: REPO=boost-multi_array BUILD=SOURCE_ONLY
       <<: *linux
@@ -338,6 +334,8 @@ jobs:
     - env: REPO=boost-locale BUILD=CLANG_40
       <<: *linux
     - env: REPO=boost-lockfree BUILD=SOURCE_ONLY
+      <<: *linux
+    - env: REPO=boost-metaparse BUILD=SOURCE_ONLY
       <<: *linux
     - env: REPO=boost-pool BUILD=SOURCE_ONLY
       <<: *linux
