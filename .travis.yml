@@ -75,14 +75,14 @@ jobs:
     - stage: bootstrap0
       env: REPO=boost-build CONAN_BUILD_TYPES=Release CONAN_GCC_VERSIONS=7 CONAN_DOCKER_IMAGE=lasote/conangcc7
       <<: *linux
-    - env: REPO=boost-build CONAN_BUILD_TYPES=Release CONAN_APPLE_CLANG_VERSIONS=9.0
-      <<: *xcode90
+    #- env: REPO=boost-build CONAN_BUILD_TYPES=Release CONAN_APPLE_CLANG_VERSIONS=9.0
+    #  <<: *xcode90
 
     - stage: bootstrap1
       env: REPO=boost-generator BUILD=SOURCE_ONLY
       <<: *linux
-    - env: REPO=boost-generator BUILD=SOURCE_ONLY
-      <<: *xcode90
+    #- env: REPO=boost-generator BUILD=SOURCE_ONLY
+    #  <<: *xcode90
 
     - stage: level0
       env: REPO=boost-callable_traits BUILD=SOURCE_ONLY
