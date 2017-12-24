@@ -117,11 +117,11 @@ jobs:
       <<: *linux
       
     - stage: level4
-    - env: REPO=boost-atomic BUILD=GCC_7
+      env: REPO=boost-atomic BUILD=GCC_7
       <<: *linux
     - env: REPO=boost-atomic BUILD=CLANG_40
       <<: *linux
-      env: REPO=boost-crc BUILD=SOURCE_ONLY
+    - env: REPO=boost-crc BUILD=SOURCE_ONLY
       <<: *linux
     - env: REPO=boost-smart_ptr BUILD=SOURCE_ONLY
       <<: *linux
@@ -133,7 +133,57 @@ jobs:
       <<: *linux
       
     - stage: level5
-    - env: REPO=boost-level5group BUILD=SOURCE_ONLY
+      env: REPO=boost-level5group BUILD=SOURCE_ONLY
+      <<: *linux
+    - env: REPO=boost-exception BUILD=GCC_7
+      <<: *linux
+    - env: REPO=boost-exception BUILD=CLANG_40
+      <<: *linux
+
+    - stage: level6
+      env: REPO=boost-any BUILD=SOURCE_ONLY
+      <<: *linux
+    - env: REPO=boost-endian BUILD=SOURCE_ONLY
+      <<: *linux
+    - env: REPO=boost-format BUILD=SOURCE_ONLY
+      <<: *linux
+    - env: REPO=boost-gil BUILD=SOURCE_ONLY
+      <<: *linux
+    - env: REPO=boost-hana BUILD=SOURCE_ONLY
+      <<: *linux
+    - env: REPO=boost-instrusive BUILD=SOURCE_ONLY
+      <<: *linux
+    - env: REPO=boost-lambda BUILD=SOURCE_ONLY
+      <<: *linux
+    - env: REPO=boost-locale BUILD=SOURCE_ONLY
+      <<: *linux
+    - env: REPO=boost-metaparse BUILD=SOURCE_ONLY
+      <<: *linux
+    - env: REPO=boost-multi_array BUILD=SOURCE_ONLY
+      <<: *linux
+    - env: REPO=boost-numeric_conversion BUILD=SOURCE_ONLY
+      <<: *linux
+    - env: REPO=boost-numeric_interval BUILD=SOURCE_ONLY
+      <<: *linux
+    - env: REPO=boost-polygon BUILD=SOURCE_ONLY
+      <<: *linux
+    - env: REPO=boost-qvm BUILD=SOURCE_ONLY
+      <<: *linux
+    - env: REPO=boost-rational BUILD=SOURCE_ONLY
+      <<: *linux
+    - env: REPO=boost-regex BUILD=GCC_7
+      <<: *linux
+    - env: REPO=boost-regex BUILD=CLANG_40
+      <<: *linux
+    - env: REPO=boost-scope_exit BUILD=SOURCE_ONLY
+      <<: *linux
+    - env: REPO=boost-tokenizer BUILD=SOURCE_ONLY
+      <<: *linux
+    - env: REPO=boost-tti BUILD=SOURCE_ONLY
+      <<: *linux
+    - env: REPO=boost-type_erasure BUILD=GCC_7
+      <<: *linux
+    - env: REPO=boost-type_erasure BUILD=CLANG_40
       <<: *linux
 
 install:
