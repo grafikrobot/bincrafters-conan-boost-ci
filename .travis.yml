@@ -235,8 +235,6 @@ jobs:
       <<: *linux
     - env: REPO=boost-local_function BUILD=SOURCE_ONLY
       <<: *linux
-    - env: REPO=boost-poly_collection BUILD=SOURCE_ONLY
-      <<: *linux
     - env: REPO=boost-range BUILD=SOURCE_ONLY
       <<: *linux
     - env: REPO=boost-ratio BUILD=SOURCE_ONLY
@@ -400,6 +398,8 @@ jobs:
     - env: REPO=boost-fiber BUILD=CLANG_40
       <<: *linux
     - env: REPO=boost-flyweight BUILD=SOURCE_ONLY
+      <<: *linux
+    - env: REPO=boost-poly_collection BUILD=SOURCE_ONLY
       <<: *linux
     - env: REPO=boost-property_tree BUILD=SOURCE_ONLY
       <<: *linux
