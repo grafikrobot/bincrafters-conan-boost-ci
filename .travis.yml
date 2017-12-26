@@ -279,13 +279,13 @@ jobs:
       <<: *linux
     - env: REPO=boost-program_options BUILD=CLANG_40
       <<: *linux
-    - env: REPO=boost-python BUILD=GCC_7
-      <<: *linux
-    - env: REPO=boost-python BUILD=CLANG_40
-      <<: *linux
+    # - env: REPO=boost-python BUILD=GCC_7
+    #   <<: *linux
+    # - env: REPO=boost-python BUILD=CLANG_40
+    #   <<: *linux
     - env: REPO=boost-random BUILD=GCC_7
       <<: *linux
-    - env: REPO=boost-ramdom BUILD=CLANG_40
+    - env: REPO=boost-random BUILD=CLANG_40
       <<: *linux
     - env: REPO=boost-stacktrace BUILD=GCC_7
       <<: *linux
