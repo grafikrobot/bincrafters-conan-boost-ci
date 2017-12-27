@@ -147,7 +147,9 @@ jobs:
       <<: *linux
     - env: REPO=boost-smart_ptr BUILD=SOURCE_ONLY
       <<: *linux
-    - env: REPO=boost-timer BUILD=SOURCE_ONLY
+    - env: REPO=boost-timer BUILD=GCC_7
+      <<: *linux
+    - env: REPO=boost-timer BUILD=CLANG_40
       <<: *linux
     - env: REPO=boost-tuple BUILD=SOURCE_ONLY
       <<: *linux
