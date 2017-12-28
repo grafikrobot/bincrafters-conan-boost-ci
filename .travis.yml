@@ -145,10 +145,6 @@ jobs:
       <<: *linux
     - env: REPO=boost-smart_ptr BUILD=SOURCE_ONLY
       <<: *linux
-    - env: REPO=boost-timer BUILD=CLANG_40
-      <<: *linux
-    - env: REPO=boost-timer BUILD=XCODE_81
-      <<: *xcode83
     - env: REPO=boost-tuple BUILD=SOURCE_ONLY
       <<: *linux
       
@@ -292,6 +288,10 @@ jobs:
     - env: REPO=boost-stacktrace BUILD=CLANG_40
       <<: *linux
     - env: REPO=boost-stacktrace BUILD=XCODE_81
+      <<: *xcode83
+    - env: REPO=boost-timer BUILD=CLANG_40
+      <<: *linux
+    - env: REPO=boost-timer BUILD=XCODE_81
       <<: *xcode83
     - env: REPO=boost-variant BUILD=SOURCE_ONLY
       <<: *linux
