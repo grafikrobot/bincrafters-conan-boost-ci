@@ -59,7 +59,7 @@ env:
   global:
     - CONAN_USERNAME=bincrafters
     - CONAN_LOGIN_USERNAME=grafikrobot
-    - SOURCE_ONLY="CONAN_ARCHS=x86 CONAN_BUILD_TYPES=Release CONAN_ARCHS=x86_64 CONAN_GCC_VERSIONS=7 CONAN_DOCKER_IMAGE=lasote/conangcc7"
+    - SOURCE_ONLY="CONAN_ARCHS=x86 CONAN_BUILD_TYPES=Release CONAN_ARCHS=x86_64 CONAN_CLANG_VERSIONS=4.0 CONAN_DOCKER_IMAGE=lasote/conanclang40"
     - GCC_4="CONAN_GCC_VERSIONS=4.9 CONAN_DOCKER_IMAGE=lasote/conangcc49"
     - GCC_5="CONAN_GCC_VERSIONS=5 CONAN_DOCKER_IMAGE=lasote/conangcc5"
     - GCC_6="CONAN_GCC_VERSIONS=6 CONAN_DOCKER_IMAGE=lasote/conangcc6"
@@ -129,8 +129,6 @@ jobs:
       <<: *linux
     - env: REPO=boost-move BUILD=SOURCE_ONLY
       <<: *linux
-    - env: REPO=boost-system BUILD=GCC_7
-      <<: *linux
     - env: REPO=boost-system BUILD=CLANG_40
       <<: *linux
     - env: REPO=boost-system BUILD=XCODE_90
@@ -139,15 +137,11 @@ jobs:
       <<: *linux
       
     - stage: level4
-      env: REPO=boost-atomic BUILD=GCC_7
-      <<: *linux
-    - env: REPO=boost-atomic BUILD=CLANG_40
+      env: REPO=boost-atomic BUILD=CLANG_40
       <<: *linux
     - env: REPO=boost-crc BUILD=SOURCE_ONLY
       <<: *linux
     - env: REPO=boost-smart_ptr BUILD=SOURCE_ONLY
-      <<: *linux
-    - env: REPO=boost-timer BUILD=GCC_7
       <<: *linux
     - env: REPO=boost-timer BUILD=CLANG_40
       <<: *linux
@@ -221,8 +215,6 @@ jobs:
       <<: *linux
     - env: REPO=boost-rational BUILD=SOURCE_ONLY
       <<: *linux
-    - env: REPO=boost-regex BUILD=GCC_7
-      <<: *linux
     - env: REPO=boost-regex BUILD=CLANG_40
       <<: *linux
     - env: REPO=boost-scope_exit BUILD=SOURCE_ONLY
@@ -233,9 +225,7 @@ jobs:
       <<: *linux
       
     - stage: level7
-      env: REPO=boost-container BUILD=GCC_7
-      <<: *linux
-    - env: REPO=boost-container BUILD=CLANG_40
+      env: REPO=boost-container BUILD=CLANG_40
       <<: *linux
     - env: REPO=boost-local_function BUILD=SOURCE_ONLY
       <<: *linux
@@ -243,33 +233,23 @@ jobs:
       <<: *linux
     - env: REPO=boost-ratio BUILD=SOURCE_ONLY
       <<: *linux
-    - env: REPO=boost-signals BUILD=GCC_7
-      <<: *linux
     - env: REPO=boost-signals BUILD=CLANG_40
       <<: *linux
       
     - stage: level8group
-      env: REPO=boost-level8group BUILD=GCC_7
-      <<: *linux
-    - env: REPO=boost-level8group BUILD=CLANG_40
+      env: REPO=boost-level8group BUILD=CLANG_40
       <<: *linux
       
     - stage: level8
-      env: REPO=boost-chrono BUILD=GCC_7
-      <<: *linux
-    - env: REPO=boost-chrono BUILD=CLANG_40
+      env: REPO=boost-chrono BUILD=CLANG_40
       <<: *linux
     - env: REPO=boost-circular_buffer BUILD=SOURCE_ONLY
-      <<: *linux
-    - env: REPO=boost-filesystem BUILD=GCC_7
       <<: *linux
     - env: REPO=boost-filesystem BUILD=CLANG_40
       <<: *linux
     - env: REPO=boost-foreach BUILD=SOURCE_ONLY
       <<: *linux
     - env: REPO=boost-lexical_cast BUILD=SOURCE_ONLY
-      <<: *linux
-    - env: REPO=boost-math BUILD=GCC_7
       <<: *linux
     - env: REPO=boost-math BUILD=CLANG_40
       <<: *linux
@@ -283,19 +263,11 @@ jobs:
       <<: *linux
     - env: REPO=boost-phoenix BUILD=SOURCE_ONLY
       <<: *linux
-    - env: REPO=boost-program_options BUILD=GCC_7
-      <<: *linux
     - env: REPO=boost-program_options BUILD=CLANG_40
-      <<: *linux
-    - env: REPO=boost-python BUILD=GCC_7
       <<: *linux
     - env: REPO=boost-python BUILD=CLANG_40
       <<: *linux
-    - env: REPO=boost-random BUILD=GCC_7
-      <<: *linux
     - env: REPO=boost-random BUILD=CLANG_40
-      <<: *linux
-    - env: REPO=boost-stacktrace BUILD=GCC_7
       <<: *linux
     - env: REPO=boost-stacktrace BUILD=CLANG_40
       <<: *linux
@@ -307,13 +279,9 @@ jobs:
     - stage: level10
       env: REPO=boost-iostreams BUILD=CLANG_40
       <<: *linux
-    # - env: REPO=boost-iostreams BUILD=GCC_7
-    #   <<: *linux
     - env: REPO=boost-multiprecision BUILD=SOURCE_ONLY
       <<: *linux
     - env: REPO=boost-parameter BUILD=SOURCE_ONLY
-      <<: *linux
-    - env: REPO=boost-test BUILD=GCC_7
       <<: *linux
     - env: REPO=boost-test BUILD=CLANG_40
       <<: *linux
@@ -321,18 +289,12 @@ jobs:
     - stage: level11group
       env: REPO=boost-level11group BUILD=CLANG_40
       <<: *linux
-    # - env: REPO=boost-level11group BUILD=GCC_7
-    #   <<: *linux
       
     - stage: level11
       env: REPO=boost-date_time BUILD=CLANG_40
       <<: *linux
-    # - env: REPO=boost-date_time BUILD=GCC_7
-    #   <<: *linux
     - env: REPO=boost-heap BUILD=SOURCE_ONLY
       <<: *linux
-    # - env: REPO=boost-locale BUILD=GCC_7
-    #   <<: *linux
     - env: REPO=boost-locale BUILD=CLANG_40
       <<: *linux
     - env: REPO=boost-lockfree BUILD=SOURCE_ONLY
@@ -341,22 +303,16 @@ jobs:
       <<: *linux
     - env: REPO=boost-pool BUILD=SOURCE_ONLY
       <<: *linux
-    # - env: REPO=boost-serialization BUILD=GCC_7
-    #   <<: *linux
     - env: REPO=boost-serialization BUILD=CLANG_40
       <<: *linux
     - env: REPO=boost-spirit BUILD=SOURCE_ONLY
       <<: *linux
-    # - env: REPO=boost-thread BUILD=GCC_7
-    #   <<: *linux
     - env: REPO=boost-thread BUILD=CLANG_40
       <<: *linux
       
     - stage: level12
       env: REPO=boost-context BUILD=CLANG_40
       <<: *linux
-    # - env: REPO=boost-context BUILD=GCC_7
-    #   <<: *linux
     - env: REPO=boost-convert BUILD=SOURCE_ONLY
       <<: *linux
     - env: REPO=boost-dll BUILD=SOURCE_ONLY
@@ -381,8 +337,6 @@ jobs:
       <<: *linux
     - env: REPO=boost-statechart BUILD=SOURCE_ONLY
       <<: *linux
-    # - env: REPO=boost-type_erasure BUILD=GCC_7
-    #   <<: *linux
     - env: REPO=boost-type_erasure BUILD=CLANG_40
       <<: *linux
     - env: REPO=boost-units BUILD=SOURCE_ONLY
@@ -395,14 +349,10 @@ jobs:
       <<: *linux
     - env: REPO=boost-assign BUILD=SOURCE_ONLY
       <<: *linux
-    # - env: REPO=boost-coroutine BUILD=GCC_7
-    #   <<: *linux
     - env: REPO=boost-coroutine BUILD=CLANG_40
       <<: *linux
     - env: REPO=boost-coroutine2 BUILD=SOURCE_ONLY
       <<: *linux
-    # - env: REPO=boost-fiber BUILD=GCC_7
-    #   <<: *linux
     - env: REPO=boost-fiber BUILD=CLANG_40
       <<: *linux
     - env: REPO=boost-flyweight BUILD=SOURCE_ONLY
@@ -413,16 +363,12 @@ jobs:
       <<: *linux
     - env: REPO=boost-signals BUILD=SOURCE_ONLY
       <<: *linux
-    # - env: REPO=boost-wave BUILD=GCC_7
-    #   <<: *linux
     - env: REPO=boost-wave BUILD=CLANG_40
       <<: *linux
       
     - stage: level14group
       env: REPO=boost-level14group BUILD=CLANG_40
       <<: *linux
-    # - env: REPO=boost-level14group BUILD=GCC_7
-    #   <<: *linux
       
     - stage: level14
       env: REPO=boost-asio BUILD=SOURCE_ONLY
@@ -433,20 +379,12 @@ jobs:
       <<: *linux
     - env: REPO=boost-disjoint_sets BUILD=SOURCE_ONLY
       <<: *linux
-    # - env: REPO=boost-graph BUILD=GCC_7
-    #   <<: *linux
     - env: REPO=boost-graph BUILD=CLANG_40
       <<: *linux
-    # - env: REPO=boost-graph_parallel BUILD=GCC_7
-    #   <<: *linux
     - env: REPO=boost-graph_parallel BUILD=CLANG_40
       <<: *linux
-    # - env: REPO=boost-log BUILD=GCC_7
-    #   <<: *linux
     - env: REPO=boost-log BUILD=CLANG_40
       <<: *linux
-    # - env: REPO=boost-mpi BUILD=GCC_7
-    #   <<: *linux
     - env: REPO=boost-mpi BUILD=CLANG_40
       <<: *linux
     - env: REPO=boost-property_map BUILD=SOURCE_ONLY
