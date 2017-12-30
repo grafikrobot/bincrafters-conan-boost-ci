@@ -75,9 +75,9 @@ env:
 jobs:
   include:
     - stage: bootstrap0
-      env: REPO=boost-build CONAN_BUILD_TYPES=Release CONAN_GCC_VERSIONS=7 CONAN_DOCKER_IMAGE=lasote/conangcc7
+      env: REPO=boost-build BUILD=CLANG_40 CONAN_BUILD_TYPES=Release
       <<: *linux
-    - env: REPO=boost-build CONAN_BUILD_TYPES=Release CONAN_APPLE_CLANG_VERSIONS=8.1
+    - env: REPO=boost-build BUILD=XCODE_81 CONAN_BUILD_TYPES=Release
       <<: *xcode83
 
     - stage: bootstrap1
