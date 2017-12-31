@@ -69,6 +69,7 @@ if __name__ == "__main__":
             for env_var in build_env.split():
                 name, value = env_var.split("=", 1)
                 os.environ[name] = value
+                print("%s=%s" % (name, os.getenv(name)))
 
     builder = ConanMultiPackager(
         username=os.getenv("CONAN_USERNAME", username),
