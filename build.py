@@ -77,7 +77,7 @@ if __name__ == "__main__":
         upload=os.getenv("CONAN_UPLOAD", upload),
         remotes=os.getenv("CONAN_REMOTES", upload),
         upload_only_when_stable=upload_only_when_stable,
-        stable_branch_pattern=os.getenv("CONAN_STABLE_BRANCH_PATTERN", 'stable/*'))
+        stable_branch_pattern=os.getenv("CONAN_STABLE_BRANCH_PATTERN", 'stable/*') if upload_only_when_stable else None)
 
     builder.add_common_builds(
         shared_option_name=os.getenv('CONAN_SHARED_OPTION_NAME', name + ":shared"))
