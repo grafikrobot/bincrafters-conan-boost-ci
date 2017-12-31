@@ -63,6 +63,8 @@ if __name__ == "__main__":
     if os.getenv('CONAN_UPLOAD_ONLY_WHEN_STABLE', '1') != '1':
         upload_only_when_stable = False
         stable_branch_pattern = None
+        del os.environ['CONAN_UPLOAD_ONLY_WHEN_STABLE']
+        del os.environ['CONAN_STABLE_BRANCH_PATTERN']
 
     build = os.getenv("BUILD", None)
     if build:
