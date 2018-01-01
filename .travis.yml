@@ -133,6 +133,8 @@ jobs:
       <<: *linux
     - env: REPO=boost-system BUILD=CLANG_40
       <<: *linux
+    - env: REPO=boost-system BUILD=GCC_7
+      <<: *linux
     - env: REPO=boost-system BUILD=XCODE_81
       <<: *xcode83
     - env: REPO=boost-type_traits BUILD=SOURCE_ONLY
@@ -140,6 +142,8 @@ jobs:
       
     - stage: level4
       env: REPO=boost-atomic BUILD=CLANG_40
+      <<: *linux
+    - env: REPO=boost-atomic BUILD=GCC_7
       <<: *linux
     - env: REPO=boost-atomic BUILD=XCODE_81
       <<: *xcode83
@@ -154,6 +158,8 @@ jobs:
       env: REPO=boost-level5group BUILD=SOURCE_ONLY
       <<: *linux
     - env: REPO=boost-exception BUILD=CLANG_40
+      <<: *linux
+    - env: REPO=boost-exception BUILD=GCC_7
       <<: *linux
     - env: REPO=boost-exception BUILD=XCODE_81
       <<: *xcode83
@@ -215,6 +221,8 @@ jobs:
       <<: *linux
     - env: REPO=boost-regex BUILD=CLANG_40
       <<: *linux
+    - env: REPO=boost-regex BUILD=GCC_7
+      <<: *linux
     - env: REPO=boost-regex BUILD=XCODE_81
       <<: *xcode83
     - env: REPO=boost-scope_exit BUILD=SOURCE_ONLY
@@ -227,6 +235,8 @@ jobs:
     - stage: level7
       env: REPO=boost-container BUILD=CLANG_40
       <<: *linux
+    - env: REPO=boost-container BUILD=GCC_7
+      <<: *linux
     - env: REPO=boost-container BUILD=XCODE_81
       <<: *xcode83
     - env: REPO=boost-local_function BUILD=SOURCE_ONLY
@@ -237,11 +247,15 @@ jobs:
       <<: *linux
     - env: REPO=boost-signals BUILD=CLANG_40
       <<: *linux
+    - env: REPO=boost-signals BUILD=GCC_7
+      <<: *linux
     - env: REPO=boost-signals BUILD=XCODE_81
       <<: *xcode83
       
     - stage: level8group
       env: REPO=boost-level8group BUILD=CLANG_40
+      <<: *linux
+    - env: REPO=boost-level8group BUILD=GCC_7
       <<: *linux
     - env: REPO=boost-level8group BUILD=XCODE_81
       <<: *xcode83
@@ -249,11 +263,15 @@ jobs:
     - stage: level8
       env: REPO=boost-chrono BUILD=CLANG_40
       <<: *linux
+    - env: REPO=boost-chrono BUILD=GCC_7
+      <<: *linux
     - env: REPO=boost-chrono BUILD=XCODE_81
       <<: *xcode83
     - env: REPO=boost-circular_buffer BUILD=SOURCE_ONLY
       <<: *linux
     - env: REPO=boost-filesystem BUILD=CLANG_40
+      <<: *linux
+    - env: REPO=boost-filesystem BUILD=GCC_7
       <<: *linux
     - env: REPO=boost-filesystem BUILD=XCODE_81
       <<: *xcode83
@@ -262,6 +280,8 @@ jobs:
     - env: REPO=boost-lexical_cast BUILD=SOURCE_ONLY
       <<: *linux
     - env: REPO=boost-math BUILD=CLANG_40
+      <<: *linux
+    - env: REPO=boost-math BUILD=GCC_7
       <<: *linux
     - env: REPO=boost-math BUILD=XCODE_81
       <<: *xcode83
@@ -277,21 +297,31 @@ jobs:
       <<: *linux
     - env: REPO=boost-program_options BUILD=CLANG_40
       <<: *linux
+    - env: REPO=boost-program_options BUILD=GCC_7
+      <<: *linux
     - env: REPO=boost-program_options BUILD=XCODE_81
       <<: *xcode83
     - env: REPO=boost-python BUILD=CLANG_40
+      <<: *linux
+    - env: REPO=boost-python BUILD=GCC_7
       <<: *linux
     - env: REPO=boost-python BUILD=XCODE_81
       <<: *xcode83
     - env: REPO=boost-random BUILD=CLANG_40
       <<: *linux
+    - env: REPO=boost-random BUILD=GCC_7
+      <<: *linux
     - env: REPO=boost-random BUILD=XCODE_81
       <<: *xcode83
     - env: REPO=boost-stacktrace BUILD=CLANG_40
       <<: *linux
+    - env: REPO=boost-stacktrace BUILD=GCC_7
+      <<: *linux
     - env: REPO=boost-stacktrace BUILD=XCODE_81
       <<: *xcode83
     - env: REPO=boost-timer BUILD=CLANG_40
+      <<: *linux
+    - env: REPO=boost-timer BUILD=GCC_7
       <<: *linux
     - env: REPO=boost-timer BUILD=XCODE_81
       <<: *xcode83
@@ -303,6 +333,8 @@ jobs:
     - stage: level10
       env: REPO=boost-iostreams BUILD=CLANG_40
       <<: *linux
+    - env: REPO=boost-iostreams BUILD=GCC_7
+      <<: *linux
     - env: REPO=boost-iostreams BUILD=XCODE_81
       <<: *xcode83
     - env: REPO=boost-multiprecision BUILD=SOURCE_ONLY
@@ -311,11 +343,15 @@ jobs:
       <<: *linux
     - env: REPO=boost-test BUILD=CLANG_40
       <<: *linux
+    - env: REPO=boost-test BUILD=GCC_7
+      <<: *linux
     - env: REPO=boost-test BUILD=XCODE_81
       <<: *xcode83
       
     - stage: level11group
       env: REPO=boost-level11group BUILD=CLANG_40
+      <<: *linux
+    - env: REPO=boost-level11group BUILD=GCC_7
       <<: *linux
     - env: REPO=boost-level11group BUILD=XCODE_81
       <<: *xcode83
@@ -323,11 +359,15 @@ jobs:
     - stage: level11
       env: REPO=boost-date_time BUILD=CLANG_40
       <<: *linux
+    - env: REPO=boost-date_time BUILD=GCC_7
+      <<: *linux
     - env: REPO=boost-date_time BUILD=XCODE_81
       <<: *xcode83
     - env: REPO=boost-heap BUILD=SOURCE_ONLY
       <<: *linux
     - env: REPO=boost-locale BUILD=CLANG_40
+      <<: *linux
+    - env: REPO=boost-locale BUILD=GCC_7
       <<: *linux
     - env: REPO=boost-locale BUILD=XCODE_81
       <<: *xcode83
@@ -339,17 +379,23 @@ jobs:
       <<: *linux
     - env: REPO=boost-serialization BUILD=CLANG_40
       <<: *linux
+    - env: REPO=boost-serialization BUILD=GCC_7
+      <<: *linux
     - env: REPO=boost-serialization BUILD=XCODE_81
       <<: *xcode83
     - env: REPO=boost-spirit BUILD=SOURCE_ONLY
       <<: *linux
     - env: REPO=boost-thread BUILD=CLANG_40
       <<: *linux
+    - env: REPO=boost-thread BUILD=GCC_7
+      <<: *linux
     - env: REPO=boost-thread BUILD=XCODE_81
       <<: *xcode83
       
     - stage: level12
       env: REPO=boost-context BUILD=CLANG_40
+      <<: *linux
+    - env: REPO=boost-context BUILD=GCC_7
       <<: *linux
     - env: REPO=boost-context BUILD=XCODE_81
       <<: *xcode83
@@ -379,6 +425,8 @@ jobs:
       <<: *linux
     - env: REPO=boost-type_erasure BUILD=CLANG_40
       <<: *linux
+    - env: REPO=boost-type_erasure BUILD=GCC_7
+      <<: *linux
     - env: REPO=boost-type_erasure BUILD=XCODE_81
       <<: *xcode83
     - env: REPO=boost-units BUILD=SOURCE_ONLY
@@ -393,11 +441,15 @@ jobs:
       <<: *linux
     - env: REPO=boost-coroutine BUILD=CLANG_40
       <<: *linux
+    - env: REPO=boost-coroutine BUILD=GCC_7
+      <<: *linux
     - env: REPO=boost-coroutine BUILD=XCODE_81
       <<: *xcode83
     - env: REPO=boost-coroutine2 BUILD=SOURCE_ONLY
       <<: *linux
     - env: REPO=boost-fiber BUILD=CLANG_40
+      <<: *linux
+    - env: REPO=boost-fiber BUILD=GCC_7
       <<: *linux
     - env: REPO=boost-fiber BUILD=XCODE_81
       <<: *xcode83
@@ -411,11 +463,15 @@ jobs:
       <<: *linux
     - env: REPO=boost-wave BUILD=CLANG_40
       <<: *linux
+    - env: REPO=boost-wave BUILD=GCC_7
+      <<: *linux
     - env: REPO=boost-wave BUILD=XCODE_81
       <<: *xcode83
       
     - stage: level14group
       env: REPO=boost-level14group BUILD=CLANG_40
+      <<: *linux
+    - env: REPO=boost-level14group BUILD=GCC_7
       <<: *linux
     - env: REPO=boost-level14group BUILD=XCODE_81
       <<: *xcode83
@@ -431,17 +487,25 @@ jobs:
       <<: *linux
     - env: REPO=boost-graph BUILD=CLANG_40
       <<: *linux
+    - env: REPO=boost-graph BUILD=GCC_7
+      <<: *linux
     - env: REPO=boost-graph BUILD=XCODE_81
       <<: *xcode83
     - env: REPO=boost-graph_parallel BUILD=CLANG_40
+      <<: *linux
+    - env: REPO=boost-graph_parallel BUILD=GCC_7
       <<: *linux
     - env: REPO=boost-graph_parallel BUILD=XCODE_81
       <<: *xcode83
     - env: REPO=boost-log BUILD=CLANG_40
       <<: *linux
+    - env: REPO=boost-log BUILD=GCC_7
+      <<: *linux
     - env: REPO=boost-log BUILD=XCODE_81
       <<: *xcode83
     - env: REPO=boost-mpi BUILD=CLANG_40
+      <<: *linux
+    - env: REPO=boost-mpi BUILD=GCC_7
       <<: *linux
     - env: REPO=boost-mpi BUILD=XCODE_81
       <<: *xcode83
