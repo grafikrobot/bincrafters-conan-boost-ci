@@ -1,0 +1,75 @@
+# Common Linux config alias.
+linux: &linux
+  os: linux
+  sudo: required
+  language: python
+  python: "3.6"
+  services:
+    - docker
+
+osx: &osx
+  os: osx
+  language: generic
+
+xcode73: &xcode73
+  osx_image: xcode7.3
+  <<: *osx
+
+xcode83: &xcode83
+  osx_image: xcode8.3
+  <<: *osx
+
+xcode90: &xcode90
+  osx_image: xcode9
+  <<: *osx
+
+language: generic
+
+stages:
+  - bootstrap0
+  - bootstrap1
+{stages}
+
+script:
+  - &run ../.travis/run.sh
+
+matrix:
+  fast_finish: true
+
+env:
+  global:
+    - CONAN_USERNAME=bincrafters
+    - CONAN_LOGIN_USERNAME=grafikrobot
+    - CONAN_UPLOAD_ONLY_WHEN_STABLE=0
+    - CONAN_SHARED_OPTION_NAME=
+    - SOURCE_ONLY="CONAN_ARCHS=x86 CONAN_BUILD_TYPES=Release CONAN_ARCHS=x86_64 CONAN_CLANG_VERSIONS=4.0 CONAN_DOCKER_IMAGE=lasote/conanclang40"
+    - GCC_4="CONAN_GCC_VERSIONS=4.9 CONAN_DOCKER_IMAGE=lasote/conangcc49"
+    - GCC_5="CONAN_GCC_VERSIONS=5 CONAN_DOCKER_IMAGE=lasote/conangcc5"
+    - GCC_6="CONAN_GCC_VERSIONS=6 CONAN_DOCKER_IMAGE=lasote/conangcc6"
+    - GCC_7="CONAN_GCC_VERSIONS=7 CONAN_DOCKER_IMAGE=lasote/conangcc7"
+    - CLANG_39="CONAN_CLANG_VERSIONS=3.9 CONAN_DOCKER_IMAGE=lasote/conanclang39"
+    - CLANG_40="CONAN_CLANG_VERSIONS=4.0 CONAN_DOCKER_IMAGE=lasote/conanclang40"
+    - XCODE_73="CONAN_APPLE_CLANG_VERSIONS=7.3"
+    - XCODE_81="CONAN_APPLE_CLANG_VERSIONS=8.1"
+    - XCODE_83="CONAN_APPLE_CLANG_VERSIONS=8.3"
+    - XCODE_90="CONAN_APPLE_CLANG_VERSIONS=9.0"
+
+jobs:
+  include:
+    - stage: bootstrap0
+      env: REPO=boost-build BUILD=CLANG_40 CONAN_BUILD_TYPES=Release
+      <<: *linux
+    - stage: bootstrap0
+      env: REPO=boost-build BUILD=XCODE_81 CONAN_BUILD_TYPES=Release
+      <<: *xcode83
+    - stage: bootstrap1
+      env: REPO=boost-generator BUILD=SOURCE_ONLY
+      <<: *linux
+{jobs}
+
+install:
+  - chmod +x .travis/run.sh
+  - chmod +x .travis/install.sh
+  - ./.travis/install.sh
+  - git clone -b $TRAVIS_BRANCH https://github.com/bincrafters/conan-$REPO $REPO
+  - cd $REPO

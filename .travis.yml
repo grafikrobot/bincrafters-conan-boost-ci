@@ -49,6 +49,7 @@ stages:
   - level14
   - level15
 
+
 script:
   - &run ../.travis/run.sh
 
@@ -70,6 +71,7 @@ env:
     - CLANG_40="CONAN_CLANG_VERSIONS=4.0 CONAN_DOCKER_IMAGE=lasote/conanclang40"
     - XCODE_73="CONAN_APPLE_CLANG_VERSIONS=7.3"
     - XCODE_81="CONAN_APPLE_CLANG_VERSIONS=8.1"
+    - XCODE_83="CONAN_APPLE_CLANG_VERSIONS=8.3"
     - XCODE_90="CONAN_APPLE_CLANG_VERSIONS=9.0"
 
 jobs:
@@ -77,452 +79,419 @@ jobs:
     - stage: bootstrap0
       env: REPO=boost-build BUILD=CLANG_40 CONAN_BUILD_TYPES=Release
       <<: *linux
-    - env: REPO=boost-build BUILD=XCODE_81 CONAN_BUILD_TYPES=Release
+    - stage: bootstrap0
+      env: REPO=boost-build BUILD=XCODE_81 CONAN_BUILD_TYPES=Release
       <<: *xcode83
-
     - stage: bootstrap1
       env: REPO=boost-generator BUILD=SOURCE_ONLY
       <<: *linux
-
     - stage: level0
       env: REPO=boost-callable_traits BUILD=SOURCE_ONLY
       <<: *linux
-    - env: REPO=boost-compatibility BUILD=SOURCE_ONLY
+    - stage: level0
+      env: REPO=boost-compatibility BUILD=SOURCE_ONLY
       <<: *linux
-    - env: REPO=boost-config BUILD=SOURCE_ONLY
+    - stage: level0
+      env: REPO=boost-config BUILD=SOURCE_ONLY
       <<: *linux
-    - env: REPO=boost-predef BUILD=SOURCE_ONLY
+    - stage: level0
+      env: REPO=boost-predef BUILD=SOURCE_ONLY
       <<: *linux
-    - env: REPO=boost-preprocessor BUILD=SOURCE_ONLY
+    - stage: level0
+      env: REPO=boost-preprocessor BUILD=SOURCE_ONLY
       <<: *linux
-      
     - stage: level1
       env: REPO=boost-assert BUILD=SOURCE_ONLY
       <<: *linux
-    - env: REPO=boost-io BUILD=SOURCE_ONLY
+    - stage: level1
+      env: REPO=boost-io BUILD=SOURCE_ONLY
       <<: *linux
-    - env: REPO=boost-mp11 BUILD=SOURCE_ONLY
+    - stage: level1
+      env: REPO=boost-mp11 BUILD=SOURCE_ONLY
       <<: *linux
-    - env: REPO=boost-preprocessor BUILD=SOURCE_ONLY
+    - stage: level1
+      env: REPO=boost-preprocessor BUILD=SOURCE_ONLY
       <<: *linux
-    - env: REPO=boost-static_assert BUILD=SOURCE_ONLY
+    - stage: level1
+      env: REPO=boost-static_assert BUILD=SOURCE_ONLY
       <<: *linux
-    - env: REPO=boost-vmd BUILD=SOURCE_ONLY
+    - stage: level1
+      env: REPO=boost-vmd BUILD=SOURCE_ONLY
       <<: *linux
-    - env: REPO=boost-winapi BUILD=SOURCE_ONLY
+    - stage: level1
+      env: REPO=boost-winapi BUILD=SOURCE_ONLY
       <<: *linux
-      
     - stage: level2
       env: REPO=boost-core BUILD=SOURCE_ONLY
       <<: *linux
-    - env: REPO=boost-throw_exception BUILD=SOURCE_ONLY
+    - stage: level2
+      env: REPO=boost-throw_exception BUILD=SOURCE_ONLY
       <<: *linux
-      
     - stage: level3
       env: REPO=boost-align BUILD=SOURCE_ONLY
       <<: *linux
-    - env: REPO=boost-array BUILD=SOURCE_ONLY
+    - stage: level3
+      env: REPO=boost-array BUILD=SOURCE_ONLY
       <<: *linux
-    - env: REPO=boost-bind BUILD=SOURCE_ONLY
+    - stage: level3
+      env: REPO=boost-bind BUILD=SOURCE_ONLY
       <<: *linux
-    - env: REPO=boost-integer BUILD=SOURCE_ONLY
+    - stage: level3
+      env: REPO=boost-integer BUILD=SOURCE_ONLY
       <<: *linux
-    - env: REPO=boost-logic BUILD=SOURCE_ONLY
+    - stage: level3
+      env: REPO=boost-logic BUILD=SOURCE_ONLY
       <<: *linux
-    - env: REPO=boost-move BUILD=SOURCE_ONLY
+    - stage: level3
+      env: REPO=boost-move BUILD=SOURCE_ONLY
       <<: *linux
-    - env: REPO=boost-system BUILD=CLANG_40
+    - stage: level3
+      env: REPO=boost-system BUILD=GCC_7
       <<: *linux
-    - env: REPO=boost-system BUILD=GCC_7
+    - stage: level3
+      env: REPO=boost-type_traits BUILD=SOURCE_ONLY
       <<: *linux
-    - env: REPO=boost-system BUILD=XCODE_81
-      <<: *xcode83
-    - env: REPO=boost-type_traits BUILD=SOURCE_ONLY
-      <<: *linux
-      
     - stage: level4
-      env: REPO=boost-atomic BUILD=CLANG_40
+      env: REPO=boost-atomic BUILD=GCC_7
       <<: *linux
-    - env: REPO=boost-atomic BUILD=GCC_7
+    - stage: level4
+      env: REPO=boost-crc BUILD=SOURCE_ONLY
       <<: *linux
-    - env: REPO=boost-atomic BUILD=XCODE_81
-      <<: *xcode83
-    - env: REPO=boost-crc BUILD=SOURCE_ONLY
+    - stage: level4
+      env: REPO=boost-smart_ptr BUILD=SOURCE_ONLY
       <<: *linux
-    - env: REPO=boost-smart_ptr BUILD=SOURCE_ONLY
+    - stage: level4
+      env: REPO=boost-tuple BUILD=SOURCE_ONLY
       <<: *linux
-    - env: REPO=boost-tuple BUILD=SOURCE_ONLY
+    - stage: level5group
+      env: REPO=boost-exception BUILD=GCC_7
       <<: *linux
-      
     - stage: level5group
       env: REPO=boost-level5group BUILD=SOURCE_ONLY
       <<: *linux
-    - env: REPO=boost-exception BUILD=CLANG_40
-      <<: *linux
-    - env: REPO=boost-exception BUILD=GCC_7
-      <<: *linux
-    - env: REPO=boost-exception BUILD=XCODE_81
-      <<: *xcode83
-      
     - stage: level5
       env: REPO=boost-concept_check BUILD=SOURCE_ONLY
       <<: *linux
-    - env: REPO=boost-conversion BUILD=SOURCE_ONLY
+    - stage: level5
+      env: REPO=boost-conversion BUILD=SOURCE_ONLY
       <<: *linux
-    - env: REPO=boost-detail BUILD=SOURCE_ONLY
+    - stage: level5
+      env: REPO=boost-detail BUILD=SOURCE_ONLY
       <<: *linux
-    - env: REPO=boost-function BUILD=SOURCE_ONLY
+    - stage: level5
+      env: REPO=boost-function BUILD=SOURCE_ONLY
       <<: *linux
-    - env: REPO=boost-function_types BUILD=SOURCE_ONLY
+    - stage: level5
+      env: REPO=boost-function_types BUILD=SOURCE_ONLY
       <<: *linux
-    - env: REPO=boost-functional BUILD=SOURCE_ONLY
+    - stage: level5
+      env: REPO=boost-functional BUILD=SOURCE_ONLY
       <<: *linux
-    - env: REPO=boost-fusion BUILD=SOURCE_ONLY
+    - stage: level5
+      env: REPO=boost-fusion BUILD=SOURCE_ONLY
       <<: *linux
-    - env: REPO=boost-iterator BUILD=SOURCE_ONLY
+    - stage: level5
+      env: REPO=boost-iterator BUILD=SOURCE_ONLY
       <<: *linux
-    - env: REPO=boost-mpl BUILD=SOURCE_ONLY
+    - stage: level5
+      env: REPO=boost-mpl BUILD=SOURCE_ONLY
       <<: *linux
-    - env: REPO=boost-optional BUILD=SOURCE_ONLY
+    - stage: level5
+      env: REPO=boost-optional BUILD=SOURCE_ONLY
       <<: *linux
-    - env: REPO=boost-type_index BUILD=SOURCE_ONLY
+    - stage: level5
+      env: REPO=boost-type_index BUILD=SOURCE_ONLY
       <<: *linux
-    - env: REPO=boost-typeof BUILD=SOURCE_ONLY
+    - stage: level5
+      env: REPO=boost-typeof BUILD=SOURCE_ONLY
       <<: *linux
-    - env: REPO=boost-utility BUILD=SOURCE_ONLY
+    - stage: level5
+      env: REPO=boost-utility BUILD=SOURCE_ONLY
       <<: *linux
-
     - stage: level6
       env: REPO=boost-any BUILD=SOURCE_ONLY
       <<: *linux
-    - env: REPO=boost-endian BUILD=SOURCE_ONLY
+    - stage: level6
+      env: REPO=boost-endian BUILD=SOURCE_ONLY
       <<: *linux
-    - env: REPO=boost-format BUILD=SOURCE_ONLY
+    - stage: level6
+      env: REPO=boost-format BUILD=SOURCE_ONLY
       <<: *linux
-    - env: REPO=boost-gil BUILD=SOURCE_ONLY
+    - stage: level6
+      env: REPO=boost-gil BUILD=SOURCE_ONLY
       <<: *linux
-    - env: REPO=boost-hana BUILD=SOURCE_ONLY
+    - stage: level6
+      env: REPO=boost-hana BUILD=SOURCE_ONLY
       <<: *linux
-    - env: REPO=boost-intrusive BUILD=SOURCE_ONLY
+    - stage: level6
+      env: REPO=boost-intrusive BUILD=SOURCE_ONLY
       <<: *linux
-    - env: REPO=boost-lambda BUILD=SOURCE_ONLY
+    - stage: level6
+      env: REPO=boost-lambda BUILD=SOURCE_ONLY
       <<: *linux
-    - env: REPO=boost-multi_array BUILD=SOURCE_ONLY
+    - stage: level6
+      env: REPO=boost-multi_array BUILD=SOURCE_ONLY
       <<: *linux
-    - env: REPO=boost-numeric_conversion BUILD=SOURCE_ONLY
+    - stage: level6
+      env: REPO=boost-numeric_conversion BUILD=SOURCE_ONLY
       <<: *linux
-    - env: REPO=boost-numeric_interval BUILD=SOURCE_ONLY
+    - stage: level6
+      env: REPO=boost-numeric_interval BUILD=SOURCE_ONLY
       <<: *linux
-    - env: REPO=boost-polygon BUILD=SOURCE_ONLY
+    - stage: level6
+      env: REPO=boost-polygon BUILD=SOURCE_ONLY
       <<: *linux
-    - env: REPO=boost-qvm BUILD=SOURCE_ONLY
+    - stage: level6
+      env: REPO=boost-qvm BUILD=SOURCE_ONLY
       <<: *linux
-    - env: REPO=boost-rational BUILD=SOURCE_ONLY
+    - stage: level6
+      env: REPO=boost-rational BUILD=SOURCE_ONLY
       <<: *linux
-    - env: REPO=boost-regex BUILD=CLANG_40
+    - stage: level6
+      env: REPO=boost-regex BUILD=GCC_7
       <<: *linux
-    - env: REPO=boost-regex BUILD=GCC_7
+    - stage: level6
+      env: REPO=boost-scope_exit BUILD=SOURCE_ONLY
       <<: *linux
-    - env: REPO=boost-regex BUILD=XCODE_81
-      <<: *xcode83
-    - env: REPO=boost-scope_exit BUILD=SOURCE_ONLY
+    - stage: level6
+      env: REPO=boost-tokenizer BUILD=SOURCE_ONLY
       <<: *linux
-    - env: REPO=boost-tokenizer BUILD=SOURCE_ONLY
+    - stage: level6
+      env: REPO=boost-tti BUILD=SOURCE_ONLY
       <<: *linux
-    - env: REPO=boost-tti BUILD=SOURCE_ONLY
-      <<: *linux
-      
     - stage: level7
-      env: REPO=boost-container BUILD=CLANG_40
+      env: REPO=boost-container BUILD=GCC_7
       <<: *linux
-    - env: REPO=boost-container BUILD=GCC_7
+    - stage: level7
+      env: REPO=boost-local_function BUILD=SOURCE_ONLY
       <<: *linux
-    - env: REPO=boost-container BUILD=XCODE_81
-      <<: *xcode83
-    - env: REPO=boost-local_function BUILD=SOURCE_ONLY
+    - stage: level7
+      env: REPO=boost-range BUILD=SOURCE_ONLY
       <<: *linux
-    - env: REPO=boost-range BUILD=SOURCE_ONLY
+    - stage: level7
+      env: REPO=boost-ratio BUILD=SOURCE_ONLY
       <<: *linux
-    - env: REPO=boost-ratio BUILD=SOURCE_ONLY
+    - stage: level7
+      env: REPO=boost-signals BUILD=GCC_7
       <<: *linux
-    - env: REPO=boost-signals BUILD=CLANG_40
-      <<: *linux
-    - env: REPO=boost-signals BUILD=GCC_7
-      <<: *linux
-    - env: REPO=boost-signals BUILD=XCODE_81
-      <<: *xcode83
-      
     - stage: level8group
-      env: REPO=boost-level8group BUILD=CLANG_40
+      env: REPO=boost-level8group BUILD=GCC_7
       <<: *linux
-    - env: REPO=boost-level8group BUILD=GCC_7
-      <<: *linux
-    - env: REPO=boost-level8group BUILD=XCODE_81
-      <<: *xcode83
-      
     - stage: level8
-      env: REPO=boost-chrono BUILD=CLANG_40
+      env: REPO=boost-chrono BUILD=GCC_7
       <<: *linux
-    - env: REPO=boost-chrono BUILD=GCC_7
+    - stage: level8
+      env: REPO=boost-circular_buffer BUILD=SOURCE_ONLY
       <<: *linux
-    - env: REPO=boost-chrono BUILD=XCODE_81
-      <<: *xcode83
-    - env: REPO=boost-circular_buffer BUILD=SOURCE_ONLY
+    - stage: level8
+      env: REPO=boost-filesystem BUILD=GCC_7
       <<: *linux
-    - env: REPO=boost-filesystem BUILD=CLANG_40
+    - stage: level8
+      env: REPO=boost-foreach BUILD=SOURCE_ONLY
       <<: *linux
-    - env: REPO=boost-filesystem BUILD=GCC_7
+    - stage: level8
+      env: REPO=boost-lexical_cast BUILD=SOURCE_ONLY
       <<: *linux
-    - env: REPO=boost-filesystem BUILD=XCODE_81
-      <<: *xcode83
-    - env: REPO=boost-foreach BUILD=SOURCE_ONLY
+    - stage: level8
+      env: REPO=boost-math BUILD=GCC_7
       <<: *linux
-    - env: REPO=boost-lexical_cast BUILD=SOURCE_ONLY
+    - stage: level8
+      env: REPO=boost-proto BUILD=SOURCE_ONLY
       <<: *linux
-    - env: REPO=boost-math BUILD=CLANG_40
+    - stage: level8
+      env: REPO=boost-unordered BUILD=SOURCE_ONLY
       <<: *linux
-    - env: REPO=boost-math BUILD=GCC_7
-      <<: *linux
-    - env: REPO=boost-math BUILD=XCODE_81
-      <<: *xcode83
-    - env: REPO=boost-proto BUILD=SOURCE_ONLY
-      <<: *linux
-    - env: REPO=boost-unordered BUILD=SOURCE_ONLY
-      <<: *linux
-      
     - stage: level9
       env: REPO=boost-algorithm BUILD=SOURCE_ONLY
       <<: *linux
-    - env: REPO=boost-phoenix BUILD=SOURCE_ONLY
+    - stage: level9
+      env: REPO=boost-phoenix BUILD=SOURCE_ONLY
       <<: *linux
-    - env: REPO=boost-program_options BUILD=CLANG_40
+    - stage: level9
+      env: REPO=boost-program_options BUILD=GCC_7
       <<: *linux
-    - env: REPO=boost-program_options BUILD=GCC_7
+    - stage: level9
+      env: REPO=boost-python BUILD=GCC_7
       <<: *linux
-    - env: REPO=boost-program_options BUILD=XCODE_81
-      <<: *xcode83
-    - env: REPO=boost-python BUILD=CLANG_40
+    - stage: level9
+      env: REPO=boost-random BUILD=GCC_7
       <<: *linux
-    - env: REPO=boost-python BUILD=GCC_7
+    - stage: level9
+      env: REPO=boost-stacktrace BUILD=GCC_7
       <<: *linux
-    - env: REPO=boost-python BUILD=XCODE_81
-      <<: *xcode83
-    - env: REPO=boost-random BUILD=CLANG_40
+    - stage: level9
+      env: REPO=boost-timer BUILD=GCC_7
       <<: *linux
-    - env: REPO=boost-random BUILD=GCC_7
+    - stage: level9
+      env: REPO=boost-variant BUILD=SOURCE_ONLY
       <<: *linux
-    - env: REPO=boost-random BUILD=XCODE_81
-      <<: *xcode83
-    - env: REPO=boost-stacktrace BUILD=CLANG_40
+    - stage: level9
+      env: REPO=boost-xpressive BUILD=SOURCE_ONLY
       <<: *linux
-    - env: REPO=boost-stacktrace BUILD=GCC_7
-      <<: *linux
-    - env: REPO=boost-stacktrace BUILD=XCODE_81
-      <<: *xcode83
-    - env: REPO=boost-timer BUILD=CLANG_40
-      <<: *linux
-    - env: REPO=boost-timer BUILD=GCC_7
-      <<: *linux
-    - env: REPO=boost-timer BUILD=XCODE_81
-      <<: *xcode83
-    - env: REPO=boost-variant BUILD=SOURCE_ONLY
-      <<: *linux
-    - env: REPO=boost-xpressive BUILD=SOURCE_ONLY
-      <<: *linux
-      
     - stage: level10
-      env: REPO=boost-iostreams BUILD=CLANG_40
+      env: REPO=boost-iostreams BUILD=GCC_7
       <<: *linux
-    - env: REPO=boost-iostreams BUILD=GCC_7
+    - stage: level10
+      env: REPO=boost-multiprecision BUILD=SOURCE_ONLY
       <<: *linux
-    - env: REPO=boost-iostreams BUILD=XCODE_81
-      <<: *xcode83
-    - env: REPO=boost-multiprecision BUILD=SOURCE_ONLY
+    - stage: level10
+      env: REPO=boost-parameter BUILD=SOURCE_ONLY
       <<: *linux
-    - env: REPO=boost-parameter BUILD=SOURCE_ONLY
+    - stage: level10
+      env: REPO=boost-test BUILD=GCC_7
       <<: *linux
-    - env: REPO=boost-test BUILD=CLANG_40
-      <<: *linux
-    - env: REPO=boost-test BUILD=GCC_7
-      <<: *linux
-    - env: REPO=boost-test BUILD=XCODE_81
-      <<: *xcode83
-      
     - stage: level11group
-      env: REPO=boost-level11group BUILD=CLANG_40
+      env: REPO=boost-level11group BUILD=GCC_7
       <<: *linux
-    - env: REPO=boost-level11group BUILD=GCC_7
-      <<: *linux
-    - env: REPO=boost-level11group BUILD=XCODE_81
-      <<: *xcode83
-      
     - stage: level11
-      env: REPO=boost-date_time BUILD=CLANG_40
+      env: REPO=boost-date_time BUILD=GCC_7
       <<: *linux
-    - env: REPO=boost-date_time BUILD=GCC_7
+    - stage: level11
+      env: REPO=boost-heap BUILD=SOURCE_ONLY
       <<: *linux
-    - env: REPO=boost-date_time BUILD=XCODE_81
-      <<: *xcode83
-    - env: REPO=boost-heap BUILD=SOURCE_ONLY
+    - stage: level11
+      env: REPO=boost-locale BUILD=GCC_7
       <<: *linux
-    - env: REPO=boost-locale BUILD=CLANG_40
+    - stage: level11
+      env: REPO=boost-lockfree BUILD=SOURCE_ONLY
       <<: *linux
-    - env: REPO=boost-locale BUILD=GCC_7
+    - stage: level11
+      env: REPO=boost-metaparse BUILD=SOURCE_ONLY
       <<: *linux
-    - env: REPO=boost-locale BUILD=XCODE_81
-      <<: *xcode83
-    - env: REPO=boost-lockfree BUILD=SOURCE_ONLY
+    - stage: level11
+      env: REPO=boost-pool BUILD=SOURCE_ONLY
       <<: *linux
-    - env: REPO=boost-metaparse BUILD=SOURCE_ONLY
+    - stage: level11
+      env: REPO=boost-serialization BUILD=GCC_7
       <<: *linux
-    - env: REPO=boost-pool BUILD=SOURCE_ONLY
+    - stage: level11
+      env: REPO=boost-spirit BUILD=SOURCE_ONLY
       <<: *linux
-    - env: REPO=boost-serialization BUILD=CLANG_40
+    - stage: level11
+      env: REPO=boost-thread BUILD=GCC_7
       <<: *linux
-    - env: REPO=boost-serialization BUILD=GCC_7
-      <<: *linux
-    - env: REPO=boost-serialization BUILD=XCODE_81
-      <<: *xcode83
-    - env: REPO=boost-spirit BUILD=SOURCE_ONLY
-      <<: *linux
-    - env: REPO=boost-thread BUILD=CLANG_40
-      <<: *linux
-    - env: REPO=boost-thread BUILD=GCC_7
-      <<: *linux
-    - env: REPO=boost-thread BUILD=XCODE_81
-      <<: *xcode83
-      
     - stage: level12
-      env: REPO=boost-context BUILD=CLANG_40
+      env: REPO=boost-context BUILD=GCC_7
       <<: *linux
-    - env: REPO=boost-context BUILD=GCC_7
+    - stage: level12
+      env: REPO=boost-convert BUILD=GCC_7
       <<: *linux
-    - env: REPO=boost-context BUILD=XCODE_81
-      <<: *xcode83
-    - env: REPO=boost-convert BUILD=SOURCE_ONLY
+    - stage: level12
+      env: REPO=boost-dll BUILD=SOURCE_ONLY
       <<: *linux
-    - env: REPO=boost-dll BUILD=SOURCE_ONLY
+    - stage: level12
+      env: REPO=boost-dynamic_bitset BUILD=SOURCE_ONLY
       <<: *linux
-    - env: REPO=boost-dynamic_bitset BUILD=SOURCE_ONLY
+    - stage: level12
+      env: REPO=boost-geometry BUILD=SOURCE_ONLY
       <<: *linux
-    - env: REPO=boost-geometry BUILD=SOURCE_ONLY
+    - stage: level12
+      env: REPO=boost-icl BUILD=SOURCE_ONLY
       <<: *linux
-    - env: REPO=boost-icl BUILD=SOURCE_ONLY
+    - stage: level12
+      env: REPO=boost-interprocess BUILD=SOURCE_ONLY
       <<: *linux
-    - env: REPO=boost-interprocess BUILD=SOURCE_ONLY
+    - stage: level12
+      env: REPO=boost-msm BUILD=SOURCE_ONLY
       <<: *linux
-    - env: REPO=boost-msm BUILD=SOURCE_ONLY
+    - stage: level12
+      env: REPO=boost-multi_index BUILD=SOURCE_ONLY
       <<: *linux
-    - env: REPO=boost-multi_index BUILD=SOURCE_ONLY
+    - stage: level12
+      env: REPO=boost-numeric_ublas BUILD=SOURCE_ONLY
       <<: *linux
-    - env: REPO=boost-numeric_ublas BUILD=SOURCE_ONLY
+    - stage: level12
+      env: REPO=boost-ptr_container BUILD=SOURCE_ONLY
       <<: *linux
-    - env: REPO=boost-ptr_container BUILD=SOURCE_ONLY
+    - stage: level12
+      env: REPO=boost-sort BUILD=SOURCE_ONLY
       <<: *linux
-    - env: REPO=boost-sort BUILD=SOURCE_ONLY
+    - stage: level12
+      env: REPO=boost-statechart BUILD=SOURCE_ONLY
       <<: *linux
-    - env: REPO=boost-statechart BUILD=SOURCE_ONLY
+    - stage: level12
+      env: REPO=boost-type_erasure BUILD=GCC_7
       <<: *linux
-    - env: REPO=boost-type_erasure BUILD=CLANG_40
+    - stage: level12
+      env: REPO=boost-units BUILD=SOURCE_ONLY
       <<: *linux
-    - env: REPO=boost-type_erasure BUILD=GCC_7
+    - stage: level12
+      env: REPO=boost-uuid BUILD=SOURCE_ONLY
       <<: *linux
-    - env: REPO=boost-type_erasure BUILD=XCODE_81
-      <<: *xcode83
-    - env: REPO=boost-units BUILD=SOURCE_ONLY
-      <<: *linux
-    - env: REPO=boost-uuid BUILD=SOURCE_ONLY
-      <<: *linux
-      
     - stage: level13
       env: REPO=boost-accumulators BUILD=SOURCE_ONLY
       <<: *linux
-    - env: REPO=boost-assign BUILD=SOURCE_ONLY
+    - stage: level13
+      env: REPO=boost-assign BUILD=SOURCE_ONLY
       <<: *linux
-    - env: REPO=boost-coroutine BUILD=CLANG_40
+    - stage: level13
+      env: REPO=boost-coroutine BUILD=GCC_7
       <<: *linux
-    - env: REPO=boost-coroutine BUILD=GCC_7
+    - stage: level13
+      env: REPO=boost-coroutine2 BUILD=SOURCE_ONLY
       <<: *linux
-    - env: REPO=boost-coroutine BUILD=XCODE_81
-      <<: *xcode83
-    - env: REPO=boost-coroutine2 BUILD=SOURCE_ONLY
+    - stage: level13
+      env: REPO=boost-fiber BUILD=GCC_7
       <<: *linux
-    - env: REPO=boost-fiber BUILD=CLANG_40
+    - stage: level13
+      env: REPO=boost-flyweight BUILD=SOURCE_ONLY
       <<: *linux
-    - env: REPO=boost-fiber BUILD=GCC_7
+    - stage: level13
+      env: REPO=boost-poly_collection BUILD=SOURCE_ONLY
       <<: *linux
-    - env: REPO=boost-fiber BUILD=XCODE_81
-      <<: *xcode83
-    - env: REPO=boost-flyweight BUILD=SOURCE_ONLY
+    - stage: level13
+      env: REPO=boost-property_tree BUILD=SOURCE_ONLY
       <<: *linux
-    - env: REPO=boost-poly_collection BUILD=SOURCE_ONLY
+    - stage: level13
+      env: REPO=boost-signals BUILD=SOURCE_ONLY
       <<: *linux
-    - env: REPO=boost-property_tree BUILD=SOURCE_ONLY
+    - stage: level13
+      env: REPO=boost-wave BUILD=GCC_7
       <<: *linux
-    - env: REPO=boost-signals BUILD=SOURCE_ONLY
-      <<: *linux
-    - env: REPO=boost-wave BUILD=CLANG_40
-      <<: *linux
-    - env: REPO=boost-wave BUILD=GCC_7
-      <<: *linux
-    - env: REPO=boost-wave BUILD=XCODE_81
-      <<: *xcode83
-      
     - stage: level14group
-      env: REPO=boost-level14group BUILD=CLANG_40
+      env: REPO=boost-level14group BUILD=GCC_7
       <<: *linux
-    - env: REPO=boost-level14group BUILD=GCC_7
-      <<: *linux
-    - env: REPO=boost-level14group BUILD=XCODE_81
-      <<: *xcode83
-      
     - stage: level14
       env: REPO=boost-asio BUILD=SOURCE_ONLY
       <<: *linux
-    - env: REPO=boost-bimap BUILD=SOURCE_ONLY
+    - stage: level14
+      env: REPO=boost-bimap BUILD=SOURCE_ONLY
       <<: *linux
-    - env: REPO=boost-compute BUILD=SOURCE_ONLY
+    - stage: level14
+      env: REPO=boost-compute BUILD=SOURCE_ONLY
       <<: *linux
-    - env: REPO=boost-disjoint_sets BUILD=SOURCE_ONLY
+    - stage: level14
+      env: REPO=boost-disjoint_sets BUILD=SOURCE_ONLY
       <<: *linux
-    - env: REPO=boost-graph BUILD=CLANG_40
+    - stage: level14
+      env: REPO=boost-graph BUILD=SOURCE_ONLY
       <<: *linux
-    - env: REPO=boost-graph BUILD=GCC_7
+    - stage: level14
+      env: REPO=boost-graph_parallel BUILD=GCC_7
       <<: *linux
-    - env: REPO=boost-graph BUILD=XCODE_81
-      <<: *xcode83
-    - env: REPO=boost-graph_parallel BUILD=CLANG_40
+    - stage: level14
+      env: REPO=boost-log BUILD=GCC_7
       <<: *linux
-    - env: REPO=boost-graph_parallel BUILD=GCC_7
+    - stage: level14
+      env: REPO=boost-mpi BUILD=GCC_7
       <<: *linux
-    - env: REPO=boost-graph_parallel BUILD=XCODE_81
-      <<: *xcode83
-    - env: REPO=boost-log BUILD=CLANG_40
+    - stage: level14
+      env: REPO=boost-property_map BUILD=SOURCE_ONLY
       <<: *linux
-    - env: REPO=boost-log BUILD=GCC_7
-      <<: *linux
-    - env: REPO=boost-log BUILD=XCODE_81
-      <<: *xcode83
-    - env: REPO=boost-mpi BUILD=CLANG_40
-      <<: *linux
-    - env: REPO=boost-mpi BUILD=GCC_7
-      <<: *linux
-    - env: REPO=boost-mpi BUILD=XCODE_81
-      <<: *xcode83
-    - env: REPO=boost-property_map BUILD=SOURCE_ONLY
-      <<: *linux
-      
     - stage: level15
       env: REPO=boost-beast BUILD=SOURCE_ONLY
       <<: *linux
-    - env: REPO=boost-numeric_odeint BUILD=SOURCE_ONLY
+    - stage: level15
+      env: REPO=boost-numeric_odeint BUILD=SOURCE_ONLY
       <<: *linux
-    - env: REPO=boost-process BUILD=SOURCE_ONLY
+    - stage: level15
+      env: REPO=boost-process BUILD=SOURCE_ONLY
       <<: *linux
+
 
 install:
   - chmod +x .travis/run.sh
   - chmod +x .travis/install.sh
   - ./.travis/install.sh
-  - git clone -b ${TRAVIS_BRANCH} https://github.com/bincrafters/conan-${REPO} ${REPO}
-  - cd ${REPO}
+  - git clone -b $TRAVIS_BRANCH https://github.com/bincrafters/conan-$REPO $REPO
+  - cd $REPO
