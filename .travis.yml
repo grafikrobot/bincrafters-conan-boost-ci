@@ -86,7 +86,7 @@ jobs:
       env: REPO=boost_generator BUILD=SOURCE_ONLY
       <<: *linux
     - stage: bootstrap1
-      env: REPO=boost_package_tools BUILD=SOURCE_ONLY
+      env: REPO=boost-package-tools BUILD=SOURCE_ONLY
       <<: *linux
     - stage: level0
       env: REPO=boost_callable_traits BUILD=SOURCE_ONLY
