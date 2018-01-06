@@ -57,13 +57,16 @@ env:
 jobs:
   include:
     - stage: bootstrap0
-      env: REPO=boost-build BUILD=CLANG_40 CONAN_BUILD_TYPES=Release
+      env: REPO=boost_build BUILD=CLANG_40 CONAN_BUILD_TYPES=Release
       <<: *linux
     - stage: bootstrap0
-      env: REPO=boost-build BUILD=XCODE_81 CONAN_BUILD_TYPES=Release
+      env: REPO=boost_build BUILD=XCODE_81 CONAN_BUILD_TYPES=Release
       <<: *xcode83
     - stage: bootstrap1
-      env: REPO=boost-generator BUILD=SOURCE_ONLY
+      env: REPO=boost_generator BUILD=SOURCE_ONLY
+      <<: *linux
+    - stage: bootstrap1
+      env: REPO=boost_package_tools BUILD=SOURCE_ONLY
       <<: *linux
 {jobs}
 

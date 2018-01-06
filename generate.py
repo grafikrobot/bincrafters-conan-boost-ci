@@ -100,7 +100,7 @@ setup = {
 
 job_template = '''\
     - stage: {stage}
-      env: REPO=boost-{name} BUILD={build}
+      env: REPO=boost_{name} BUILD={build}
       <<: *{setup}
 '''
 
