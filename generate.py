@@ -3,6 +3,14 @@ import argparse
 from re import search
 
 stages = {
+    "bootstrap0": {
+        'source-only':[],
+        'build':["boost_build"]
+        },
+    "bootstrap1": {
+        'source-only':["boost_generator", "boost-package-tools"],
+        'build':[]
+        },
     "level0": {
         'source-only':["callable_traits", "compatibility", "config", "predef", "preprocessor"],
         'build':[]
@@ -100,39 +108,36 @@ setup = {
 
 job_template = '''\
     - stage: {stage}
-      env: REPO=boost_{name} BUILD={build}
+      env: REPO=boost_{name}
       <<: *{setup}
 '''
+
 
 def main(args):
     format_data = {}
     for stage in stages.keys():
         format_data[stage] = {}
-        for name in stages[stage]['source-only']:
-            format_data[stage][name] = ''
-            format_data[stage][name] += job_template.format(
-                stage=stage,
-                name=name,
-                build='SOURCE_ONLY',
-                setup='linux')
-        for name in stages[stage]['build']:
+        for name in stages[stage]['source-only'] + stages[stage]['build']:
             format_data[stage][name] = ''
             for compiler in args.build:
                 format_data[stage][name] += job_template.format(
                     stage=stage,
                     name=name,
-                    build=compiler.upper(),
                     setup=setup[compiler.upper()])
     
     with open(".travis.template.yml", "r") as f:
         travis_yml = f.read()
     
     def level_sort(x, y):
+        x_type = search(r'([^0-9]+)', x).group(1)
         x_is_group = x.endswith("group")
         x_i = int(search(r'([0-9]+)', x).group(1))
+        y_type = search(r'([^0-9]+)', y).group(1)
         y_is_group = y.endswith("group")
         y_i = int(search(r'([0-9]+)', y).group(1))
-        if x_i == y_i:
+        if x_type != y_type:
+            return cmp(x_type, y_type)
+        elif x_i == y_i:
             return -1 if x_is_group and not y_is_group else 1
         else:
             return cmp(x_i, y_i)
@@ -150,6 +155,9 @@ def main(args):
         if l in format_data:
             for j in sorted(format_data[l].keys()):
                 format_data['jobs'] += format_data[l][j]
+
+    format_data['build'] = compiler.upper()
+    
     # print(format_data['jobs'])
     # print(format_data['stages'])
     # pprint(format_data)

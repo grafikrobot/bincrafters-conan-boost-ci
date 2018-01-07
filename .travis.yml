@@ -25,6 +25,37 @@ xcode90: &xcode90
 
 language: generic
 
+matrix:
+  fast_finish: true
+
+env:
+  global:
+    - CONAN_USERNAME=bincrafters
+    - CONAN_LOGIN_USERNAME=grafikrobot
+    - CONAN_UPLOAD_ONLY_WHEN_STABLE=0
+    - CONAN_SHARED_OPTION_NAME=
+    - SOURCE_ONLY="CONAN_ARCHS=x86 CONAN_BUILD_TYPES=Release CONAN_ARCHS=x86_64 CONAN_CLANG_VERSIONS=4.0 CONAN_DOCKER_IMAGE=lasote/conanclang40"
+    - GCC_4="CONAN_GCC_VERSIONS=4.9 CONAN_DOCKER_IMAGE=lasote/conangcc49"
+    - GCC_5="CONAN_GCC_VERSIONS=5 CONAN_DOCKER_IMAGE=lasote/conangcc5"
+    - GCC_6="CONAN_GCC_VERSIONS=6 CONAN_DOCKER_IMAGE=lasote/conangcc6"
+    - GCC_7="CONAN_GCC_VERSIONS=7 CONAN_DOCKER_IMAGE=lasote/conangcc7"
+    - CLANG_39="CONAN_CLANG_VERSIONS=3.9 CONAN_DOCKER_IMAGE=lasote/conanclang39"
+    - CLANG_40="CONAN_CLANG_VERSIONS=4.0 CONAN_DOCKER_IMAGE=lasote/conanclang40"
+    - XCODE_73="CONAN_APPLE_CLANG_VERSIONS=7.3"
+    - XCODE_81="CONAN_APPLE_CLANG_VERSIONS=8.1"
+    - XCODE_83="CONAN_APPLE_CLANG_VERSIONS=8.3"
+    - XCODE_90="CONAN_APPLE_CLANG_VERSIONS=9.0"
+
+install:
+  - chmod +x .travis/run.sh
+  - chmod +x .travis/install.sh
+  - ./.travis/install.sh
+  - git clone -b `dirname $TRAVIS_BRANCH` https://github.com/bincrafters/conan-$REPO $REPO
+  - cd $REPO
+
+script:
+  - &run ../.travis/run.sh
+
 stages:
   - bootstrap0
   - bootstrap1
@@ -50,451 +81,417 @@ stages:
   - level15
 
 
-script:
-  - &run ../.travis/run.sh
-
-matrix:
-  fast_finish: true
-
-env:
-  global:
-    - CONAN_USERNAME=bincrafters
-    - CONAN_LOGIN_USERNAME=grafikrobot
-    - CONAN_UPLOAD_ONLY_WHEN_STABLE=0
-    - CONAN_SHARED_OPTION_NAME=
-    - SOURCE_ONLY="CONAN_ARCHS=x86 CONAN_BUILD_TYPES=Release CONAN_ARCHS=x86_64 CONAN_CLANG_VERSIONS=4.0 CONAN_DOCKER_IMAGE=lasote/conanclang40"
-    - GCC_4="CONAN_GCC_VERSIONS=4.9 CONAN_DOCKER_IMAGE=lasote/conangcc49"
-    - GCC_5="CONAN_GCC_VERSIONS=5 CONAN_DOCKER_IMAGE=lasote/conangcc5"
-    - GCC_6="CONAN_GCC_VERSIONS=6 CONAN_DOCKER_IMAGE=lasote/conangcc6"
-    - GCC_7="CONAN_GCC_VERSIONS=7 CONAN_DOCKER_IMAGE=lasote/conangcc7"
-    - CLANG_39="CONAN_CLANG_VERSIONS=3.9 CONAN_DOCKER_IMAGE=lasote/conanclang39"
-    - CLANG_40="CONAN_CLANG_VERSIONS=4.0 CONAN_DOCKER_IMAGE=lasote/conanclang40"
-    - XCODE_73="CONAN_APPLE_CLANG_VERSIONS=7.3"
-    - XCODE_81="CONAN_APPLE_CLANG_VERSIONS=8.1"
-    - XCODE_83="CONAN_APPLE_CLANG_VERSIONS=8.3"
-    - XCODE_90="CONAN_APPLE_CLANG_VERSIONS=9.0"
-
 jobs:
   include:
     - stage: bootstrap0
-      env: REPO=boost_build BUILD=CLANG_40 CONAN_BUILD_TYPES=Release
-      <<: *linux
-    - stage: bootstrap0
-      env: REPO=boost_build BUILD=XCODE_81 CONAN_BUILD_TYPES=Release
-      <<: *xcode83
-    - stage: bootstrap1
-      env: REPO=boost_generator BUILD=SOURCE_ONLY
+      env: REPO=boost_boost_build
       <<: *linux
     - stage: bootstrap1
-      env: REPO=boost-package-tools BUILD=SOURCE_ONLY
+      env: REPO=boost_boost-package-tools
+      <<: *linux
+    - stage: bootstrap1
+      env: REPO=boost_boost_generator
       <<: *linux
     - stage: level0
-      env: REPO=boost_callable_traits BUILD=SOURCE_ONLY
+      env: REPO=boost_callable_traits
       <<: *linux
     - stage: level0
-      env: REPO=boost_compatibility BUILD=SOURCE_ONLY
+      env: REPO=boost_compatibility
       <<: *linux
     - stage: level0
-      env: REPO=boost_config BUILD=SOURCE_ONLY
+      env: REPO=boost_config
       <<: *linux
     - stage: level0
-      env: REPO=boost_predef BUILD=SOURCE_ONLY
+      env: REPO=boost_predef
       <<: *linux
     - stage: level0
-      env: REPO=boost_preprocessor BUILD=SOURCE_ONLY
+      env: REPO=boost_preprocessor
       <<: *linux
     - stage: level1
-      env: REPO=boost_assert BUILD=SOURCE_ONLY
+      env: REPO=boost_assert
       <<: *linux
     - stage: level1
-      env: REPO=boost_io BUILD=SOURCE_ONLY
+      env: REPO=boost_io
       <<: *linux
     - stage: level1
-      env: REPO=boost_mp11 BUILD=SOURCE_ONLY
+      env: REPO=boost_mp11
       <<: *linux
     - stage: level1
-      env: REPO=boost_preprocessor BUILD=SOURCE_ONLY
+      env: REPO=boost_preprocessor
       <<: *linux
     - stage: level1
-      env: REPO=boost_static_assert BUILD=SOURCE_ONLY
+      env: REPO=boost_static_assert
       <<: *linux
     - stage: level1
-      env: REPO=boost_vmd BUILD=SOURCE_ONLY
+      env: REPO=boost_vmd
       <<: *linux
     - stage: level1
-      env: REPO=boost_winapi BUILD=SOURCE_ONLY
+      env: REPO=boost_winapi
       <<: *linux
     - stage: level2
-      env: REPO=boost_core BUILD=SOURCE_ONLY
+      env: REPO=boost_core
       <<: *linux
     - stage: level2
-      env: REPO=boost_throw_exception BUILD=SOURCE_ONLY
+      env: REPO=boost_throw_exception
       <<: *linux
     - stage: level3
-      env: REPO=boost_align BUILD=SOURCE_ONLY
+      env: REPO=boost_align
       <<: *linux
     - stage: level3
-      env: REPO=boost_array BUILD=SOURCE_ONLY
+      env: REPO=boost_array
       <<: *linux
     - stage: level3
-      env: REPO=boost_bind BUILD=SOURCE_ONLY
+      env: REPO=boost_bind
       <<: *linux
     - stage: level3
-      env: REPO=boost_integer BUILD=SOURCE_ONLY
+      env: REPO=boost_integer
       <<: *linux
     - stage: level3
-      env: REPO=boost_logic BUILD=SOURCE_ONLY
+      env: REPO=boost_logic
       <<: *linux
     - stage: level3
-      env: REPO=boost_move BUILD=SOURCE_ONLY
+      env: REPO=boost_move
       <<: *linux
     - stage: level3
-      env: REPO=boost_system BUILD=GCC_7
+      env: REPO=boost_system
       <<: *linux
     - stage: level3
-      env: REPO=boost_type_traits BUILD=SOURCE_ONLY
+      env: REPO=boost_type_traits
       <<: *linux
     - stage: level4
-      env: REPO=boost_atomic BUILD=GCC_7
+      env: REPO=boost_atomic
       <<: *linux
     - stage: level4
-      env: REPO=boost_crc BUILD=SOURCE_ONLY
+      env: REPO=boost_crc
       <<: *linux
     - stage: level4
-      env: REPO=boost_smart_ptr BUILD=SOURCE_ONLY
+      env: REPO=boost_smart_ptr
       <<: *linux
     - stage: level4
-      env: REPO=boost_tuple BUILD=SOURCE_ONLY
+      env: REPO=boost_tuple
       <<: *linux
     - stage: level5group
-      env: REPO=boost_exception BUILD=GCC_7
+      env: REPO=boost_exception
       <<: *linux
     - stage: level5group
-      env: REPO=boost_level5group BUILD=SOURCE_ONLY
+      env: REPO=boost_level5group
       <<: *linux
     - stage: level5
-      env: REPO=boost_concept_check BUILD=SOURCE_ONLY
+      env: REPO=boost_concept_check
       <<: *linux
     - stage: level5
-      env: REPO=boost_conversion BUILD=SOURCE_ONLY
+      env: REPO=boost_conversion
       <<: *linux
     - stage: level5
-      env: REPO=boost_detail BUILD=SOURCE_ONLY
+      env: REPO=boost_detail
       <<: *linux
     - stage: level5
-      env: REPO=boost_function BUILD=SOURCE_ONLY
+      env: REPO=boost_function
       <<: *linux
     - stage: level5
-      env: REPO=boost_function_types BUILD=SOURCE_ONLY
+      env: REPO=boost_function_types
       <<: *linux
     - stage: level5
-      env: REPO=boost_functional BUILD=SOURCE_ONLY
+      env: REPO=boost_functional
       <<: *linux
     - stage: level5
-      env: REPO=boost_fusion BUILD=SOURCE_ONLY
+      env: REPO=boost_fusion
       <<: *linux
     - stage: level5
-      env: REPO=boost_iterator BUILD=SOURCE_ONLY
+      env: REPO=boost_iterator
       <<: *linux
     - stage: level5
-      env: REPO=boost_mpl BUILD=SOURCE_ONLY
+      env: REPO=boost_mpl
       <<: *linux
     - stage: level5
-      env: REPO=boost_optional BUILD=SOURCE_ONLY
+      env: REPO=boost_optional
       <<: *linux
     - stage: level5
-      env: REPO=boost_type_index BUILD=SOURCE_ONLY
+      env: REPO=boost_type_index
       <<: *linux
     - stage: level5
-      env: REPO=boost_typeof BUILD=SOURCE_ONLY
+      env: REPO=boost_typeof
       <<: *linux
     - stage: level5
-      env: REPO=boost_utility BUILD=SOURCE_ONLY
+      env: REPO=boost_utility
       <<: *linux
     - stage: level6
-      env: REPO=boost_any BUILD=SOURCE_ONLY
+      env: REPO=boost_any
       <<: *linux
     - stage: level6
-      env: REPO=boost_endian BUILD=SOURCE_ONLY
+      env: REPO=boost_endian
       <<: *linux
     - stage: level6
-      env: REPO=boost_format BUILD=SOURCE_ONLY
+      env: REPO=boost_format
       <<: *linux
     - stage: level6
-      env: REPO=boost_gil BUILD=SOURCE_ONLY
+      env: REPO=boost_gil
       <<: *linux
     - stage: level6
-      env: REPO=boost_hana BUILD=SOURCE_ONLY
+      env: REPO=boost_hana
       <<: *linux
     - stage: level6
-      env: REPO=boost_intrusive BUILD=SOURCE_ONLY
+      env: REPO=boost_intrusive
       <<: *linux
     - stage: level6
-      env: REPO=boost_lambda BUILD=SOURCE_ONLY
+      env: REPO=boost_lambda
       <<: *linux
     - stage: level6
-      env: REPO=boost_multi_array BUILD=SOURCE_ONLY
+      env: REPO=boost_multi_array
       <<: *linux
     - stage: level6
-      env: REPO=boost_numeric_conversion BUILD=SOURCE_ONLY
+      env: REPO=boost_numeric_conversion
       <<: *linux
     - stage: level6
-      env: REPO=boost_numeric_interval BUILD=SOURCE_ONLY
+      env: REPO=boost_numeric_interval
       <<: *linux
     - stage: level6
-      env: REPO=boost_polygon BUILD=SOURCE_ONLY
+      env: REPO=boost_polygon
       <<: *linux
     - stage: level6
-      env: REPO=boost_qvm BUILD=SOURCE_ONLY
+      env: REPO=boost_qvm
       <<: *linux
     - stage: level6
-      env: REPO=boost_rational BUILD=SOURCE_ONLY
+      env: REPO=boost_rational
       <<: *linux
     - stage: level6
-      env: REPO=boost_regex BUILD=GCC_7
+      env: REPO=boost_regex
       <<: *linux
     - stage: level6
-      env: REPO=boost_scope_exit BUILD=SOURCE_ONLY
+      env: REPO=boost_scope_exit
       <<: *linux
     - stage: level6
-      env: REPO=boost_tokenizer BUILD=SOURCE_ONLY
+      env: REPO=boost_tokenizer
       <<: *linux
     - stage: level6
-      env: REPO=boost_tti BUILD=SOURCE_ONLY
+      env: REPO=boost_tti
       <<: *linux
     - stage: level7
-      env: REPO=boost_container BUILD=GCC_7
+      env: REPO=boost_container
       <<: *linux
     - stage: level7
-      env: REPO=boost_local_function BUILD=SOURCE_ONLY
+      env: REPO=boost_local_function
       <<: *linux
     - stage: level7
-      env: REPO=boost_range BUILD=SOURCE_ONLY
+      env: REPO=boost_range
       <<: *linux
     - stage: level7
-      env: REPO=boost_ratio BUILD=SOURCE_ONLY
+      env: REPO=boost_ratio
       <<: *linux
     - stage: level7
-      env: REPO=boost_signals BUILD=GCC_7
+      env: REPO=boost_signals
       <<: *linux
     - stage: level8group
-      env: REPO=boost_level8group BUILD=GCC_7
+      env: REPO=boost_level8group
       <<: *linux
     - stage: level8
-      env: REPO=boost_chrono BUILD=GCC_7
+      env: REPO=boost_chrono
       <<: *linux
     - stage: level8
-      env: REPO=boost_circular_buffer BUILD=SOURCE_ONLY
+      env: REPO=boost_circular_buffer
       <<: *linux
     - stage: level8
-      env: REPO=boost_filesystem BUILD=GCC_7
+      env: REPO=boost_filesystem
       <<: *linux
     - stage: level8
-      env: REPO=boost_foreach BUILD=SOURCE_ONLY
+      env: REPO=boost_foreach
       <<: *linux
     - stage: level8
-      env: REPO=boost_lexical_cast BUILD=SOURCE_ONLY
+      env: REPO=boost_lexical_cast
       <<: *linux
     - stage: level8
-      env: REPO=boost_math BUILD=GCC_7
+      env: REPO=boost_math
       <<: *linux
     - stage: level8
-      env: REPO=boost_proto BUILD=SOURCE_ONLY
+      env: REPO=boost_proto
       <<: *linux
     - stage: level8
-      env: REPO=boost_unordered BUILD=SOURCE_ONLY
+      env: REPO=boost_unordered
       <<: *linux
     - stage: level9
-      env: REPO=boost_algorithm BUILD=SOURCE_ONLY
+      env: REPO=boost_algorithm
       <<: *linux
     - stage: level9
-      env: REPO=boost_phoenix BUILD=SOURCE_ONLY
+      env: REPO=boost_phoenix
       <<: *linux
     - stage: level9
-      env: REPO=boost_program_options BUILD=GCC_7
+      env: REPO=boost_program_options
       <<: *linux
     - stage: level9
-      env: REPO=boost_python BUILD=GCC_7
+      env: REPO=boost_python
       <<: *linux
     - stage: level9
-      env: REPO=boost_random BUILD=GCC_7
+      env: REPO=boost_random
       <<: *linux
     - stage: level9
-      env: REPO=boost_stacktrace BUILD=GCC_7
+      env: REPO=boost_stacktrace
       <<: *linux
     - stage: level9
-      env: REPO=boost_timer BUILD=GCC_7
+      env: REPO=boost_timer
       <<: *linux
     - stage: level9
-      env: REPO=boost_variant BUILD=SOURCE_ONLY
+      env: REPO=boost_variant
       <<: *linux
     - stage: level9
-      env: REPO=boost_xpressive BUILD=SOURCE_ONLY
+      env: REPO=boost_xpressive
       <<: *linux
     - stage: level10
-      env: REPO=boost_iostreams BUILD=GCC_7
+      env: REPO=boost_iostreams
       <<: *linux
     - stage: level10
-      env: REPO=boost_multiprecision BUILD=SOURCE_ONLY
+      env: REPO=boost_multiprecision
       <<: *linux
     - stage: level10
-      env: REPO=boost_parameter BUILD=SOURCE_ONLY
+      env: REPO=boost_parameter
       <<: *linux
     - stage: level10
-      env: REPO=boost_test BUILD=GCC_7
+      env: REPO=boost_test
       <<: *linux
     - stage: level11group
-      env: REPO=boost_level11group BUILD=GCC_7
+      env: REPO=boost_level11group
       <<: *linux
     - stage: level11
-      env: REPO=boost_date_time BUILD=GCC_7
+      env: REPO=boost_date_time
       <<: *linux
     - stage: level11
-      env: REPO=boost_heap BUILD=SOURCE_ONLY
+      env: REPO=boost_heap
       <<: *linux
     - stage: level11
-      env: REPO=boost_locale BUILD=GCC_7
+      env: REPO=boost_locale
       <<: *linux
     - stage: level11
-      env: REPO=boost_lockfree BUILD=SOURCE_ONLY
+      env: REPO=boost_lockfree
       <<: *linux
     - stage: level11
-      env: REPO=boost_metaparse BUILD=SOURCE_ONLY
+      env: REPO=boost_metaparse
       <<: *linux
     - stage: level11
-      env: REPO=boost_pool BUILD=SOURCE_ONLY
+      env: REPO=boost_pool
       <<: *linux
     - stage: level11
-      env: REPO=boost_serialization BUILD=GCC_7
+      env: REPO=boost_serialization
       <<: *linux
     - stage: level11
-      env: REPO=boost_spirit BUILD=SOURCE_ONLY
+      env: REPO=boost_spirit
       <<: *linux
     - stage: level11
-      env: REPO=boost_thread BUILD=GCC_7
+      env: REPO=boost_thread
       <<: *linux
     - stage: level12
-      env: REPO=boost_context BUILD=GCC_7
+      env: REPO=boost_context
       <<: *linux
     - stage: level12
-      env: REPO=boost_convert BUILD=GCC_7
+      env: REPO=boost_convert
       <<: *linux
     - stage: level12
-      env: REPO=boost_dll BUILD=SOURCE_ONLY
+      env: REPO=boost_dll
       <<: *linux
     - stage: level12
-      env: REPO=boost_dynamic_bitset BUILD=SOURCE_ONLY
+      env: REPO=boost_dynamic_bitset
       <<: *linux
     - stage: level12
-      env: REPO=boost_geometry BUILD=SOURCE_ONLY
+      env: REPO=boost_geometry
       <<: *linux
     - stage: level12
-      env: REPO=boost_icl BUILD=SOURCE_ONLY
+      env: REPO=boost_icl
       <<: *linux
     - stage: level12
-      env: REPO=boost_interprocess BUILD=SOURCE_ONLY
+      env: REPO=boost_interprocess
       <<: *linux
     - stage: level12
-      env: REPO=boost_msm BUILD=SOURCE_ONLY
+      env: REPO=boost_msm
       <<: *linux
     - stage: level12
-      env: REPO=boost_multi_index BUILD=SOURCE_ONLY
+      env: REPO=boost_multi_index
       <<: *linux
     - stage: level12
-      env: REPO=boost_numeric_ublas BUILD=SOURCE_ONLY
+      env: REPO=boost_numeric_ublas
       <<: *linux
     - stage: level12
-      env: REPO=boost_ptr_container BUILD=SOURCE_ONLY
+      env: REPO=boost_ptr_container
       <<: *linux
     - stage: level12
-      env: REPO=boost_sort BUILD=SOURCE_ONLY
+      env: REPO=boost_sort
       <<: *linux
     - stage: level12
-      env: REPO=boost_statechart BUILD=SOURCE_ONLY
+      env: REPO=boost_statechart
       <<: *linux
     - stage: level12
-      env: REPO=boost_type_erasure BUILD=GCC_7
+      env: REPO=boost_type_erasure
       <<: *linux
     - stage: level12
-      env: REPO=boost_units BUILD=SOURCE_ONLY
+      env: REPO=boost_units
       <<: *linux
     - stage: level12
-      env: REPO=boost_uuid BUILD=SOURCE_ONLY
+      env: REPO=boost_uuid
       <<: *linux
     - stage: level13
-      env: REPO=boost_accumulators BUILD=SOURCE_ONLY
+      env: REPO=boost_accumulators
       <<: *linux
     - stage: level13
-      env: REPO=boost_assign BUILD=SOURCE_ONLY
+      env: REPO=boost_assign
       <<: *linux
     - stage: level13
-      env: REPO=boost_coroutine BUILD=GCC_7
+      env: REPO=boost_coroutine
       <<: *linux
     - stage: level13
-      env: REPO=boost_coroutine2 BUILD=SOURCE_ONLY
+      env: REPO=boost_coroutine2
       <<: *linux
     - stage: level13
-      env: REPO=boost_fiber BUILD=GCC_7
+      env: REPO=boost_fiber
       <<: *linux
     - stage: level13
-      env: REPO=boost_flyweight BUILD=SOURCE_ONLY
+      env: REPO=boost_flyweight
       <<: *linux
     - stage: level13
-      env: REPO=boost_poly_collection BUILD=SOURCE_ONLY
+      env: REPO=boost_poly_collection
       <<: *linux
     - stage: level13
-      env: REPO=boost_property_tree BUILD=SOURCE_ONLY
+      env: REPO=boost_property_tree
       <<: *linux
     - stage: level13
-      env: REPO=boost_signals BUILD=SOURCE_ONLY
+      env: REPO=boost_signals
       <<: *linux
     - stage: level13
-      env: REPO=boost_wave BUILD=GCC_7
+      env: REPO=boost_wave
       <<: *linux
     - stage: level14group
-      env: REPO=boost_level14group BUILD=GCC_7
+      env: REPO=boost_level14group
       <<: *linux
     - stage: level14
-      env: REPO=boost_asio BUILD=SOURCE_ONLY
+      env: REPO=boost_asio
       <<: *linux
     - stage: level14
-      env: REPO=boost_bimap BUILD=SOURCE_ONLY
+      env: REPO=boost_bimap
       <<: *linux
     - stage: level14
-      env: REPO=boost_compute BUILD=SOURCE_ONLY
+      env: REPO=boost_compute
       <<: *linux
     - stage: level14
-      env: REPO=boost_disjoint_sets BUILD=SOURCE_ONLY
+      env: REPO=boost_disjoint_sets
       <<: *linux
     - stage: level14
-      env: REPO=boost_graph BUILD=SOURCE_ONLY
+      env: REPO=boost_graph
       <<: *linux
     - stage: level14
-      env: REPO=boost_graph_parallel BUILD=GCC_7
+      env: REPO=boost_graph_parallel
       <<: *linux
     - stage: level14
-      env: REPO=boost_log BUILD=GCC_7
+      env: REPO=boost_log
       <<: *linux
     - stage: level14
-      env: REPO=boost_mpi BUILD=GCC_7
+      env: REPO=boost_mpi
       <<: *linux
     - stage: level14
-      env: REPO=boost_property_map BUILD=SOURCE_ONLY
+      env: REPO=boost_property_map
       <<: *linux
     - stage: level15
-      env: REPO=boost_beast BUILD=SOURCE_ONLY
+      env: REPO=boost_beast
       <<: *linux
     - stage: level15
-      env: REPO=boost_numeric_odeint BUILD=SOURCE_ONLY
+      env: REPO=boost_numeric_odeint
       <<: *linux
     - stage: level15
-      env: REPO=boost_process BUILD=SOURCE_ONLY
+      env: REPO=boost_process
       <<: *linux
 
-
-install:
-  - chmod +x .travis/run.sh
-  - chmod +x .travis/install.sh
-  - ./.travis/install.sh
-  - git clone -b $TRAVIS_BRANCH https://github.com/bincrafters/conan-$REPO $REPO
-  - cd $REPO

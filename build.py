@@ -26,7 +26,8 @@ def get_default_vars():
     username = os.getenv("CONAN_USERNAME", "bincrafters")
     channel = os.getenv("CONAN_CHANNEL", "testing")
     version = get_version_from_recipe()
-    return username, channel, version
+    build = "gcc_7"
+    return username, channel, version, build
 
 
 def is_ci_running():
@@ -41,8 +42,8 @@ def get_ci_vars():
     repobranch_t = os.getenv("TRAVIS_BRANCH", "")
 
     username, _ = reponame_a.split("/") if reponame_a else reponame_t.split("/")
-    channel, version = repobranch_a.split("/") if repobranch_a else repobranch_t.split("/")
-    return username, channel, version
+    channel, version, build = repobranch_a.split("/")[0:2] if repobranch_a else repobranch_t.split("/")[0:2]
+    return username, channel, version, build
 
 
 def get_env_vars():
@@ -55,7 +56,7 @@ def get_os():
 
 if __name__ == "__main__":
     name = get_name_from_recipe()
-    username, channel, version = get_env_vars()
+    username, channel, version, build = get_env_vars()
     reference = "{0}/{1}".format(name, version)
     upload = "https://api.bintray.com/conan/{0}/public-conan".format(username)
     upload_only_when_stable = True
@@ -67,7 +68,7 @@ if __name__ == "__main__":
         if 'CONAN_STABLE_BRANCH_PATTERN' in os.environ:
             del os.environ['CONAN_STABLE_BRANCH_PATTERN']
 
-    build = os.getenv("BUILD", None)
+    build = os.getenv("BUILD", build)
     if build:
         build_env = os.getenv(build, None)
         if build_env:
