@@ -50,7 +50,9 @@ install:
   - chmod +x .travis/run.sh
   - chmod +x .travis/install.sh
   - ./.travis/install.sh
-  - git clone -b `dirname $TRAVIS_BRANCH` https://github.com/bincrafters/conan-$REPO $REPO
+  - export REPO_BRANCH=`dirname $TRAVIS_BRANCH`
+  - echo $REPO_BRANCH
+  - git clone -b $REPO_BRANCH https://github.com/bincrafters/conan-$REPO $REPO
   - cd $REPO
 
 script:

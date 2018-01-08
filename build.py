@@ -27,7 +27,7 @@ def get_default_vars():
     channel = os.getenv("CONAN_CHANNEL", "testing")
     version = get_version_from_recipe()
     build = "gcc_7"
-    return username, channel, version, build
+    return username, channel, version, build.upper()
 
 
 def is_ci_running():
@@ -41,9 +41,9 @@ def get_ci_vars():
     reponame_t = os.getenv("TRAVIS_REPO_SLUG", "")
     repobranch_t = os.getenv("TRAVIS_BRANCH", "")
 
-    username, _ = reponame_a.split("/") if reponame_a else reponame_t.split("/")
+    username = reponame_a.split("/")[0] if reponame_a else reponame_t.split("/")[0]
     channel, version, build = repobranch_a.split("/")[0:2] if repobranch_a else repobranch_t.split("/")[0:2]
-    return username, channel, version, build
+    return username, channel, version, build.upper()
 
 
 def get_env_vars():
