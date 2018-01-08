@@ -35,11 +35,11 @@ def is_ci_running():
 
 
 def get_ci_vars():
-    reponame_a = os.getenv("APPVEYOR_REPO_NAME", "")
-    repobranch_a = os.getenv("APPVEYOR_REPO_BRANCH", "")
+    reponame_a = os.getenv("APPVEYOR_REPO_NAME")
+    repobranch_a = os.getenv("APPVEYOR_REPO_BRANCH")
 
-    reponame_t = os.getenv("TRAVIS_REPO_SLUG", "")
-    repobranch_t = os.getenv("TRAVIS_BRANCH", "")
+    reponame_t = os.getenv("TRAVIS_REPO_SLUG")
+    repobranch_t = os.getenv("TRAVIS_BRANCH")
 
     username = reponame_a.split("/")[0] if reponame_a else reponame_t.split("/")[0]
     channel, version, build = repobranch_a.split("/")[0:2] if repobranch_a else repobranch_t.split("/")[0:2]
