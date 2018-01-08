@@ -109,6 +109,7 @@ setup = {
 job_template = '''\
     - stage: {stage}
       env: REPO={name}
+      <<: *{setup}
 '''
 
 
@@ -120,7 +121,8 @@ def main(args):
             format_data[stage][name] = ''
             format_data[stage][name] += job_template.format(
                 stage=stage,
-                name=name if name.startswith('boost') else 'boost_' + name)
+                name=name if name.startswith('boost') else 'boost_' + name,
+                setup=setup[args.build.upper()])
     
     with open(".travis.template.yml", "r") as f:
         travis_yml = f.read()
@@ -153,8 +155,6 @@ def main(args):
             for j in sorted(format_data[l].keys()):
                 format_data['jobs'] += format_data[l][j]
 
-    format_data['compiler_env'] = setup[args.build.upper()]
-    
     # print(format_data['jobs'])
     # print(format_data['stages'])
     # pprint(format_data)

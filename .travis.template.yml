@@ -45,7 +45,6 @@ env:
     - XCODE_81="CONAN_APPLE_CLANG_VERSIONS=8.1"
     - XCODE_83="CONAN_APPLE_CLANG_VERSIONS=8.3"
     - XCODE_90="CONAN_APPLE_CLANG_VERSIONS=9.0"
-    <<: *{compiler_env}
 
 install:
   - chmod +x .travis/run.sh
