@@ -5,10 +5,10 @@ from re import search
 stages = {
     "bootstrap0": {
         'source-only':[],
-        'build':["boost_build"]
+        'build':["build"]
         },
     "bootstrap1": {
-        'source-only':["boost_generator", "boost-package-tools"],
+        'source-only':["generator", "boost-package-tools"],
         'build':[]
         },
     "level0": {
@@ -108,8 +108,7 @@ setup = {
 
 job_template = '''\
     - stage: {stage}
-      env: REPO=boost_{name}
-      <<: *{setup}
+      env: REPO={name}
 '''
 
 
@@ -119,11 +118,9 @@ def main(args):
         format_data[stage] = {}
         for name in stages[stage]['source-only'] + stages[stage]['build']:
             format_data[stage][name] = ''
-            for compiler in args.build:
-                format_data[stage][name] += job_template.format(
-                    stage=stage,
-                    name=name,
-                    setup=setup[compiler.upper()])
+            format_data[stage][name] += job_template.format(
+                stage=stage,
+                name=name if name.startswith('boost') else 'boost_' + name)
     
     with open(".travis.template.yml", "r") as f:
         travis_yml = f.read()
@@ -156,7 +153,7 @@ def main(args):
             for j in sorted(format_data[l].keys()):
                 format_data['jobs'] += format_data[l][j]
 
-    format_data['build'] = compiler.upper()
+    format_data['compiler_env'] = setup[args.build.upper()]
     
     # print(format_data['jobs'])
     # print(format_data['stages'])
@@ -171,6 +168,6 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(prefix_chars='+')
     # common args
     parser.add_argument('++debug', action='store_true')
-    parser.add_argument("++build", action='append', default=[])
+    parser.add_argument("++build")
     args = parser.parse_args()
     main(args)
