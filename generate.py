@@ -2,96 +2,139 @@ from pprint import pprint
 import argparse
 from re import search
 
-stages = {
-    "bootstrap0": {
-        'source-only':[],
-        'build':["build"]
-        },
-    "bootstrap1": {
-        'source-only':["generator", "boost-package-tools"],
-        'build':[]
-        },
-    "level0": {
-        'source-only':["callable_traits", "compatibility", "config", "predef", "preprocessor"],
-        'build':[]
-        },
-    "level1": {
-        'source-only':["assert", "io", "mp11", "preprocessor", "static_assert", "vmd", "winapi"],
-        'build':[]
-        },
-    "level2": {
-        'source-only':["core", "throw_exception"],
-        'build':[]
-        },
-    "level3": {
-        'source-only':["align", "array", "bind", "integer", "logic", "move", "type_traits"],
-        'build':["system"]
-        },
-    "level4": {
-        'source-only':["crc", "smart_ptr", "tuple"],
-        'build':["atomic"]
-        },
-    "level5group": {
-        'source-only':["level5group"],
-        'build':["exception"]
-        },
-    "level5": {
-        'source-only':["concept_check", "conversion", "detail", "function", "function_types", "functional", "fusion", "iterator", "mpl", "optional", "type_index", "typeof", "utility"],
-        'build':[]
-        },
-    "level6": {
-        'source-only':["any", "endian", "format", "gil", "hana", "intrusive", "lambda", "multi_array", "numeric_conversion", "numeric_interval", "polygon", "qvm", "rational", "scope_exit", "tokenizer", "tti"],
-        'build':["regex"]
-        },
-    "level7": {
-        'source-only':["local_function", "range", "ratio"],
-        'build':["container", "signals"]
-        },
-    "level8group": {
-        'source-only':[],
-        'build':["level8group"]
-        },
-    "level8": {
-        'source-only':["circular_buffer", "foreach", "lexical_cast", "proto", "unordered"],
-        'build':["chrono", "filesystem", "math"]
-        },
-    "level9": {
-        'source-only':["algorithm", "phoenix", "variant", "xpressive"],
-        'build':["program_options", "python", "random", "stacktrace", "timer"]
-        },
-    "level10": {
-        'source-only':["multiprecision", "parameter"],
-        'build':["iostreams", "test"]
-        },
-    "level11group": {
-        'source-only':[],
-        'build':["level11group"]
-        },
-    "level11": {
-        'source-only':["heap", "lockfree", "metaparse", "pool", "spirit"],
-        'build':["date_time", "locale", "serialization", "thread"]
-        },
-    "level12": {
-        'source-only':["dll", "dynamic_bitset", "geometry", "icl", "interprocess", "msm", "multi_index", "numeric_ublas", "ptr_container", "sort", "statechart", "units", "uuid"],
-        'build':["context", "convert", "type_erasure"]
-        },
-    "level13": {
-        'source-only':["accumulators", "assign", "coroutine2", "flyweight", "poly_collection", "property_tree", "signals"],
-        'build':["coroutine", "fiber", "wave"]
-        },
-    "level14group": {
-        'source-only':[],
-        'build':["level14group"]
-        },
-    "level14": {
-        'source-only':["asio", "bimap", "compute", "disjoint_sets", "graph", "property_map"],
-        'build':["graph_parallel", "log", "mpi"]
-        },
-    "level15": {
-        'source-only':["beast", "numeric_odeint", "process"],
-        'build':[]
-        }
-    }
+stages_libs = [
+ set(['build']),
+ set(['generator', 'package_tools']),
+ set(['callable_traits',
+      'compatibility',
+      'config',
+      'hof',
+      'predef',
+      'preprocessor']),
+ set(['assert', 'io', 'mp11', 'static_assert', 'vmd', 'winapi']),
+ set(['core', 'throw_exception']),
+ set(['align',
+      'array',
+      'bind',
+      'integer',
+      'logic',
+      'move',
+      'system',
+      'type_traits']),
+ set(['atomic', 'crc', 'smart_ptr', 'tuple', 'utility']),
+ set(['endian', 'exception', 'mpl', 'rational']),
+ set(['concept_check',
+      'detail',
+      'metaparse',
+      'polygon',
+      'qvm',
+      'ratio',
+      'typeof']),
+ set(['chrono',
+      'container_hash',
+      'conversion',
+      'function_types',
+      'numeric_interval',
+      'optional']),
+ set(['format',
+      'fusion',
+      'intrusive',
+      'numeric_conversion',
+      'timer',
+      'tti',
+      'type_index']),
+ set(['any', 'container', 'function', 'hana', 'iterator', 'variant']),
+ set(['circular_buffer',
+      'functional',
+      'gil',
+      'lambda',
+      'regex',
+      'scope_exit',
+      'signals',
+      'tokenizer',
+      'unordered']),
+ set(['local_function', 'multi_array', 'range']),
+ set(['algorithm', 'filesystem', 'foreach', 'level8group', 'proto']),
+ set(['lexical_cast', 'math', 'phoenix', 'test']),
+ set(['program_options', 'python', 'random', 'stacktrace', 'xpressive']),
+ set(['iostreams', 'multiprecision', 'parameter']),
+ set(['heap', 'level11group', 'lockfree']),
+ set(['date_time', 'pool', 'serialization', 'spirit', 'thread']),
+ set(['context',
+      'contract',
+      'convert',
+      'dll',
+      'dynamic_bitset',
+      'geometry',
+      'icl',
+      'interprocess',
+      'locale',
+      'msm',
+      'multi_index',
+      'numeric_ublas',
+      'ptr_container',
+      'sort',
+      'statechart',
+      'type_erasure',
+      'units',
+      'uuid']),
+ set(['accumulators',
+      'assign',
+      'coroutine',
+      'coroutine2',
+      'fiber',
+      'flyweight',
+      'poly_collection',
+      'property_tree',
+      'signals2',
+      'wave']),
+ set(['asio', 'compute', 'level14group', 'log']),
+ set(['beast',
+      'bimap',
+      'disjoint_sets',
+      'graph',
+      'graph_parallel',
+      'mpi',
+      'process',
+      'property_map']),
+ set(['numeric_odeint'])
+ ]
+
+stages_names = [
+    'bootstrap0',
+    'bootstrap1',
+    'stage0',
+    'stage1',
+    'stage2',
+    'stage3',
+    'stage4',
+    'stage5',
+    'stage6',
+    'stage7',
+    'stage8',
+    'stage9',
+    'stage10',
+    'stage11',
+    'stage12',
+    'stage13',
+    'stage14',
+    'stage15',
+    'stage16',
+    'stage17',
+    'stage18',
+    'stage19',
+    'stage20',
+    'stage21',
+    'stage22',
+    'stage23',
+    'stage24',
+    'stage25',
+    'stage26',
+    'stage27',
+    'stage28',
+    'stage29',
+    'stage30'
+    ]
 
 setup = {
     'CLANG_39': 'linux',
@@ -115,13 +158,14 @@ job_template = '''\
 
 def main(args):
     format_data = {}
-    for stage in stages.keys():
+    for libs in stages_libs:
+        stage = stages_names.pop(0)
         format_data[stage] = {}
-        for name in stages[stage]['source-only'] + stages[stage]['build']:
+        for name in libs:
             format_data[stage][name] = ''
             format_data[stage][name] += job_template.format(
                 stage=stage,
-                name=name if name.startswith('boost') else 'boost_' + name,
+                name='boost_' + name,
                 setup=setup[args.build.upper()])
     
     with open(".travis.template.yml", "r") as f:

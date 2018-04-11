@@ -34,7 +34,6 @@ env:
     - CONAN_LOGIN_USERNAME=grafikrobot
     - CONAN_UPLOAD_ONLY_WHEN_STABLE=0
     - CONAN_SHARED_OPTION_NAME=
-    - SOURCE_ONLY="CONAN_ARCHS=x86 CONAN_BUILD_TYPES=Release CONAN_ARCHS=x86_64 CONAN_CLANG_VERSIONS=4.0 CONAN_DOCKER_IMAGE=lasote/conanclang40"
     - GCC_4="CONAN_GCC_VERSIONS=4.9 CONAN_DOCKER_IMAGE=lasote/conangcc49"
     - GCC_5="CONAN_GCC_VERSIONS=5 CONAN_DOCKER_IMAGE=lasote/conangcc5"
     - GCC_6="CONAN_GCC_VERSIONS=6 CONAN_DOCKER_IMAGE=lasote/conangcc6"
@@ -61,26 +60,29 @@ script:
 stages:
   - bootstrap0
   - bootstrap1
-  - level0
-  - level1
-  - level2
-  - level3
-  - level4
-  - level5group
-  - level5
-  - level6
-  - level7
-  - level8group
-  - level8
-  - level9
-  - level10
-  - level11group
-  - level11
-  - level12
-  - level13
-  - level14group
-  - level14
-  - level15
+  - stage0
+  - stage1
+  - stage2
+  - stage3
+  - stage4
+  - stage5
+  - stage6
+  - stage7
+  - stage8
+  - stage9
+  - stage10
+  - stage11
+  - stage12
+  - stage13
+  - stage14
+  - stage15
+  - stage16
+  - stage17
+  - stage18
+  - stage19
+  - stage20
+  - stage21
+  - stage22
 
 
 jobs:
@@ -89,411 +91,414 @@ jobs:
       env: REPO=boost_build
       <<: *linux
     - stage: bootstrap1
-      env: REPO=boost-package-tools
-      <<: *linux
-    - stage: bootstrap1
       env: REPO=boost_generator
       <<: *linux
-    - stage: level0
+    - stage: bootstrap1
+      env: REPO=boost_package_tools
+      <<: *linux
+    - stage: stage0
       env: REPO=boost_callable_traits
       <<: *linux
-    - stage: level0
+    - stage: stage0
       env: REPO=boost_compatibility
       <<: *linux
-    - stage: level0
+    - stage: stage0
       env: REPO=boost_config
       <<: *linux
-    - stage: level0
+    - stage: stage0
+      env: REPO=boost_hof
+      <<: *linux
+    - stage: stage0
       env: REPO=boost_predef
       <<: *linux
-    - stage: level0
+    - stage: stage0
       env: REPO=boost_preprocessor
       <<: *linux
-    - stage: level1
+    - stage: stage1
       env: REPO=boost_assert
       <<: *linux
-    - stage: level1
+    - stage: stage1
       env: REPO=boost_io
       <<: *linux
-    - stage: level1
+    - stage: stage1
       env: REPO=boost_mp11
       <<: *linux
-    - stage: level1
-      env: REPO=boost_preprocessor
-      <<: *linux
-    - stage: level1
+    - stage: stage1
       env: REPO=boost_static_assert
       <<: *linux
-    - stage: level1
+    - stage: stage1
       env: REPO=boost_vmd
       <<: *linux
-    - stage: level1
+    - stage: stage1
       env: REPO=boost_winapi
       <<: *linux
-    - stage: level2
+    - stage: stage2
       env: REPO=boost_core
       <<: *linux
-    - stage: level2
+    - stage: stage2
       env: REPO=boost_throw_exception
       <<: *linux
-    - stage: level3
+    - stage: stage3
       env: REPO=boost_align
       <<: *linux
-    - stage: level3
+    - stage: stage3
       env: REPO=boost_array
       <<: *linux
-    - stage: level3
+    - stage: stage3
       env: REPO=boost_bind
       <<: *linux
-    - stage: level3
+    - stage: stage3
       env: REPO=boost_integer
       <<: *linux
-    - stage: level3
+    - stage: stage3
       env: REPO=boost_logic
       <<: *linux
-    - stage: level3
+    - stage: stage3
       env: REPO=boost_move
       <<: *linux
-    - stage: level3
+    - stage: stage3
       env: REPO=boost_system
       <<: *linux
-    - stage: level3
+    - stage: stage3
       env: REPO=boost_type_traits
       <<: *linux
-    - stage: level4
+    - stage: stage4
       env: REPO=boost_atomic
       <<: *linux
-    - stage: level4
+    - stage: stage4
       env: REPO=boost_crc
       <<: *linux
-    - stage: level4
+    - stage: stage4
       env: REPO=boost_smart_ptr
       <<: *linux
-    - stage: level4
+    - stage: stage4
       env: REPO=boost_tuple
       <<: *linux
-    - stage: level5group
-      env: REPO=boost_exception
-      <<: *linux
-    - stage: level5group
-      env: REPO=boost_level5group
-      <<: *linux
-    - stage: level5
-      env: REPO=boost_concept_check
-      <<: *linux
-    - stage: level5
-      env: REPO=boost_conversion
-      <<: *linux
-    - stage: level5
-      env: REPO=boost_detail
-      <<: *linux
-    - stage: level5
-      env: REPO=boost_function
-      <<: *linux
-    - stage: level5
-      env: REPO=boost_function_types
-      <<: *linux
-    - stage: level5
-      env: REPO=boost_functional
-      <<: *linux
-    - stage: level5
-      env: REPO=boost_fusion
-      <<: *linux
-    - stage: level5
-      env: REPO=boost_iterator
-      <<: *linux
-    - stage: level5
-      env: REPO=boost_mpl
-      <<: *linux
-    - stage: level5
-      env: REPO=boost_optional
-      <<: *linux
-    - stage: level5
-      env: REPO=boost_type_index
-      <<: *linux
-    - stage: level5
-      env: REPO=boost_typeof
-      <<: *linux
-    - stage: level5
+    - stage: stage4
       env: REPO=boost_utility
       <<: *linux
-    - stage: level6
-      env: REPO=boost_any
-      <<: *linux
-    - stage: level6
+    - stage: stage5
       env: REPO=boost_endian
       <<: *linux
-    - stage: level6
-      env: REPO=boost_format
+    - stage: stage5
+      env: REPO=boost_exception
       <<: *linux
-    - stage: level6
-      env: REPO=boost_gil
+    - stage: stage5
+      env: REPO=boost_mpl
       <<: *linux
-    - stage: level6
-      env: REPO=boost_hana
-      <<: *linux
-    - stage: level6
-      env: REPO=boost_intrusive
-      <<: *linux
-    - stage: level6
-      env: REPO=boost_lambda
-      <<: *linux
-    - stage: level6
-      env: REPO=boost_multi_array
-      <<: *linux
-    - stage: level6
-      env: REPO=boost_numeric_conversion
-      <<: *linux
-    - stage: level6
-      env: REPO=boost_numeric_interval
-      <<: *linux
-    - stage: level6
-      env: REPO=boost_polygon
-      <<: *linux
-    - stage: level6
-      env: REPO=boost_qvm
-      <<: *linux
-    - stage: level6
+    - stage: stage5
       env: REPO=boost_rational
       <<: *linux
-    - stage: level6
-      env: REPO=boost_regex
+    - stage: stage6
+      env: REPO=boost_concept_check
       <<: *linux
-    - stage: level6
-      env: REPO=boost_scope_exit
+    - stage: stage6
+      env: REPO=boost_detail
       <<: *linux
-    - stage: level6
-      env: REPO=boost_tokenizer
-      <<: *linux
-    - stage: level6
-      env: REPO=boost_tti
-      <<: *linux
-    - stage: level7
-      env: REPO=boost_container
-      <<: *linux
-    - stage: level7
-      env: REPO=boost_local_function
-      <<: *linux
-    - stage: level7
-      env: REPO=boost_range
-      <<: *linux
-    - stage: level7
-      env: REPO=boost_ratio
-      <<: *linux
-    - stage: level7
-      env: REPO=boost_signals
-      <<: *linux
-    - stage: level8group
-      env: REPO=boost_level8group
-      <<: *linux
-    - stage: level8
-      env: REPO=boost_chrono
-      <<: *linux
-    - stage: level8
-      env: REPO=boost_circular_buffer
-      <<: *linux
-    - stage: level8
-      env: REPO=boost_filesystem
-      <<: *linux
-    - stage: level8
-      env: REPO=boost_foreach
-      <<: *linux
-    - stage: level8
-      env: REPO=boost_lexical_cast
-      <<: *linux
-    - stage: level8
-      env: REPO=boost_math
-      <<: *linux
-    - stage: level8
-      env: REPO=boost_proto
-      <<: *linux
-    - stage: level8
-      env: REPO=boost_unordered
-      <<: *linux
-    - stage: level9
-      env: REPO=boost_algorithm
-      <<: *linux
-    - stage: level9
-      env: REPO=boost_phoenix
-      <<: *linux
-    - stage: level9
-      env: REPO=boost_program_options
-      <<: *linux
-    - stage: level9
-      env: REPO=boost_python
-      <<: *linux
-    - stage: level9
-      env: REPO=boost_random
-      <<: *linux
-    - stage: level9
-      env: REPO=boost_stacktrace
-      <<: *linux
-    - stage: level9
-      env: REPO=boost_timer
-      <<: *linux
-    - stage: level9
-      env: REPO=boost_variant
-      <<: *linux
-    - stage: level9
-      env: REPO=boost_xpressive
-      <<: *linux
-    - stage: level10
-      env: REPO=boost_iostreams
-      <<: *linux
-    - stage: level10
-      env: REPO=boost_multiprecision
-      <<: *linux
-    - stage: level10
-      env: REPO=boost_parameter
-      <<: *linux
-    - stage: level10
-      env: REPO=boost_test
-      <<: *linux
-    - stage: level11group
-      env: REPO=boost_level11group
-      <<: *linux
-    - stage: level11
-      env: REPO=boost_date_time
-      <<: *linux
-    - stage: level11
-      env: REPO=boost_heap
-      <<: *linux
-    - stage: level11
-      env: REPO=boost_locale
-      <<: *linux
-    - stage: level11
-      env: REPO=boost_lockfree
-      <<: *linux
-    - stage: level11
+    - stage: stage6
       env: REPO=boost_metaparse
       <<: *linux
-    - stage: level11
-      env: REPO=boost_pool
+    - stage: stage6
+      env: REPO=boost_polygon
       <<: *linux
-    - stage: level11
-      env: REPO=boost_serialization
+    - stage: stage6
+      env: REPO=boost_qvm
       <<: *linux
-    - stage: level11
-      env: REPO=boost_spirit
+    - stage: stage6
+      env: REPO=boost_ratio
       <<: *linux
-    - stage: level11
-      env: REPO=boost_thread
+    - stage: stage6
+      env: REPO=boost_typeof
       <<: *linux
-    - stage: level12
-      env: REPO=boost_context
+    - stage: stage7
+      env: REPO=boost_chrono
       <<: *linux
-    - stage: level12
-      env: REPO=boost_convert
+    - stage: stage7
+      env: REPO=boost_container_hash
       <<: *linux
-    - stage: level12
-      env: REPO=boost_dll
+    - stage: stage7
+      env: REPO=boost_conversion
       <<: *linux
-    - stage: level12
-      env: REPO=boost_dynamic_bitset
+    - stage: stage7
+      env: REPO=boost_function_types
       <<: *linux
-    - stage: level12
-      env: REPO=boost_geometry
+    - stage: stage7
+      env: REPO=boost_numeric_interval
       <<: *linux
-    - stage: level12
-      env: REPO=boost_icl
+    - stage: stage7
+      env: REPO=boost_optional
       <<: *linux
-    - stage: level12
-      env: REPO=boost_interprocess
+    - stage: stage8
+      env: REPO=boost_format
       <<: *linux
-    - stage: level12
-      env: REPO=boost_msm
+    - stage: stage8
+      env: REPO=boost_fusion
       <<: *linux
-    - stage: level12
-      env: REPO=boost_multi_index
+    - stage: stage8
+      env: REPO=boost_intrusive
       <<: *linux
-    - stage: level12
-      env: REPO=boost_numeric_ublas
+    - stage: stage8
+      env: REPO=boost_numeric_conversion
       <<: *linux
-    - stage: level12
-      env: REPO=boost_ptr_container
+    - stage: stage8
+      env: REPO=boost_timer
       <<: *linux
-    - stage: level12
-      env: REPO=boost_sort
+    - stage: stage8
+      env: REPO=boost_tti
       <<: *linux
-    - stage: level12
-      env: REPO=boost_statechart
+    - stage: stage8
+      env: REPO=boost_type_index
       <<: *linux
-    - stage: level12
-      env: REPO=boost_type_erasure
+    - stage: stage9
+      env: REPO=boost_any
       <<: *linux
-    - stage: level12
-      env: REPO=boost_units
+    - stage: stage9
+      env: REPO=boost_container
       <<: *linux
-    - stage: level12
-      env: REPO=boost_uuid
+    - stage: stage9
+      env: REPO=boost_function
       <<: *linux
-    - stage: level13
-      env: REPO=boost_accumulators
+    - stage: stage9
+      env: REPO=boost_hana
       <<: *linux
-    - stage: level13
-      env: REPO=boost_assign
+    - stage: stage9
+      env: REPO=boost_iterator
       <<: *linux
-    - stage: level13
-      env: REPO=boost_coroutine
+    - stage: stage9
+      env: REPO=boost_variant
       <<: *linux
-    - stage: level13
-      env: REPO=boost_coroutine2
+    - stage: stage10
+      env: REPO=boost_circular_buffer
       <<: *linux
-    - stage: level13
-      env: REPO=boost_fiber
+    - stage: stage10
+      env: REPO=boost_functional
       <<: *linux
-    - stage: level13
-      env: REPO=boost_flyweight
+    - stage: stage10
+      env: REPO=boost_gil
       <<: *linux
-    - stage: level13
-      env: REPO=boost_poly_collection
+    - stage: stage10
+      env: REPO=boost_lambda
       <<: *linux
-    - stage: level13
-      env: REPO=boost_property_tree
+    - stage: stage10
+      env: REPO=boost_regex
       <<: *linux
-    - stage: level13
+    - stage: stage10
+      env: REPO=boost_scope_exit
+      <<: *linux
+    - stage: stage10
       env: REPO=boost_signals
       <<: *linux
-    - stage: level13
+    - stage: stage10
+      env: REPO=boost_tokenizer
+      <<: *linux
+    - stage: stage10
+      env: REPO=boost_unordered
+      <<: *linux
+    - stage: stage11
+      env: REPO=boost_local_function
+      <<: *linux
+    - stage: stage11
+      env: REPO=boost_multi_array
+      <<: *linux
+    - stage: stage11
+      env: REPO=boost_range
+      <<: *linux
+    - stage: stage12
+      env: REPO=boost_algorithm
+      <<: *linux
+    - stage: stage12
+      env: REPO=boost_filesystem
+      <<: *linux
+    - stage: stage12
+      env: REPO=boost_foreach
+      <<: *linux
+    - stage: stage12
+      env: REPO=boost_level8group
+      <<: *linux
+    - stage: stage12
+      env: REPO=boost_proto
+      <<: *linux
+    - stage: stage13
+      env: REPO=boost_lexical_cast
+      <<: *linux
+    - stage: stage13
+      env: REPO=boost_math
+      <<: *linux
+    - stage: stage13
+      env: REPO=boost_phoenix
+      <<: *linux
+    - stage: stage13
+      env: REPO=boost_test
+      <<: *linux
+    - stage: stage14
+      env: REPO=boost_program_options
+      <<: *linux
+    - stage: stage14
+      env: REPO=boost_python
+      <<: *linux
+    - stage: stage14
+      env: REPO=boost_random
+      <<: *linux
+    - stage: stage14
+      env: REPO=boost_stacktrace
+      <<: *linux
+    - stage: stage14
+      env: REPO=boost_xpressive
+      <<: *linux
+    - stage: stage15
+      env: REPO=boost_iostreams
+      <<: *linux
+    - stage: stage15
+      env: REPO=boost_multiprecision
+      <<: *linux
+    - stage: stage15
+      env: REPO=boost_parameter
+      <<: *linux
+    - stage: stage16
+      env: REPO=boost_heap
+      <<: *linux
+    - stage: stage16
+      env: REPO=boost_level11group
+      <<: *linux
+    - stage: stage16
+      env: REPO=boost_lockfree
+      <<: *linux
+    - stage: stage17
+      env: REPO=boost_date_time
+      <<: *linux
+    - stage: stage17
+      env: REPO=boost_pool
+      <<: *linux
+    - stage: stage17
+      env: REPO=boost_serialization
+      <<: *linux
+    - stage: stage17
+      env: REPO=boost_spirit
+      <<: *linux
+    - stage: stage17
+      env: REPO=boost_thread
+      <<: *linux
+    - stage: stage18
+      env: REPO=boost_context
+      <<: *linux
+    - stage: stage18
+      env: REPO=boost_contract
+      <<: *linux
+    - stage: stage18
+      env: REPO=boost_convert
+      <<: *linux
+    - stage: stage18
+      env: REPO=boost_dll
+      <<: *linux
+    - stage: stage18
+      env: REPO=boost_dynamic_bitset
+      <<: *linux
+    - stage: stage18
+      env: REPO=boost_geometry
+      <<: *linux
+    - stage: stage18
+      env: REPO=boost_icl
+      <<: *linux
+    - stage: stage18
+      env: REPO=boost_interprocess
+      <<: *linux
+    - stage: stage18
+      env: REPO=boost_locale
+      <<: *linux
+    - stage: stage18
+      env: REPO=boost_msm
+      <<: *linux
+    - stage: stage18
+      env: REPO=boost_multi_index
+      <<: *linux
+    - stage: stage18
+      env: REPO=boost_numeric_ublas
+      <<: *linux
+    - stage: stage18
+      env: REPO=boost_ptr_container
+      <<: *linux
+    - stage: stage18
+      env: REPO=boost_sort
+      <<: *linux
+    - stage: stage18
+      env: REPO=boost_statechart
+      <<: *linux
+    - stage: stage18
+      env: REPO=boost_type_erasure
+      <<: *linux
+    - stage: stage18
+      env: REPO=boost_units
+      <<: *linux
+    - stage: stage18
+      env: REPO=boost_uuid
+      <<: *linux
+    - stage: stage19
+      env: REPO=boost_accumulators
+      <<: *linux
+    - stage: stage19
+      env: REPO=boost_assign
+      <<: *linux
+    - stage: stage19
+      env: REPO=boost_coroutine
+      <<: *linux
+    - stage: stage19
+      env: REPO=boost_coroutine2
+      <<: *linux
+    - stage: stage19
+      env: REPO=boost_fiber
+      <<: *linux
+    - stage: stage19
+      env: REPO=boost_flyweight
+      <<: *linux
+    - stage: stage19
+      env: REPO=boost_poly_collection
+      <<: *linux
+    - stage: stage19
+      env: REPO=boost_property_tree
+      <<: *linux
+    - stage: stage19
+      env: REPO=boost_signals2
+      <<: *linux
+    - stage: stage19
       env: REPO=boost_wave
       <<: *linux
-    - stage: level14group
-      env: REPO=boost_level14group
-      <<: *linux
-    - stage: level14
+    - stage: stage20
       env: REPO=boost_asio
       <<: *linux
-    - stage: level14
-      env: REPO=boost_bimap
-      <<: *linux
-    - stage: level14
+    - stage: stage20
       env: REPO=boost_compute
       <<: *linux
-    - stage: level14
-      env: REPO=boost_disjoint_sets
+    - stage: stage20
+      env: REPO=boost_level14group
       <<: *linux
-    - stage: level14
-      env: REPO=boost_graph
-      <<: *linux
-    - stage: level14
-      env: REPO=boost_graph_parallel
-      <<: *linux
-    - stage: level14
+    - stage: stage20
       env: REPO=boost_log
       <<: *linux
-    - stage: level14
-      env: REPO=boost_mpi
-      <<: *linux
-    - stage: level14
-      env: REPO=boost_property_map
-      <<: *linux
-    - stage: level15
+    - stage: stage21
       env: REPO=boost_beast
       <<: *linux
-    - stage: level15
-      env: REPO=boost_numeric_odeint
+    - stage: stage21
+      env: REPO=boost_bimap
       <<: *linux
-    - stage: level15
+    - stage: stage21
+      env: REPO=boost_disjoint_sets
+      <<: *linux
+    - stage: stage21
+      env: REPO=boost_graph
+      <<: *linux
+    - stage: stage21
+      env: REPO=boost_graph_parallel
+      <<: *linux
+    - stage: stage21
+      env: REPO=boost_mpi
+      <<: *linux
+    - stage: stage21
       env: REPO=boost_process
+      <<: *linux
+    - stage: stage21
+      env: REPO=boost_property_map
+      <<: *linux
+    - stage: stage22
+      env: REPO=boost_numeric_odeint
       <<: *linux
 
