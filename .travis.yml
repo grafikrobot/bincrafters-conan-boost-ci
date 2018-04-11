@@ -94,7 +94,7 @@ jobs:
       env: REPO=boost_generator
       <<: *linux
     - stage: bootstrap1
-      env: REPO=boost_package_tools
+      env: REPO=boost-package-tools
       <<: *linux
     - stage: stage0
       env: REPO=boost_callable_traits

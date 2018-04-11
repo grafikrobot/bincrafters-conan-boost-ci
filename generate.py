@@ -136,6 +136,10 @@ stages_names = [
     'stage30'
     ]
 
+lib_subs = {
+    'boost_package_tools':'boost-package-tools'
+    }
+
 setup = {
     'CLANG_39': 'linux',
     'CLANG_40': 'linux',
@@ -162,10 +166,13 @@ def main(args):
         stage = stages_names.pop(0)
         format_data[stage] = {}
         for name in libs:
+            boost_name = 'boost_' + name
+            if boost_name in lib_subs:
+                boost_name = lib_subs[boost_name]
             format_data[stage][name] = ''
             format_data[stage][name] += job_template.format(
                 stage=stage,
-                name='boost_' + name,
+                name=boost_name,
                 setup=setup[args.build.upper()])
     
     with open(".travis.template.yml", "r") as f:
