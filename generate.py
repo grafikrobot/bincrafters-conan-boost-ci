@@ -140,6 +140,9 @@ lib_subs = {
     'boost_package_tools':'boost-package-tools'
     }
 
+lib_splits = [
+    'python']
+
 setup = {
     'CLANG_39': 'linux',
     'CLANG_40': 'linux',
@@ -154,6 +157,12 @@ setup = {
     }
 
 job_template = '''\
+    - stage: {stage}
+      env: REPO={name}
+      <<: *{setup}
+'''
+
+job_template_split = '''\
     - stage: {stage}
       env:
         - REPO={name}
@@ -176,8 +185,11 @@ def main(args):
             boost_name = 'boost_' + name
             if boost_name in lib_subs:
                 boost_name = lib_subs[boost_name]
+            template = job_template
+            if name in lib_splits:
+                template = job_template_split
             format_data[stage][name] = ''
-            format_data[stage][name] += job_template.format(
+            format_data[stage][name] += template.format(
                 stage=stage,
                 name=boost_name,
                 setup=setup[args.build.upper()])
