@@ -334,7 +334,15 @@ jobs:
       env: REPO=boost_program_options
       <<: *xcode90
     - stage: stage14
-      env: REPO=boost_python
+      env:
+        - REPO=boost_python
+        - CONAN_ARCHS=x86
+        - CONAN_DOCKER_32_IMAGES=1
+      <<: *xcode90
+    - stage: stage14
+      env:
+        - REPO=boost_python
+        - CONAN_ARCHS=x86_64
       <<: *xcode90
     - stage: stage14
       env: REPO=boost_random
