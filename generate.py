@@ -155,7 +155,14 @@ setup = {
 
 job_template = '''\
     - stage: {stage}
-      env: REPO={name}
+      env:
+        - REPO={name}
+        - CONAN_ARCHS=x86
+      <<: *{setup}
+    - stage: {stage}
+      env:
+        - REPO={name}
+        - CONAN_ARCHS=x86_64
       <<: *{setup}
 '''
 

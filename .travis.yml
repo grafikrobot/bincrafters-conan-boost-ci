@@ -34,6 +34,7 @@ env:
     - CONAN_LOGIN_USERNAME=grafikrobot
     - CONAN_UPLOAD_ONLY_WHEN_STABLE=0
     - CONAN_SHARED_OPTION_NAME=
+    - CONAN_DOCKER_32_IMAGES=1
     - GCC_4="CONAN_GCC_VERSIONS=4.9 CONAN_DOCKER_IMAGE=lasote/conangcc49"
     - GCC_5="CONAN_GCC_VERSIONS=5 CONAN_DOCKER_IMAGE=lasote/conangcc5"
     - GCC_6="CONAN_GCC_VERSIONS=6 CONAN_DOCKER_IMAGE=lasote/conangcc6"
@@ -88,417 +89,1383 @@ stages:
 jobs:
   include:
     - stage: bootstrap0
-      env: REPO=boost_build
+      env:
+        - REPO=boost_build
+        - CONAN_ARCHS=x86
+      <<: *linux
+    - stage: bootstrap0
+      env:
+        - REPO=boost_build
+        - CONAN_ARCHS=x86_64
       <<: *linux
     - stage: bootstrap1
-      env: REPO=boost_generator
+      env:
+        - REPO=boost_generator
+        - CONAN_ARCHS=x86
       <<: *linux
     - stage: bootstrap1
-      env: REPO=boost-package-tools
+      env:
+        - REPO=boost_generator
+        - CONAN_ARCHS=x86_64
+      <<: *linux
+    - stage: bootstrap1
+      env:
+        - REPO=boost-package-tools
+        - CONAN_ARCHS=x86
+      <<: *linux
+    - stage: bootstrap1
+      env:
+        - REPO=boost-package-tools
+        - CONAN_ARCHS=x86_64
       <<: *linux
     - stage: stage0
-      env: REPO=boost_callable_traits
+      env:
+        - REPO=boost_callable_traits
+        - CONAN_ARCHS=x86
       <<: *linux
     - stage: stage0
-      env: REPO=boost_compatibility
+      env:
+        - REPO=boost_callable_traits
+        - CONAN_ARCHS=x86_64
       <<: *linux
     - stage: stage0
-      env: REPO=boost_config
+      env:
+        - REPO=boost_compatibility
+        - CONAN_ARCHS=x86
       <<: *linux
     - stage: stage0
-      env: REPO=boost_hof
+      env:
+        - REPO=boost_compatibility
+        - CONAN_ARCHS=x86_64
       <<: *linux
     - stage: stage0
-      env: REPO=boost_predef
+      env:
+        - REPO=boost_config
+        - CONAN_ARCHS=x86
       <<: *linux
     - stage: stage0
-      env: REPO=boost_preprocessor
+      env:
+        - REPO=boost_config
+        - CONAN_ARCHS=x86_64
+      <<: *linux
+    - stage: stage0
+      env:
+        - REPO=boost_hof
+        - CONAN_ARCHS=x86
+      <<: *linux
+    - stage: stage0
+      env:
+        - REPO=boost_hof
+        - CONAN_ARCHS=x86_64
+      <<: *linux
+    - stage: stage0
+      env:
+        - REPO=boost_predef
+        - CONAN_ARCHS=x86
+      <<: *linux
+    - stage: stage0
+      env:
+        - REPO=boost_predef
+        - CONAN_ARCHS=x86_64
+      <<: *linux
+    - stage: stage0
+      env:
+        - REPO=boost_preprocessor
+        - CONAN_ARCHS=x86
+      <<: *linux
+    - stage: stage0
+      env:
+        - REPO=boost_preprocessor
+        - CONAN_ARCHS=x86_64
       <<: *linux
     - stage: stage1
-      env: REPO=boost_assert
+      env:
+        - REPO=boost_assert
+        - CONAN_ARCHS=x86
       <<: *linux
     - stage: stage1
-      env: REPO=boost_io
+      env:
+        - REPO=boost_assert
+        - CONAN_ARCHS=x86_64
       <<: *linux
     - stage: stage1
-      env: REPO=boost_mp11
+      env:
+        - REPO=boost_io
+        - CONAN_ARCHS=x86
       <<: *linux
     - stage: stage1
-      env: REPO=boost_static_assert
+      env:
+        - REPO=boost_io
+        - CONAN_ARCHS=x86_64
       <<: *linux
     - stage: stage1
-      env: REPO=boost_vmd
+      env:
+        - REPO=boost_mp11
+        - CONAN_ARCHS=x86
       <<: *linux
     - stage: stage1
-      env: REPO=boost_winapi
+      env:
+        - REPO=boost_mp11
+        - CONAN_ARCHS=x86_64
+      <<: *linux
+    - stage: stage1
+      env:
+        - REPO=boost_static_assert
+        - CONAN_ARCHS=x86
+      <<: *linux
+    - stage: stage1
+      env:
+        - REPO=boost_static_assert
+        - CONAN_ARCHS=x86_64
+      <<: *linux
+    - stage: stage1
+      env:
+        - REPO=boost_vmd
+        - CONAN_ARCHS=x86
+      <<: *linux
+    - stage: stage1
+      env:
+        - REPO=boost_vmd
+        - CONAN_ARCHS=x86_64
+      <<: *linux
+    - stage: stage1
+      env:
+        - REPO=boost_winapi
+        - CONAN_ARCHS=x86
+      <<: *linux
+    - stage: stage1
+      env:
+        - REPO=boost_winapi
+        - CONAN_ARCHS=x86_64
       <<: *linux
     - stage: stage2
-      env: REPO=boost_core
+      env:
+        - REPO=boost_core
+        - CONAN_ARCHS=x86
       <<: *linux
     - stage: stage2
-      env: REPO=boost_throw_exception
+      env:
+        - REPO=boost_core
+        - CONAN_ARCHS=x86_64
+      <<: *linux
+    - stage: stage2
+      env:
+        - REPO=boost_throw_exception
+        - CONAN_ARCHS=x86
+      <<: *linux
+    - stage: stage2
+      env:
+        - REPO=boost_throw_exception
+        - CONAN_ARCHS=x86_64
       <<: *linux
     - stage: stage3
-      env: REPO=boost_align
+      env:
+        - REPO=boost_align
+        - CONAN_ARCHS=x86
       <<: *linux
     - stage: stage3
-      env: REPO=boost_array
+      env:
+        - REPO=boost_align
+        - CONAN_ARCHS=x86_64
       <<: *linux
     - stage: stage3
-      env: REPO=boost_bind
+      env:
+        - REPO=boost_array
+        - CONAN_ARCHS=x86
       <<: *linux
     - stage: stage3
-      env: REPO=boost_integer
+      env:
+        - REPO=boost_array
+        - CONAN_ARCHS=x86_64
       <<: *linux
     - stage: stage3
-      env: REPO=boost_logic
+      env:
+        - REPO=boost_bind
+        - CONAN_ARCHS=x86
       <<: *linux
     - stage: stage3
-      env: REPO=boost_move
+      env:
+        - REPO=boost_bind
+        - CONAN_ARCHS=x86_64
       <<: *linux
     - stage: stage3
-      env: REPO=boost_system
+      env:
+        - REPO=boost_integer
+        - CONAN_ARCHS=x86
       <<: *linux
     - stage: stage3
-      env: REPO=boost_type_traits
+      env:
+        - REPO=boost_integer
+        - CONAN_ARCHS=x86_64
+      <<: *linux
+    - stage: stage3
+      env:
+        - REPO=boost_logic
+        - CONAN_ARCHS=x86
+      <<: *linux
+    - stage: stage3
+      env:
+        - REPO=boost_logic
+        - CONAN_ARCHS=x86_64
+      <<: *linux
+    - stage: stage3
+      env:
+        - REPO=boost_move
+        - CONAN_ARCHS=x86
+      <<: *linux
+    - stage: stage3
+      env:
+        - REPO=boost_move
+        - CONAN_ARCHS=x86_64
+      <<: *linux
+    - stage: stage3
+      env:
+        - REPO=boost_system
+        - CONAN_ARCHS=x86
+      <<: *linux
+    - stage: stage3
+      env:
+        - REPO=boost_system
+        - CONAN_ARCHS=x86_64
+      <<: *linux
+    - stage: stage3
+      env:
+        - REPO=boost_type_traits
+        - CONAN_ARCHS=x86
+      <<: *linux
+    - stage: stage3
+      env:
+        - REPO=boost_type_traits
+        - CONAN_ARCHS=x86_64
       <<: *linux
     - stage: stage4
-      env: REPO=boost_atomic
+      env:
+        - REPO=boost_atomic
+        - CONAN_ARCHS=x86
       <<: *linux
     - stage: stage4
-      env: REPO=boost_crc
+      env:
+        - REPO=boost_atomic
+        - CONAN_ARCHS=x86_64
       <<: *linux
     - stage: stage4
-      env: REPO=boost_smart_ptr
+      env:
+        - REPO=boost_crc
+        - CONAN_ARCHS=x86
       <<: *linux
     - stage: stage4
-      env: REPO=boost_tuple
+      env:
+        - REPO=boost_crc
+        - CONAN_ARCHS=x86_64
       <<: *linux
     - stage: stage4
-      env: REPO=boost_utility
+      env:
+        - REPO=boost_smart_ptr
+        - CONAN_ARCHS=x86
+      <<: *linux
+    - stage: stage4
+      env:
+        - REPO=boost_smart_ptr
+        - CONAN_ARCHS=x86_64
+      <<: *linux
+    - stage: stage4
+      env:
+        - REPO=boost_tuple
+        - CONAN_ARCHS=x86
+      <<: *linux
+    - stage: stage4
+      env:
+        - REPO=boost_tuple
+        - CONAN_ARCHS=x86_64
+      <<: *linux
+    - stage: stage4
+      env:
+        - REPO=boost_utility
+        - CONAN_ARCHS=x86
+      <<: *linux
+    - stage: stage4
+      env:
+        - REPO=boost_utility
+        - CONAN_ARCHS=x86_64
       <<: *linux
     - stage: stage5
-      env: REPO=boost_endian
+      env:
+        - REPO=boost_endian
+        - CONAN_ARCHS=x86
       <<: *linux
     - stage: stage5
-      env: REPO=boost_exception
+      env:
+        - REPO=boost_endian
+        - CONAN_ARCHS=x86_64
       <<: *linux
     - stage: stage5
-      env: REPO=boost_mpl
+      env:
+        - REPO=boost_exception
+        - CONAN_ARCHS=x86
       <<: *linux
     - stage: stage5
-      env: REPO=boost_rational
+      env:
+        - REPO=boost_exception
+        - CONAN_ARCHS=x86_64
+      <<: *linux
+    - stage: stage5
+      env:
+        - REPO=boost_mpl
+        - CONAN_ARCHS=x86
+      <<: *linux
+    - stage: stage5
+      env:
+        - REPO=boost_mpl
+        - CONAN_ARCHS=x86_64
+      <<: *linux
+    - stage: stage5
+      env:
+        - REPO=boost_rational
+        - CONAN_ARCHS=x86
+      <<: *linux
+    - stage: stage5
+      env:
+        - REPO=boost_rational
+        - CONAN_ARCHS=x86_64
       <<: *linux
     - stage: stage6
-      env: REPO=boost_concept_check
+      env:
+        - REPO=boost_concept_check
+        - CONAN_ARCHS=x86
       <<: *linux
     - stage: stage6
-      env: REPO=boost_detail
+      env:
+        - REPO=boost_concept_check
+        - CONAN_ARCHS=x86_64
       <<: *linux
     - stage: stage6
-      env: REPO=boost_metaparse
+      env:
+        - REPO=boost_detail
+        - CONAN_ARCHS=x86
       <<: *linux
     - stage: stage6
-      env: REPO=boost_polygon
+      env:
+        - REPO=boost_detail
+        - CONAN_ARCHS=x86_64
       <<: *linux
     - stage: stage6
-      env: REPO=boost_qvm
+      env:
+        - REPO=boost_metaparse
+        - CONAN_ARCHS=x86
       <<: *linux
     - stage: stage6
-      env: REPO=boost_ratio
+      env:
+        - REPO=boost_metaparse
+        - CONAN_ARCHS=x86_64
       <<: *linux
     - stage: stage6
-      env: REPO=boost_typeof
+      env:
+        - REPO=boost_polygon
+        - CONAN_ARCHS=x86
+      <<: *linux
+    - stage: stage6
+      env:
+        - REPO=boost_polygon
+        - CONAN_ARCHS=x86_64
+      <<: *linux
+    - stage: stage6
+      env:
+        - REPO=boost_qvm
+        - CONAN_ARCHS=x86
+      <<: *linux
+    - stage: stage6
+      env:
+        - REPO=boost_qvm
+        - CONAN_ARCHS=x86_64
+      <<: *linux
+    - stage: stage6
+      env:
+        - REPO=boost_ratio
+        - CONAN_ARCHS=x86
+      <<: *linux
+    - stage: stage6
+      env:
+        - REPO=boost_ratio
+        - CONAN_ARCHS=x86_64
+      <<: *linux
+    - stage: stage6
+      env:
+        - REPO=boost_typeof
+        - CONAN_ARCHS=x86
+      <<: *linux
+    - stage: stage6
+      env:
+        - REPO=boost_typeof
+        - CONAN_ARCHS=x86_64
       <<: *linux
     - stage: stage7
-      env: REPO=boost_chrono
+      env:
+        - REPO=boost_chrono
+        - CONAN_ARCHS=x86
       <<: *linux
     - stage: stage7
-      env: REPO=boost_container_hash
+      env:
+        - REPO=boost_chrono
+        - CONAN_ARCHS=x86_64
       <<: *linux
     - stage: stage7
-      env: REPO=boost_conversion
+      env:
+        - REPO=boost_container_hash
+        - CONAN_ARCHS=x86
       <<: *linux
     - stage: stage7
-      env: REPO=boost_function_types
+      env:
+        - REPO=boost_container_hash
+        - CONAN_ARCHS=x86_64
       <<: *linux
     - stage: stage7
-      env: REPO=boost_numeric_interval
+      env:
+        - REPO=boost_conversion
+        - CONAN_ARCHS=x86
       <<: *linux
     - stage: stage7
-      env: REPO=boost_optional
+      env:
+        - REPO=boost_conversion
+        - CONAN_ARCHS=x86_64
+      <<: *linux
+    - stage: stage7
+      env:
+        - REPO=boost_function_types
+        - CONAN_ARCHS=x86
+      <<: *linux
+    - stage: stage7
+      env:
+        - REPO=boost_function_types
+        - CONAN_ARCHS=x86_64
+      <<: *linux
+    - stage: stage7
+      env:
+        - REPO=boost_numeric_interval
+        - CONAN_ARCHS=x86
+      <<: *linux
+    - stage: stage7
+      env:
+        - REPO=boost_numeric_interval
+        - CONAN_ARCHS=x86_64
+      <<: *linux
+    - stage: stage7
+      env:
+        - REPO=boost_optional
+        - CONAN_ARCHS=x86
+      <<: *linux
+    - stage: stage7
+      env:
+        - REPO=boost_optional
+        - CONAN_ARCHS=x86_64
       <<: *linux
     - stage: stage8
-      env: REPO=boost_format
+      env:
+        - REPO=boost_format
+        - CONAN_ARCHS=x86
       <<: *linux
     - stage: stage8
-      env: REPO=boost_fusion
+      env:
+        - REPO=boost_format
+        - CONAN_ARCHS=x86_64
       <<: *linux
     - stage: stage8
-      env: REPO=boost_intrusive
+      env:
+        - REPO=boost_fusion
+        - CONAN_ARCHS=x86
       <<: *linux
     - stage: stage8
-      env: REPO=boost_numeric_conversion
+      env:
+        - REPO=boost_fusion
+        - CONAN_ARCHS=x86_64
       <<: *linux
     - stage: stage8
-      env: REPO=boost_timer
+      env:
+        - REPO=boost_intrusive
+        - CONAN_ARCHS=x86
       <<: *linux
     - stage: stage8
-      env: REPO=boost_tti
+      env:
+        - REPO=boost_intrusive
+        - CONAN_ARCHS=x86_64
       <<: *linux
     - stage: stage8
-      env: REPO=boost_type_index
+      env:
+        - REPO=boost_numeric_conversion
+        - CONAN_ARCHS=x86
+      <<: *linux
+    - stage: stage8
+      env:
+        - REPO=boost_numeric_conversion
+        - CONAN_ARCHS=x86_64
+      <<: *linux
+    - stage: stage8
+      env:
+        - REPO=boost_timer
+        - CONAN_ARCHS=x86
+      <<: *linux
+    - stage: stage8
+      env:
+        - REPO=boost_timer
+        - CONAN_ARCHS=x86_64
+      <<: *linux
+    - stage: stage8
+      env:
+        - REPO=boost_tti
+        - CONAN_ARCHS=x86
+      <<: *linux
+    - stage: stage8
+      env:
+        - REPO=boost_tti
+        - CONAN_ARCHS=x86_64
+      <<: *linux
+    - stage: stage8
+      env:
+        - REPO=boost_type_index
+        - CONAN_ARCHS=x86
+      <<: *linux
+    - stage: stage8
+      env:
+        - REPO=boost_type_index
+        - CONAN_ARCHS=x86_64
       <<: *linux
     - stage: stage9
-      env: REPO=boost_any
+      env:
+        - REPO=boost_any
+        - CONAN_ARCHS=x86
       <<: *linux
     - stage: stage9
-      env: REPO=boost_container
+      env:
+        - REPO=boost_any
+        - CONAN_ARCHS=x86_64
       <<: *linux
     - stage: stage9
-      env: REPO=boost_function
+      env:
+        - REPO=boost_container
+        - CONAN_ARCHS=x86
       <<: *linux
     - stage: stage9
-      env: REPO=boost_hana
+      env:
+        - REPO=boost_container
+        - CONAN_ARCHS=x86_64
       <<: *linux
     - stage: stage9
-      env: REPO=boost_iterator
+      env:
+        - REPO=boost_function
+        - CONAN_ARCHS=x86
       <<: *linux
     - stage: stage9
-      env: REPO=boost_variant
+      env:
+        - REPO=boost_function
+        - CONAN_ARCHS=x86_64
+      <<: *linux
+    - stage: stage9
+      env:
+        - REPO=boost_hana
+        - CONAN_ARCHS=x86
+      <<: *linux
+    - stage: stage9
+      env:
+        - REPO=boost_hana
+        - CONAN_ARCHS=x86_64
+      <<: *linux
+    - stage: stage9
+      env:
+        - REPO=boost_iterator
+        - CONAN_ARCHS=x86
+      <<: *linux
+    - stage: stage9
+      env:
+        - REPO=boost_iterator
+        - CONAN_ARCHS=x86_64
+      <<: *linux
+    - stage: stage9
+      env:
+        - REPO=boost_variant
+        - CONAN_ARCHS=x86
+      <<: *linux
+    - stage: stage9
+      env:
+        - REPO=boost_variant
+        - CONAN_ARCHS=x86_64
       <<: *linux
     - stage: stage10
-      env: REPO=boost_circular_buffer
+      env:
+        - REPO=boost_circular_buffer
+        - CONAN_ARCHS=x86
       <<: *linux
     - stage: stage10
-      env: REPO=boost_functional
+      env:
+        - REPO=boost_circular_buffer
+        - CONAN_ARCHS=x86_64
       <<: *linux
     - stage: stage10
-      env: REPO=boost_gil
+      env:
+        - REPO=boost_functional
+        - CONAN_ARCHS=x86
       <<: *linux
     - stage: stage10
-      env: REPO=boost_lambda
+      env:
+        - REPO=boost_functional
+        - CONAN_ARCHS=x86_64
       <<: *linux
     - stage: stage10
-      env: REPO=boost_regex
+      env:
+        - REPO=boost_gil
+        - CONAN_ARCHS=x86
       <<: *linux
     - stage: stage10
-      env: REPO=boost_scope_exit
+      env:
+        - REPO=boost_gil
+        - CONAN_ARCHS=x86_64
       <<: *linux
     - stage: stage10
-      env: REPO=boost_signals
+      env:
+        - REPO=boost_lambda
+        - CONAN_ARCHS=x86
       <<: *linux
     - stage: stage10
-      env: REPO=boost_tokenizer
+      env:
+        - REPO=boost_lambda
+        - CONAN_ARCHS=x86_64
       <<: *linux
     - stage: stage10
-      env: REPO=boost_unordered
+      env:
+        - REPO=boost_regex
+        - CONAN_ARCHS=x86
+      <<: *linux
+    - stage: stage10
+      env:
+        - REPO=boost_regex
+        - CONAN_ARCHS=x86_64
+      <<: *linux
+    - stage: stage10
+      env:
+        - REPO=boost_scope_exit
+        - CONAN_ARCHS=x86
+      <<: *linux
+    - stage: stage10
+      env:
+        - REPO=boost_scope_exit
+        - CONAN_ARCHS=x86_64
+      <<: *linux
+    - stage: stage10
+      env:
+        - REPO=boost_signals
+        - CONAN_ARCHS=x86
+      <<: *linux
+    - stage: stage10
+      env:
+        - REPO=boost_signals
+        - CONAN_ARCHS=x86_64
+      <<: *linux
+    - stage: stage10
+      env:
+        - REPO=boost_tokenizer
+        - CONAN_ARCHS=x86
+      <<: *linux
+    - stage: stage10
+      env:
+        - REPO=boost_tokenizer
+        - CONAN_ARCHS=x86_64
+      <<: *linux
+    - stage: stage10
+      env:
+        - REPO=boost_unordered
+        - CONAN_ARCHS=x86
+      <<: *linux
+    - stage: stage10
+      env:
+        - REPO=boost_unordered
+        - CONAN_ARCHS=x86_64
       <<: *linux
     - stage: stage11
-      env: REPO=boost_local_function
+      env:
+        - REPO=boost_local_function
+        - CONAN_ARCHS=x86
       <<: *linux
     - stage: stage11
-      env: REPO=boost_multi_array
+      env:
+        - REPO=boost_local_function
+        - CONAN_ARCHS=x86_64
       <<: *linux
     - stage: stage11
-      env: REPO=boost_range
+      env:
+        - REPO=boost_multi_array
+        - CONAN_ARCHS=x86
+      <<: *linux
+    - stage: stage11
+      env:
+        - REPO=boost_multi_array
+        - CONAN_ARCHS=x86_64
+      <<: *linux
+    - stage: stage11
+      env:
+        - REPO=boost_range
+        - CONAN_ARCHS=x86
+      <<: *linux
+    - stage: stage11
+      env:
+        - REPO=boost_range
+        - CONAN_ARCHS=x86_64
       <<: *linux
     - stage: stage12
-      env: REPO=boost_algorithm
+      env:
+        - REPO=boost_algorithm
+        - CONAN_ARCHS=x86
       <<: *linux
     - stage: stage12
-      env: REPO=boost_filesystem
+      env:
+        - REPO=boost_algorithm
+        - CONAN_ARCHS=x86_64
       <<: *linux
     - stage: stage12
-      env: REPO=boost_foreach
+      env:
+        - REPO=boost_filesystem
+        - CONAN_ARCHS=x86
       <<: *linux
     - stage: stage12
-      env: REPO=boost_level8group
+      env:
+        - REPO=boost_filesystem
+        - CONAN_ARCHS=x86_64
       <<: *linux
     - stage: stage12
-      env: REPO=boost_proto
+      env:
+        - REPO=boost_foreach
+        - CONAN_ARCHS=x86
+      <<: *linux
+    - stage: stage12
+      env:
+        - REPO=boost_foreach
+        - CONAN_ARCHS=x86_64
+      <<: *linux
+    - stage: stage12
+      env:
+        - REPO=boost_level8group
+        - CONAN_ARCHS=x86
+      <<: *linux
+    - stage: stage12
+      env:
+        - REPO=boost_level8group
+        - CONAN_ARCHS=x86_64
+      <<: *linux
+    - stage: stage12
+      env:
+        - REPO=boost_proto
+        - CONAN_ARCHS=x86
+      <<: *linux
+    - stage: stage12
+      env:
+        - REPO=boost_proto
+        - CONAN_ARCHS=x86_64
       <<: *linux
     - stage: stage13
-      env: REPO=boost_lexical_cast
+      env:
+        - REPO=boost_lexical_cast
+        - CONAN_ARCHS=x86
       <<: *linux
     - stage: stage13
-      env: REPO=boost_math
+      env:
+        - REPO=boost_lexical_cast
+        - CONAN_ARCHS=x86_64
       <<: *linux
     - stage: stage13
-      env: REPO=boost_phoenix
+      env:
+        - REPO=boost_math
+        - CONAN_ARCHS=x86
       <<: *linux
     - stage: stage13
-      env: REPO=boost_test
+      env:
+        - REPO=boost_math
+        - CONAN_ARCHS=x86_64
+      <<: *linux
+    - stage: stage13
+      env:
+        - REPO=boost_phoenix
+        - CONAN_ARCHS=x86
+      <<: *linux
+    - stage: stage13
+      env:
+        - REPO=boost_phoenix
+        - CONAN_ARCHS=x86_64
+      <<: *linux
+    - stage: stage13
+      env:
+        - REPO=boost_test
+        - CONAN_ARCHS=x86
+      <<: *linux
+    - stage: stage13
+      env:
+        - REPO=boost_test
+        - CONAN_ARCHS=x86_64
       <<: *linux
     - stage: stage14
-      env: REPO=boost_program_options
+      env:
+        - REPO=boost_program_options
+        - CONAN_ARCHS=x86
       <<: *linux
     - stage: stage14
-      env: REPO=boost_python
+      env:
+        - REPO=boost_program_options
+        - CONAN_ARCHS=x86_64
       <<: *linux
     - stage: stage14
-      env: REPO=boost_random
+      env:
+        - REPO=boost_python
+        - CONAN_ARCHS=x86
       <<: *linux
     - stage: stage14
-      env: REPO=boost_stacktrace
+      env:
+        - REPO=boost_python
+        - CONAN_ARCHS=x86_64
       <<: *linux
     - stage: stage14
-      env: REPO=boost_xpressive
+      env:
+        - REPO=boost_random
+        - CONAN_ARCHS=x86
+      <<: *linux
+    - stage: stage14
+      env:
+        - REPO=boost_random
+        - CONAN_ARCHS=x86_64
+      <<: *linux
+    - stage: stage14
+      env:
+        - REPO=boost_stacktrace
+        - CONAN_ARCHS=x86
+      <<: *linux
+    - stage: stage14
+      env:
+        - REPO=boost_stacktrace
+        - CONAN_ARCHS=x86_64
+      <<: *linux
+    - stage: stage14
+      env:
+        - REPO=boost_xpressive
+        - CONAN_ARCHS=x86
+      <<: *linux
+    - stage: stage14
+      env:
+        - REPO=boost_xpressive
+        - CONAN_ARCHS=x86_64
       <<: *linux
     - stage: stage15
-      env: REPO=boost_iostreams
+      env:
+        - REPO=boost_iostreams
+        - CONAN_ARCHS=x86
       <<: *linux
     - stage: stage15
-      env: REPO=boost_multiprecision
+      env:
+        - REPO=boost_iostreams
+        - CONAN_ARCHS=x86_64
       <<: *linux
     - stage: stage15
-      env: REPO=boost_parameter
+      env:
+        - REPO=boost_multiprecision
+        - CONAN_ARCHS=x86
+      <<: *linux
+    - stage: stage15
+      env:
+        - REPO=boost_multiprecision
+        - CONAN_ARCHS=x86_64
+      <<: *linux
+    - stage: stage15
+      env:
+        - REPO=boost_parameter
+        - CONAN_ARCHS=x86
+      <<: *linux
+    - stage: stage15
+      env:
+        - REPO=boost_parameter
+        - CONAN_ARCHS=x86_64
       <<: *linux
     - stage: stage16
-      env: REPO=boost_heap
+      env:
+        - REPO=boost_heap
+        - CONAN_ARCHS=x86
       <<: *linux
     - stage: stage16
-      env: REPO=boost_level11group
+      env:
+        - REPO=boost_heap
+        - CONAN_ARCHS=x86_64
       <<: *linux
     - stage: stage16
-      env: REPO=boost_lockfree
+      env:
+        - REPO=boost_level11group
+        - CONAN_ARCHS=x86
+      <<: *linux
+    - stage: stage16
+      env:
+        - REPO=boost_level11group
+        - CONAN_ARCHS=x86_64
+      <<: *linux
+    - stage: stage16
+      env:
+        - REPO=boost_lockfree
+        - CONAN_ARCHS=x86
+      <<: *linux
+    - stage: stage16
+      env:
+        - REPO=boost_lockfree
+        - CONAN_ARCHS=x86_64
       <<: *linux
     - stage: stage17
-      env: REPO=boost_date_time
+      env:
+        - REPO=boost_date_time
+        - CONAN_ARCHS=x86
       <<: *linux
     - stage: stage17
-      env: REPO=boost_pool
+      env:
+        - REPO=boost_date_time
+        - CONAN_ARCHS=x86_64
       <<: *linux
     - stage: stage17
-      env: REPO=boost_serialization
+      env:
+        - REPO=boost_pool
+        - CONAN_ARCHS=x86
       <<: *linux
     - stage: stage17
-      env: REPO=boost_spirit
+      env:
+        - REPO=boost_pool
+        - CONAN_ARCHS=x86_64
       <<: *linux
     - stage: stage17
-      env: REPO=boost_thread
+      env:
+        - REPO=boost_serialization
+        - CONAN_ARCHS=x86
+      <<: *linux
+    - stage: stage17
+      env:
+        - REPO=boost_serialization
+        - CONAN_ARCHS=x86_64
+      <<: *linux
+    - stage: stage17
+      env:
+        - REPO=boost_spirit
+        - CONAN_ARCHS=x86
+      <<: *linux
+    - stage: stage17
+      env:
+        - REPO=boost_spirit
+        - CONAN_ARCHS=x86_64
+      <<: *linux
+    - stage: stage17
+      env:
+        - REPO=boost_thread
+        - CONAN_ARCHS=x86
+      <<: *linux
+    - stage: stage17
+      env:
+        - REPO=boost_thread
+        - CONAN_ARCHS=x86_64
       <<: *linux
     - stage: stage18
-      env: REPO=boost_context
+      env:
+        - REPO=boost_context
+        - CONAN_ARCHS=x86
       <<: *linux
     - stage: stage18
-      env: REPO=boost_contract
+      env:
+        - REPO=boost_context
+        - CONAN_ARCHS=x86_64
       <<: *linux
     - stage: stage18
-      env: REPO=boost_convert
+      env:
+        - REPO=boost_contract
+        - CONAN_ARCHS=x86
       <<: *linux
     - stage: stage18
-      env: REPO=boost_dll
+      env:
+        - REPO=boost_contract
+        - CONAN_ARCHS=x86_64
       <<: *linux
     - stage: stage18
-      env: REPO=boost_dynamic_bitset
+      env:
+        - REPO=boost_convert
+        - CONAN_ARCHS=x86
       <<: *linux
     - stage: stage18
-      env: REPO=boost_geometry
+      env:
+        - REPO=boost_convert
+        - CONAN_ARCHS=x86_64
       <<: *linux
     - stage: stage18
-      env: REPO=boost_icl
+      env:
+        - REPO=boost_dll
+        - CONAN_ARCHS=x86
       <<: *linux
     - stage: stage18
-      env: REPO=boost_interprocess
+      env:
+        - REPO=boost_dll
+        - CONAN_ARCHS=x86_64
       <<: *linux
     - stage: stage18
-      env: REPO=boost_locale
+      env:
+        - REPO=boost_dynamic_bitset
+        - CONAN_ARCHS=x86
       <<: *linux
     - stage: stage18
-      env: REPO=boost_msm
+      env:
+        - REPO=boost_dynamic_bitset
+        - CONAN_ARCHS=x86_64
       <<: *linux
     - stage: stage18
-      env: REPO=boost_multi_index
+      env:
+        - REPO=boost_geometry
+        - CONAN_ARCHS=x86
       <<: *linux
     - stage: stage18
-      env: REPO=boost_numeric_ublas
+      env:
+        - REPO=boost_geometry
+        - CONAN_ARCHS=x86_64
       <<: *linux
     - stage: stage18
-      env: REPO=boost_ptr_container
+      env:
+        - REPO=boost_icl
+        - CONAN_ARCHS=x86
       <<: *linux
     - stage: stage18
-      env: REPO=boost_sort
+      env:
+        - REPO=boost_icl
+        - CONAN_ARCHS=x86_64
       <<: *linux
     - stage: stage18
-      env: REPO=boost_statechart
+      env:
+        - REPO=boost_interprocess
+        - CONAN_ARCHS=x86
       <<: *linux
     - stage: stage18
-      env: REPO=boost_type_erasure
+      env:
+        - REPO=boost_interprocess
+        - CONAN_ARCHS=x86_64
       <<: *linux
     - stage: stage18
-      env: REPO=boost_units
+      env:
+        - REPO=boost_locale
+        - CONAN_ARCHS=x86
       <<: *linux
     - stage: stage18
-      env: REPO=boost_uuid
+      env:
+        - REPO=boost_locale
+        - CONAN_ARCHS=x86_64
+      <<: *linux
+    - stage: stage18
+      env:
+        - REPO=boost_msm
+        - CONAN_ARCHS=x86
+      <<: *linux
+    - stage: stage18
+      env:
+        - REPO=boost_msm
+        - CONAN_ARCHS=x86_64
+      <<: *linux
+    - stage: stage18
+      env:
+        - REPO=boost_multi_index
+        - CONAN_ARCHS=x86
+      <<: *linux
+    - stage: stage18
+      env:
+        - REPO=boost_multi_index
+        - CONAN_ARCHS=x86_64
+      <<: *linux
+    - stage: stage18
+      env:
+        - REPO=boost_numeric_ublas
+        - CONAN_ARCHS=x86
+      <<: *linux
+    - stage: stage18
+      env:
+        - REPO=boost_numeric_ublas
+        - CONAN_ARCHS=x86_64
+      <<: *linux
+    - stage: stage18
+      env:
+        - REPO=boost_ptr_container
+        - CONAN_ARCHS=x86
+      <<: *linux
+    - stage: stage18
+      env:
+        - REPO=boost_ptr_container
+        - CONAN_ARCHS=x86_64
+      <<: *linux
+    - stage: stage18
+      env:
+        - REPO=boost_sort
+        - CONAN_ARCHS=x86
+      <<: *linux
+    - stage: stage18
+      env:
+        - REPO=boost_sort
+        - CONAN_ARCHS=x86_64
+      <<: *linux
+    - stage: stage18
+      env:
+        - REPO=boost_statechart
+        - CONAN_ARCHS=x86
+      <<: *linux
+    - stage: stage18
+      env:
+        - REPO=boost_statechart
+        - CONAN_ARCHS=x86_64
+      <<: *linux
+    - stage: stage18
+      env:
+        - REPO=boost_type_erasure
+        - CONAN_ARCHS=x86
+      <<: *linux
+    - stage: stage18
+      env:
+        - REPO=boost_type_erasure
+        - CONAN_ARCHS=x86_64
+      <<: *linux
+    - stage: stage18
+      env:
+        - REPO=boost_units
+        - CONAN_ARCHS=x86
+      <<: *linux
+    - stage: stage18
+      env:
+        - REPO=boost_units
+        - CONAN_ARCHS=x86_64
+      <<: *linux
+    - stage: stage18
+      env:
+        - REPO=boost_uuid
+        - CONAN_ARCHS=x86
+      <<: *linux
+    - stage: stage18
+      env:
+        - REPO=boost_uuid
+        - CONAN_ARCHS=x86_64
       <<: *linux
     - stage: stage19
-      env: REPO=boost_accumulators
+      env:
+        - REPO=boost_accumulators
+        - CONAN_ARCHS=x86
       <<: *linux
     - stage: stage19
-      env: REPO=boost_assign
+      env:
+        - REPO=boost_accumulators
+        - CONAN_ARCHS=x86_64
       <<: *linux
     - stage: stage19
-      env: REPO=boost_coroutine
+      env:
+        - REPO=boost_assign
+        - CONAN_ARCHS=x86
       <<: *linux
     - stage: stage19
-      env: REPO=boost_coroutine2
+      env:
+        - REPO=boost_assign
+        - CONAN_ARCHS=x86_64
       <<: *linux
     - stage: stage19
-      env: REPO=boost_fiber
+      env:
+        - REPO=boost_coroutine
+        - CONAN_ARCHS=x86
       <<: *linux
     - stage: stage19
-      env: REPO=boost_flyweight
+      env:
+        - REPO=boost_coroutine
+        - CONAN_ARCHS=x86_64
       <<: *linux
     - stage: stage19
-      env: REPO=boost_poly_collection
+      env:
+        - REPO=boost_coroutine2
+        - CONAN_ARCHS=x86
       <<: *linux
     - stage: stage19
-      env: REPO=boost_property_tree
+      env:
+        - REPO=boost_coroutine2
+        - CONAN_ARCHS=x86_64
       <<: *linux
     - stage: stage19
-      env: REPO=boost_signals2
+      env:
+        - REPO=boost_fiber
+        - CONAN_ARCHS=x86
       <<: *linux
     - stage: stage19
-      env: REPO=boost_wave
+      env:
+        - REPO=boost_fiber
+        - CONAN_ARCHS=x86_64
+      <<: *linux
+    - stage: stage19
+      env:
+        - REPO=boost_flyweight
+        - CONAN_ARCHS=x86
+      <<: *linux
+    - stage: stage19
+      env:
+        - REPO=boost_flyweight
+        - CONAN_ARCHS=x86_64
+      <<: *linux
+    - stage: stage19
+      env:
+        - REPO=boost_poly_collection
+        - CONAN_ARCHS=x86
+      <<: *linux
+    - stage: stage19
+      env:
+        - REPO=boost_poly_collection
+        - CONAN_ARCHS=x86_64
+      <<: *linux
+    - stage: stage19
+      env:
+        - REPO=boost_property_tree
+        - CONAN_ARCHS=x86
+      <<: *linux
+    - stage: stage19
+      env:
+        - REPO=boost_property_tree
+        - CONAN_ARCHS=x86_64
+      <<: *linux
+    - stage: stage19
+      env:
+        - REPO=boost_signals2
+        - CONAN_ARCHS=x86
+      <<: *linux
+    - stage: stage19
+      env:
+        - REPO=boost_signals2
+        - CONAN_ARCHS=x86_64
+      <<: *linux
+    - stage: stage19
+      env:
+        - REPO=boost_wave
+        - CONAN_ARCHS=x86
+      <<: *linux
+    - stage: stage19
+      env:
+        - REPO=boost_wave
+        - CONAN_ARCHS=x86_64
       <<: *linux
     - stage: stage20
-      env: REPO=boost_asio
+      env:
+        - REPO=boost_asio
+        - CONAN_ARCHS=x86
       <<: *linux
     - stage: stage20
-      env: REPO=boost_compute
+      env:
+        - REPO=boost_asio
+        - CONAN_ARCHS=x86_64
       <<: *linux
     - stage: stage20
-      env: REPO=boost_level14group
+      env:
+        - REPO=boost_compute
+        - CONAN_ARCHS=x86
       <<: *linux
     - stage: stage20
-      env: REPO=boost_log
+      env:
+        - REPO=boost_compute
+        - CONAN_ARCHS=x86_64
+      <<: *linux
+    - stage: stage20
+      env:
+        - REPO=boost_level14group
+        - CONAN_ARCHS=x86
+      <<: *linux
+    - stage: stage20
+      env:
+        - REPO=boost_level14group
+        - CONAN_ARCHS=x86_64
+      <<: *linux
+    - stage: stage20
+      env:
+        - REPO=boost_log
+        - CONAN_ARCHS=x86
+      <<: *linux
+    - stage: stage20
+      env:
+        - REPO=boost_log
+        - CONAN_ARCHS=x86_64
       <<: *linux
     - stage: stage21
-      env: REPO=boost_beast
+      env:
+        - REPO=boost_beast
+        - CONAN_ARCHS=x86
       <<: *linux
     - stage: stage21
-      env: REPO=boost_bimap
+      env:
+        - REPO=boost_beast
+        - CONAN_ARCHS=x86_64
       <<: *linux
     - stage: stage21
-      env: REPO=boost_disjoint_sets
+      env:
+        - REPO=boost_bimap
+        - CONAN_ARCHS=x86
       <<: *linux
     - stage: stage21
-      env: REPO=boost_graph
+      env:
+        - REPO=boost_bimap
+        - CONAN_ARCHS=x86_64
       <<: *linux
     - stage: stage21
-      env: REPO=boost_graph_parallel
+      env:
+        - REPO=boost_disjoint_sets
+        - CONAN_ARCHS=x86
       <<: *linux
     - stage: stage21
-      env: REPO=boost_mpi
+      env:
+        - REPO=boost_disjoint_sets
+        - CONAN_ARCHS=x86_64
       <<: *linux
     - stage: stage21
-      env: REPO=boost_process
+      env:
+        - REPO=boost_graph
+        - CONAN_ARCHS=x86
       <<: *linux
     - stage: stage21
-      env: REPO=boost_property_map
+      env:
+        - REPO=boost_graph
+        - CONAN_ARCHS=x86_64
+      <<: *linux
+    - stage: stage21
+      env:
+        - REPO=boost_graph_parallel
+        - CONAN_ARCHS=x86
+      <<: *linux
+    - stage: stage21
+      env:
+        - REPO=boost_graph_parallel
+        - CONAN_ARCHS=x86_64
+      <<: *linux
+    - stage: stage21
+      env:
+        - REPO=boost_mpi
+        - CONAN_ARCHS=x86
+      <<: *linux
+    - stage: stage21
+      env:
+        - REPO=boost_mpi
+        - CONAN_ARCHS=x86_64
+      <<: *linux
+    - stage: stage21
+      env:
+        - REPO=boost_process
+        - CONAN_ARCHS=x86
+      <<: *linux
+    - stage: stage21
+      env:
+        - REPO=boost_process
+        - CONAN_ARCHS=x86_64
+      <<: *linux
+    - stage: stage21
+      env:
+        - REPO=boost_property_map
+        - CONAN_ARCHS=x86
+      <<: *linux
+    - stage: stage21
+      env:
+        - REPO=boost_property_map
+        - CONAN_ARCHS=x86_64
       <<: *linux
     - stage: stage22
-      env: REPO=boost_numeric_odeint
+      env:
+        - REPO=boost_numeric_odeint
+        - CONAN_ARCHS=x86
+      <<: *linux
+    - stage: stage22
+      env:
+        - REPO=boost_numeric_odeint
+        - CONAN_ARCHS=x86_64
       <<: *linux
 
