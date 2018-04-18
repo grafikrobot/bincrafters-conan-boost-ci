@@ -141,7 +141,7 @@ lib_subs = {
     }
 
 lib_splits = [
-    'python']
+    'build', 'python']
 
 setup = {
     'CLANG_39': 'linux',
@@ -187,7 +187,7 @@ def main(args):
             if boost_name in lib_subs:
                 boost_name = lib_subs[boost_name]
             template = job_template
-            if name in lib_splits:
+            if 'XCODE' not in args.build.upper() and name in lib_splits:
                 template = job_template_split
             format_data[stage][name] = ''
             format_data[stage][name] += template.format(
