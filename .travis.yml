@@ -506,7 +506,15 @@ jobs:
       env: REPO=boost_graph_parallel
       <<: *linux
     - stage: stage21
-      env: REPO=boost_mpi
+      env:
+        - REPO=boost_mpi
+        - CONAN_ARCHS=x86
+        - CONAN_DOCKER_32_IMAGES=1
+      <<: *linux
+    - stage: stage21
+      env:
+        - REPO=boost_mpi
+        - CONAN_ARCHS=x86_64
       <<: *linux
     - stage: stage21
       env: REPO=boost_process
