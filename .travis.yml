@@ -83,6 +83,7 @@ stages:
   - stage20
   - stage21
   - stage22
+  - stage23
 
 
 jobs:
@@ -502,7 +503,15 @@ jobs:
       env: REPO=boost_beast
       <<: *linux
     - stage: stage21
-      env: REPO=boost_bimap
+      env:
+        - REPO=boost_bimap
+        - CONAN_ARCHS=x86
+        - CONAN_DOCKER_32_IMAGES=1
+      <<: *linux
+    - stage: stage21
+      env:
+        - REPO=boost_bimap
+        - CONAN_ARCHS=x86_64
       <<: *linux
     - stage: stage21
       env: REPO=boost_disjoint_sets
@@ -511,26 +520,26 @@ jobs:
       env: REPO=boost_graph
       <<: *linux
     - stage: stage21
-      env: REPO=boost_graph_parallel
-      <<: *linux
-    - stage: stage21
-      env:
-        - REPO=boost_mpi
-        - CONAN_ARCHS=x86
-        - CONAN_DOCKER_32_IMAGES=1
-      <<: *linux
-    - stage: stage21
-      env:
-        - REPO=boost_mpi
-        - CONAN_ARCHS=x86_64
-      <<: *linux
-    - stage: stage21
       env: REPO=boost_process
       <<: *linux
     - stage: stage21
       env: REPO=boost_property_map
       <<: *linux
     - stage: stage22
+      env: REPO=boost_graph_parallel
+      <<: *linux
+    - stage: stage22
+      env:
+        - REPO=boost_mpi
+        - CONAN_ARCHS=x86
+        - CONAN_DOCKER_32_IMAGES=1
+      <<: *linux
+    - stage: stage22
+      env:
+        - REPO=boost_mpi
+        - CONAN_ARCHS=x86_64
+      <<: *linux
+    - stage: stage23
       env: REPO=boost_numeric_odeint
       <<: *linux
 
