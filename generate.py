@@ -93,10 +93,10 @@ stages_libs = [
       'bimap',
       'disjoint_sets',
       'graph',
-      'graph_parallel',
-      'mpi',
       'process',
       'property_map']),
+ set(['graph_parallel',
+      'mpi']),
  set(['numeric_odeint'])
  ]
 
@@ -141,7 +141,7 @@ lib_subs = {
     }
 
 lib_splits = [
-    'build', 'mpi', 'python']
+    'build', 'bimap', 'graph', 'log', 'mpi', 'property_map', 'python']
 
 setup = {
     'CLANG_39': 'linux',
