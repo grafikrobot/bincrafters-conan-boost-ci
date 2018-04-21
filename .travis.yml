@@ -517,13 +517,29 @@ jobs:
       env: REPO=boost_disjoint_sets
       <<: *linux
     - stage: stage21
-      env: REPO=boost_graph
+      env:
+        - REPO=boost_graph
+        - CONAN_ARCHS=x86
+        - CONAN_DOCKER_32_IMAGES=1
+      <<: *linux
+    - stage: stage21
+      env:
+        - REPO=boost_graph
+        - CONAN_ARCHS=x86_64
       <<: *linux
     - stage: stage21
       env: REPO=boost_process
       <<: *linux
     - stage: stage21
-      env: REPO=boost_property_map
+      env:
+        - REPO=boost_property_map
+        - CONAN_ARCHS=x86
+        - CONAN_DOCKER_32_IMAGES=1
+      <<: *linux
+    - stage: stage21
+      env:
+        - REPO=boost_property_map
+        - CONAN_ARCHS=x86_64
       <<: *linux
     - stage: stage22
       env: REPO=boost_graph_parallel
