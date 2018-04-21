@@ -488,7 +488,15 @@ jobs:
       env: REPO=boost_level14group
       <<: *linux
     - stage: stage20
-      env: REPO=boost_log
+      env:
+        - REPO=boost_log
+        - CONAN_ARCHS=x86
+        - CONAN_DOCKER_32_IMAGES=1
+      <<: *linux
+    - stage: stage20
+      env:
+        - REPO=boost_log
+        - CONAN_ARCHS=x86_64
       <<: *linux
     - stage: stage21
       env: REPO=boost_beast

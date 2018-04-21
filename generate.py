@@ -141,7 +141,7 @@ lib_subs = {
     }
 
 lib_splits = [
-    'build', 'mpi', 'python']
+    'build', 'log', 'mpi', 'python']
 
 setup = {
     'CLANG_39': 'linux',
