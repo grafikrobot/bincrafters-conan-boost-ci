@@ -281,6 +281,9 @@ jobs:
       env: REPO=boost_lambda
       <<: *xcode90
     - stage: stage10
+      env: REPO=boost_locale
+      <<: *xcode90
+    - stage: stage10
       env: REPO=boost_regex
       <<: *xcode90
     - stage: stage10
@@ -402,9 +405,6 @@ jobs:
       <<: *xcode90
     - stage: stage18
       env: REPO=boost_interprocess
-      <<: *xcode90
-    - stage: stage18
-      env: REPO=boost_locale
       <<: *xcode90
     - stage: stage18
       env: REPO=boost_msm
