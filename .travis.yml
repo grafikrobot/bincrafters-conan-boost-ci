@@ -289,6 +289,9 @@ jobs:
       env: REPO=boost_lambda
       <<: *linux
     - stage: stage10
+      env: REPO=boost_locale
+      <<: *linux
+    - stage: stage10
       env: REPO=boost_regex
       <<: *linux
     - stage: stage10
@@ -418,9 +421,6 @@ jobs:
       <<: *linux
     - stage: stage18
       env: REPO=boost_interprocess
-      <<: *linux
-    - stage: stage18
-      env: REPO=boost_locale
       <<: *linux
     - stage: stage18
       env: REPO=boost_msm
