@@ -48,6 +48,7 @@ env:
 install:
   - chmod +x .travis/run.sh
   - chmod +x .travis/install.sh
+  - chmod +x .travis/docker.sh
   - ./.travis/install.sh
   - export REPO_BRANCH=`dirname $TRAVIS_BRANCH`
   - echo $REPO_BRANCH

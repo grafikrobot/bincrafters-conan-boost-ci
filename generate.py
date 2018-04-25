@@ -141,7 +141,7 @@ lib_subs = {
     }
 
 lib_splits = [
-    'build', 'bimap', 'graph', 'log', 'mpi', 'property_map', 'python']
+    'build', 'bimap', 'graph', 'level14group', 'log', 'mpi', 'property_map', 'python']
 
 setup = {
     'CLANG_39': 'linux',
