@@ -93,12 +93,10 @@ stages_libs = [
       'bimap',
       'disjoint_sets',
       'graph',
+      'numeric_odeint',
       'process',
-      'property_map']),
- set(['graph_parallel',
-      'mpi']),
- set(['numeric_odeint'])
- ]
+      'property_map'])
+]
 
 stages_names = [
     'bootstrap0',
