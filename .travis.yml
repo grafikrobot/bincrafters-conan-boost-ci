@@ -83,13 +83,13 @@ jobs:
       env: REPO=boost_build
       <<: *xcode91
     - stage: bootstrap1
-      env: REPO=boost_base
-      <<: *xcode91
-    - stage: bootstrap2
       env: REPO=boost_generator
       <<: *xcode91
-    - stage: bootstrap2
+    - stage: bootstrap1
       env: REPO=boost-package-tools
+      <<: *xcode91
+    - stage: bootstrap2
+      env: REPO=boost_base
       <<: *xcode91
     - stage: stage0
       env: REPO=boost_callable_traits

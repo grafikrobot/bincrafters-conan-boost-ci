@@ -4,8 +4,8 @@ from re import search
 
 stages_libs = [
  set(['build']),
- set(['base']),
  set(['generator', 'package_tools']),
+ set(['base']),
  set(['callable_traits',
       'compatibility',
       'config',
