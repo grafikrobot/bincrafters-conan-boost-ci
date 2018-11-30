@@ -15,6 +15,9 @@ xcode83: &xcode83
   osx_image: xcode8.3
   <<: *osx
 
+xcode94: &xcode91
+  osx_image: xcode9.1
+  <<: *osx
 xcode94: &xcode94
   osx_image: xcode9.4
   <<: *osx
@@ -44,6 +47,7 @@ env:
     - CLANG_50="CONAN_CLANG_VERSIONS=5.0 CONAN_DOCKER_IMAGE=conanio/clang50"
     - CLANG_60="CONAN_CLANG_VERSIONS=6.0 CONAN_DOCKER_IMAGE=conanio/clang60"
     - XCODE_83="CONAN_APPLE_CLANG_VERSIONS=8.3"
+    - XCODE_91="CONAN_APPLE_CLANG_VERSIONS=9.1"
     - XCODE_94="CONAN_APPLE_CLANG_VERSIONS=9.4"
     - XCODE_10="CONAN_APPLE_CLANG_VERSIONS=10.0"
 
@@ -76,428 +80,428 @@ jobs:
   include:
     - stage: bootstrap0
       env: REPO=boost_build
-      <<: *xcode94
+      <<: *xcode91
     - stage: bootstrap1
       env: REPO=boost_base
-      <<: *xcode94
+      <<: *xcode91
     - stage: bootstrap1
       env: REPO=boost_generator
-      <<: *xcode94
+      <<: *xcode91
     - stage: bootstrap1
       env: REPO=boost-package-tools
-      <<: *xcode94
+      <<: *xcode91
     - stage: stage0
       env: REPO=boost_callable_traits
-      <<: *xcode94
+      <<: *xcode91
     - stage: stage0
       env: REPO=boost_compatibility
-      <<: *xcode94
+      <<: *xcode91
     - stage: stage0
       env: REPO=boost_config
-      <<: *xcode94
+      <<: *xcode91
     - stage: stage0
       env: REPO=boost_hof
-      <<: *xcode94
+      <<: *xcode91
     - stage: stage0
       env: REPO=boost_predef
-      <<: *xcode94
+      <<: *xcode91
     - stage: stage0
       env: REPO=boost_preprocessor
-      <<: *xcode94
+      <<: *xcode91
     - stage: stage1
       env: REPO=boost_assert
-      <<: *xcode94
+      <<: *xcode91
     - stage: stage1
       env: REPO=boost_atomic
-      <<: *xcode94
+      <<: *xcode91
     - stage: stage1
       env: REPO=boost_chrono
-      <<: *xcode94
+      <<: *xcode91
     - stage: stage1
       env: REPO=boost_circular_buffer
-      <<: *xcode94
+      <<: *xcode91
     - stage: stage1
       env: REPO=boost_container
-      <<: *xcode94
+      <<: *xcode91
     - stage: stage1
       env: REPO=boost_container_hash
-      <<: *xcode94
+      <<: *xcode91
     - stage: stage1
       env: REPO=boost_context
-      <<: *xcode94
+      <<: *xcode91
     - stage: stage1
       env: REPO=boost_conversion
-      <<: *xcode94
+      <<: *xcode91
     - stage: stage1
       env: REPO=boost_core
-      <<: *xcode94
+      <<: *xcode91
     - stage: stage1
       env: REPO=boost_coroutine
-      <<: *xcode94
+      <<: *xcode91
     - stage: stage1
       env: REPO=boost_coroutine2
-      <<: *xcode94
+      <<: *xcode91
     - stage: stage1
       env: REPO=boost_endian
-      <<: *xcode94
+      <<: *xcode91
     - stage: stage1
       env: REPO=boost_exception
-      <<: *xcode94
+      <<: *xcode91
     - stage: stage1
       env: REPO=boost_fiber
-      <<: *xcode94
+      <<: *xcode91
     - stage: stage1
       env: REPO=boost_filesystem
-      <<: *xcode94
+      <<: *xcode91
     - stage: stage1
       env: REPO=boost_flyweight
-      <<: *xcode94
+      <<: *xcode91
     - stage: stage1
       env: REPO=boost_format
-      <<: *xcode94
+      <<: *xcode91
     - stage: stage1
       env: REPO=boost_function
-      <<: *xcode94
+      <<: *xcode91
     - stage: stage1
       env: REPO=boost_generator
-      <<: *xcode94
+      <<: *xcode91
     - stage: stage1
       env: REPO=boost_icl
-      <<: *xcode94
+      <<: *xcode91
     - stage: stage1
       env: REPO=boost_integer
-      <<: *xcode94
+      <<: *xcode91
     - stage: stage1
       env: REPO=boost_interprocess
-      <<: *xcode94
+      <<: *xcode91
     - stage: stage1
       env: REPO=boost_intrusive
-      <<: *xcode94
+      <<: *xcode91
     - stage: stage1
       env: REPO=boost_io
-      <<: *xcode94
+      <<: *xcode91
     - stage: stage1
       env: REPO=boost_iterator
-      <<: *xcode94
+      <<: *xcode91
     - stage: stage1
       env: REPO=boost_locale
-      <<: *xcode94
+      <<: *xcode91
     - stage: stage1
       env: REPO=boost_move
-      <<: *xcode94
+      <<: *xcode91
     - stage: stage1
       env: REPO=boost_mp11
-      <<: *xcode94
+      <<: *xcode91
     - stage: stage1
       env: REPO=boost_multi_index
-      <<: *xcode94
+      <<: *xcode91
     - stage: stage1
       env: REPO=boost_optional
-      <<: *xcode94
+      <<: *xcode91
     - stage: stage1
       env: REPO=boost_phoenix
-      <<: *xcode94
+      <<: *xcode91
     - stage: stage1
       env: REPO=boost_poly_collection
-      <<: *xcode94
+      <<: *xcode91
     - stage: stage1
       env: REPO=boost_qvm
-      <<: *xcode94
+      <<: *xcode91
     - stage: stage1
       env: REPO=boost_rational
-      <<: *xcode94
+      <<: *xcode91
     - stage: stage1
       env: REPO=boost_regex
-      <<: *xcode94
+      <<: *xcode91
     - stage: stage1
       env: REPO=boost_signals2
-      <<: *xcode94
+      <<: *xcode91
     - stage: stage1
       env: REPO=boost_smart_ptr
-      <<: *xcode94
+      <<: *xcode91
     - stage: stage1
       env: REPO=boost_statechart
-      <<: *xcode94
+      <<: *xcode91
     - stage: stage1
       env: REPO=boost_static_assert
-      <<: *xcode94
+      <<: *xcode91
     - stage: stage1
       env: REPO=boost_system
-      <<: *xcode94
+      <<: *xcode91
     - stage: stage1
       env: REPO=boost_throw_exception
-      <<: *xcode94
+      <<: *xcode91
     - stage: stage1
       env: REPO=boost_tokenizer
-      <<: *xcode94
+      <<: *xcode91
     - stage: stage1
       env: REPO=boost_type_erasure
-      <<: *xcode94
+      <<: *xcode91
     - stage: stage1
       env: REPO=boost_units
-      <<: *xcode94
+      <<: *xcode91
     - stage: stage1
       env: REPO=boost_unordered
-      <<: *xcode94
+      <<: *xcode91
     - stage: stage1
       env: REPO=boost_uuid
-      <<: *xcode94
+      <<: *xcode91
     - stage: stage1
       env: REPO=boost_variant
-      <<: *xcode94
+      <<: *xcode91
     - stage: stage1
       env: REPO=boost_vmd
-      <<: *xcode94
+      <<: *xcode91
     - stage: stage1
       env: REPO=boost_wave
-      <<: *xcode94
+      <<: *xcode91
     - stage: stage1
       env: REPO=boost_winapi
-      <<: *xcode94
+      <<: *xcode91
     - stage: stage1
       env: REPO=boost_xpressive
-      <<: *xcode94
+      <<: *xcode91
     - stage: stage2
       env: REPO=boost_align
-      <<: *xcode94
+      <<: *xcode91
     - stage: stage2
       env: REPO=boost_array
-      <<: *xcode94
+      <<: *xcode91
     - stage: stage2
       env: REPO=boost_asio
-      <<: *xcode94
+      <<: *xcode91
     - stage: stage2
       env: REPO=boost_assign
-      <<: *xcode94
+      <<: *xcode91
     - stage: stage2
       env: REPO=boost_beast
-      <<: *xcode94
+      <<: *xcode91
     - stage: stage2
       env: REPO=boost_bind
-      <<: *xcode94
+      <<: *xcode91
     - stage: stage2
       env: REPO=boost_crc
-      <<: *xcode94
+      <<: *xcode91
     - stage: stage2
       env: REPO=boost_cycle_group_a
-      <<: *xcode94
+      <<: *xcode91
     - stage: stage2
       env: REPO=boost_cycle_group_b
-      <<: *xcode94
+      <<: *xcode91
     - stage: stage2
       env: REPO=boost_detail
-      <<: *xcode94
+      <<: *xcode91
     - stage: stage2
       env: REPO=boost_function_types
-      <<: *xcode94
+      <<: *xcode91
     - stage: stage2
       env: REPO=boost_heap
-      <<: *xcode94
+      <<: *xcode91
     - stage: stage2
       env: REPO=boost_lambda
-      <<: *xcode94
+      <<: *xcode91
     - stage: stage2
       env: REPO=boost_lockfree
-      <<: *xcode94
+      <<: *xcode91
     - stage: stage2
       env: REPO=boost_log
-      <<: *xcode94
+      <<: *xcode91
     - stage: stage2
       env: REPO=boost_logic
-      <<: *xcode94
+      <<: *xcode91
     - stage: stage2
       env: REPO=boost_metaparse
-      <<: *xcode94
+      <<: *xcode91
     - stage: stage2
       env: REPO=boost_mpl
-      <<: *xcode94
+      <<: *xcode91
     - stage: stage2
       env: REPO=boost_multi_array
-      <<: *xcode94
+      <<: *xcode91
     - stage: stage2
       env: REPO=boost_numeric_interval
-      <<: *xcode94
+      <<: *xcode91
     - stage: stage2
       env: REPO=boost_numeric_odeint
-      <<: *xcode94
+      <<: *xcode91
     - stage: stage2
       env: REPO=boost_polygon
-      <<: *xcode94
+      <<: *xcode91
     - stage: stage2
       env: REPO=boost_ptr_container
-      <<: *xcode94
+      <<: *xcode91
     - stage: stage2
       env: REPO=boost_python
-      <<: *xcode94
+      <<: *xcode91
     - stage: stage2
       env: REPO=boost_ratio
-      <<: *xcode94
+      <<: *xcode91
     - stage: stage2
       env: REPO=boost_stacktrace
-      <<: *xcode94
+      <<: *xcode91
     - stage: stage2
       env: REPO=boost_timer
-      <<: *xcode94
+      <<: *xcode91
     - stage: stage2
       env: REPO=boost_tti
-      <<: *xcode94
+      <<: *xcode91
     - stage: stage2
       env: REPO=boost_tuple
-      <<: *xcode94
+      <<: *xcode91
     - stage: stage2
       env: REPO=boost_type_traits
-      <<: *xcode94
+      <<: *xcode91
     - stage: stage2
       env: REPO=boost_typeof
-      <<: *xcode94
+      <<: *xcode91
     - stage: stage2
       env: REPO=boost_utility
-      <<: *xcode94
+      <<: *xcode91
     - stage: stage3
       env: REPO=boost_algorithm
-      <<: *xcode94
+      <<: *xcode91
     - stage: stage3
       env: REPO=boost_compute
-      <<: *xcode94
+      <<: *xcode91
     - stage: stage3
       env: REPO=boost_concept_check
-      <<: *xcode94
+      <<: *xcode91
     - stage: stage3
       env: REPO=boost_convert
-      <<: *xcode94
+      <<: *xcode91
     - stage: stage3
       env: REPO=boost_cycle_group_c
-      <<: *xcode94
+      <<: *xcode91
     - stage: stage3
       env: REPO=boost_cycle_group_d
-      <<: *xcode94
+      <<: *xcode91
     - stage: stage3
       env: REPO=boost_dll
-      <<: *xcode94
+      <<: *xcode91
     - stage: stage3
       env: REPO=boost_foreach
-      <<: *xcode94
+      <<: *xcode91
     - stage: stage3
       env: REPO=boost_functional
-      <<: *xcode94
+      <<: *xcode91
     - stage: stage3
       env: REPO=boost_fusion
-      <<: *xcode94
+      <<: *xcode91
     - stage: stage3
       env: REPO=boost_geometry
-      <<: *xcode94
+      <<: *xcode91
     - stage: stage3
       env: REPO=boost_gil
-      <<: *xcode94
+      <<: *xcode91
     - stage: stage3
       env: REPO=boost_hana
-      <<: *xcode94
+      <<: *xcode91
     - stage: stage3
       env: REPO=boost_local_function
-      <<: *xcode94
+      <<: *xcode91
     - stage: stage3
       env: REPO=boost_numeric_conversion
-      <<: *xcode94
+      <<: *xcode91
     - stage: stage3
       env: REPO=boost_numeric_ublas
-      <<: *xcode94
+      <<: *xcode91
     - stage: stage3
       env: REPO=boost_parameter
-      <<: *xcode94
+      <<: *xcode91
     - stage: stage3
       env: REPO=boost_process
-      <<: *xcode94
+      <<: *xcode91
     - stage: stage3
       env: REPO=boost_proto
-      <<: *xcode94
+      <<: *xcode91
     - stage: stage3
       env: REPO=boost_scope_exit
-      <<: *xcode94
+      <<: *xcode91
     - stage: stage3
       env: REPO=boost_sort
-      <<: *xcode94
+      <<: *xcode91
     - stage: stage3
       env: REPO=boost_test
-      <<: *xcode94
+      <<: *xcode91
     - stage: stage3
       env: REPO=boost_type_index
-      <<: *xcode94
+      <<: *xcode91
     - stage: stage4
       env: REPO=boost_any
-      <<: *xcode94
+      <<: *xcode91
     - stage: stage4
       env: REPO=boost_bimap
-      <<: *xcode94
+      <<: *xcode91
     - stage: stage4
       env: REPO=boost_contract
-      <<: *xcode94
+      <<: *xcode91
     - stage: stage4
       env: REPO=boost_msm
-      <<: *xcode94
+      <<: *xcode91
     - stage: stage4
       env: REPO=boost_program_options
-      <<: *xcode94
+      <<: *xcode91
     - stage: stage4
       env: REPO=boost_property_tree
-      <<: *xcode94
+      <<: *xcode91
     - stage: stage4
       env: REPO=boost_range
-      <<: *xcode94
+      <<: *xcode91
     - stage: stage4
       env: REPO=boost_signals
-      <<: *xcode94
+      <<: *xcode91
     - stage: stage4
       env: REPO=boost_yap
-      <<: *xcode94
+      <<: *xcode91
     - stage: stage5
       env: REPO=boost_accumulators
-      <<: *xcode94
+      <<: *xcode91
     - stage: stage5
       env: REPO=boost_lexical_cast
-      <<: *xcode94
+      <<: *xcode91
     - stage: stage5
       env: REPO=boost_math
-      <<: *xcode94
+      <<: *xcode91
     - stage: stage6
       env: REPO=boost_date_time
-      <<: *xcode94
+      <<: *xcode91
     - stage: stage6
       env: REPO=boost_dynamic_bitset
-      <<: *xcode94
+      <<: *xcode91
     - stage: stage6
       env: REPO=boost_iostreams
-      <<: *xcode94
+      <<: *xcode91
     - stage: stage6
       env: REPO=boost_multiprecision
-      <<: *xcode94
+      <<: *xcode91
     - stage: stage6
       env: REPO=boost_pool
-      <<: *xcode94
+      <<: *xcode91
     - stage: stage6
       env: REPO=boost_random
-      <<: *xcode94
+      <<: *xcode91
     - stage: stage6
       env: REPO=boost_serialization
-      <<: *xcode94
+      <<: *xcode91
     - stage: stage6
       env: REPO=boost_spirit
-      <<: *xcode94
+      <<: *xcode91
     - stage: stage6
       env: REPO=boost_thread
-      <<: *xcode94
+      <<: *xcode91
     - stage: stage7
       env: REPO=boost_disjoint_sets
-      <<: *xcode94
+      <<: *xcode91
     - stage: stage7
       env: REPO=boost_graph
-      <<: *xcode94
+      <<: *xcode91
     - stage: stage7
       env: REPO=boost_graph_parallel
-      <<: *xcode94
+      <<: *xcode91
     - stage: stage7
       env: REPO=boost_mpi
-      <<: *xcode94
+      <<: *xcode91
     - stage: stage7
       env: REPO=boost_property_map
-      <<: *xcode94
+      <<: *xcode91
 
