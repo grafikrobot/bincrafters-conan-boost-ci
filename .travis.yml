@@ -66,6 +66,7 @@ script:
 stages:
   - bootstrap0
   - bootstrap1
+  - bootstrap2
   - stage0
   - stage1
   - stage2
@@ -84,10 +85,10 @@ jobs:
     - stage: bootstrap1
       env: REPO=boost_base
       <<: *xcode91
-    - stage: bootstrap1
+    - stage: bootstrap2
       env: REPO=boost_generator
       <<: *xcode91
-    - stage: bootstrap1
+    - stage: bootstrap2
       env: REPO=boost-package-tools
       <<: *xcode91
     - stage: stage0

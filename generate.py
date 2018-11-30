@@ -4,7 +4,8 @@ from re import search
 
 stages_libs = [
  set(['build']),
- set(['base', 'generator', 'package_tools']),
+ set(['base']),
+ set(['generator', 'package_tools']),
  set(['callable_traits',
       'compatibility',
       'config',
@@ -142,6 +143,7 @@ stages_libs = [
 stages_names = [
     'bootstrap0',
     'bootstrap1',
+    'bootstrap2',
     'stage0',
     'stage1',
     'stage2',
