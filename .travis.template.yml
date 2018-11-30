@@ -11,16 +11,16 @@ osx: &osx
   os: osx
   language: generic
 
-xcode73: &xcode73
-  osx_image: xcode7.3
-  <<: *osx
-
 xcode83: &xcode83
   osx_image: xcode8.3
   <<: *osx
 
-xcode90: &xcode90
-  osx_image: xcode9
+xcode94: &xcode94
+  osx_image: xcode9.4
+  <<: *osx
+
+xcode10: &xcode10
+  osx_image: xcode10
   <<: *osx
 
 language: generic
@@ -34,16 +34,18 @@ env:
     - CONAN_LOGIN_USERNAME=grafikrobot
     - CONAN_UPLOAD_ONLY_WHEN_STABLE=0
     - CONAN_SHARED_OPTION_NAME=
-    - GCC_4="CONAN_GCC_VERSIONS=4.9 CONAN_DOCKER_IMAGE=lasote/conangcc49"
-    - GCC_5="CONAN_GCC_VERSIONS=5 CONAN_DOCKER_IMAGE=lasote/conangcc5"
-    - GCC_6="CONAN_GCC_VERSIONS=6 CONAN_DOCKER_IMAGE=lasote/conangcc6"
-    - GCC_7="CONAN_GCC_VERSIONS=7 CONAN_DOCKER_IMAGE=lasote/conangcc7"
-    - CLANG_39="CONAN_CLANG_VERSIONS=3.9 CONAN_DOCKER_IMAGE=lasote/conanclang39"
-    - CLANG_40="CONAN_CLANG_VERSIONS=4.0 CONAN_DOCKER_IMAGE=lasote/conanclang40"
-    - XCODE_73="CONAN_APPLE_CLANG_VERSIONS=7.3"
-    - XCODE_81="CONAN_APPLE_CLANG_VERSIONS=8.1"
+    - GCC_4="CONAN_GCC_VERSIONS=4.9 CONAN_DOCKER_IMAGE=conanio/gcc49"
+    - GCC_5="CONAN_GCC_VERSIONS=5 CONAN_DOCKER_IMAGE=conanio/gcc5"
+    - GCC_6="CONAN_GCC_VERSIONS=6 CONAN_DOCKER_IMAGE=conanio/gcc6"
+    - GCC_7="CONAN_GCC_VERSIONS=7 CONAN_DOCKER_IMAGE=conanio/gcc7"
+    - GCC_8="CONAN_GCC_VERSIONS=7 CONAN_DOCKER_IMAGE=conanio/gcc8"
+    - CLANG_39="CONAN_CLANG_VERSIONS=3.9 CONAN_DOCKER_IMAGE=conanio/clang39"
+    - CLANG_40="CONAN_CLANG_VERSIONS=4.0 CONAN_DOCKER_IMAGE=conanio/clang40"
+    - CLANG_50="CONAN_CLANG_VERSIONS=5.0 CONAN_DOCKER_IMAGE=conanio/clang50"
+    - CLANG_60="CONAN_CLANG_VERSIONS=6.0 CONAN_DOCKER_IMAGE=conanio/clang60"
     - XCODE_83="CONAN_APPLE_CLANG_VERSIONS=8.3"
-    - XCODE_90="CONAN_APPLE_CLANG_VERSIONS=9.0"
+    - XCODE_94="CONAN_APPLE_CLANG_VERSIONS=9.4"
+    - XCODE_10="CONAN_APPLE_CLANG_VERSIONS=10.0"
 
 install:
   - chmod +x .travis/run.sh
