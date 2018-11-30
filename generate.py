@@ -195,6 +195,7 @@ setup = {
     'GCC_7': 'linux',
     'GCC_8': 'linux',
     'XCODE_83': 'xcode83',
+    'XCODE_90': 'xcode9',
     'XCODE_91': 'xcode91',
     'XCODE_94': 'xcode94',
     'XCODE_10': 'xcode10'

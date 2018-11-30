@@ -15,9 +15,14 @@ xcode83: &xcode83
   osx_image: xcode8.3
   <<: *osx
 
+xcode94: &xcode90
+  osx_image: xcode9
+  <<: *osx
+
 xcode94: &xcode91
   osx_image: xcode9.1
   <<: *osx
+
 xcode94: &xcode94
   osx_image: xcode9.4
   <<: *osx
@@ -47,6 +52,7 @@ env:
     - CLANG_50="CONAN_CLANG_VERSIONS=5.0 CONAN_DOCKER_IMAGE=conanio/clang50"
     - CLANG_60="CONAN_CLANG_VERSIONS=6.0 CONAN_DOCKER_IMAGE=conanio/clang60"
     - XCODE_83="CONAN_APPLE_CLANG_VERSIONS=8.3"
+    - XCODE_90="CONAN_APPLE_CLANG_VERSIONS=9.0"
     - XCODE_91="CONAN_APPLE_CLANG_VERSIONS=9.1"
     - XCODE_94="CONAN_APPLE_CLANG_VERSIONS=9.4"
     - XCODE_10="CONAN_APPLE_CLANG_VERSIONS=10.0"
