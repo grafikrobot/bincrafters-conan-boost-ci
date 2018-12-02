@@ -195,9 +195,6 @@ jobs:
       env: REPO=boost_smart_ptr
       <<: *linux
     - stage: stage4
-      env: REPO=boost_timer
-      <<: *linux
-    - stage: stage4
       env: REPO=boost_tuple
       <<: *linux
     - stage: stage4
@@ -268,6 +265,9 @@ jobs:
       <<: *linux
     - stage: stage8
       env: REPO=boost_stacktrace
+      <<: *linux
+    - stage: stage8
+      env: REPO=boost_timer
       <<: *linux
     - stage: stage8
       env: REPO=boost_tti
