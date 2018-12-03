@@ -3,8 +3,8 @@ import argparse
 from re import search
 
 stages_libs = [
- set(['build']),
- set(['generator', 'package_tools']),
+ set(['build', 'package_tools']),
+ set(['generator']),
  set(['base']),
  set(['callable_traits',
       'compatibility',
@@ -99,12 +99,13 @@ stages_libs = [
       'property_tree',
       'signals2',
       'wave']),
- set(['asio', 'compute', 'cycle_group_d', 'log']),
+ set(['asio', 'compute', 'cycle_group_d']),
  set(['beast',
       'bimap',
       'disjoint_sets',
       'graph',
       'graph_parallel',
+      'log',
       'mpi',
       'process',
       'property_map']),
