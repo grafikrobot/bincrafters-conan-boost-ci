@@ -110,11 +110,11 @@ jobs:
         - REPO=boost_build
         - CONAN_ARCHS=x86_64
       <<: *linux
-    - stage: bootstrap1
-      env: REPO=boost_generator
+    - stage: bootstrap0
+      env: REPO=boost-package-tools
       <<: *linux
     - stage: bootstrap1
-      env: REPO=boost-package-tools
+      env: REPO=boost_generator
       <<: *linux
     - stage: bootstrap2
       env: REPO=boost_base
@@ -508,17 +508,6 @@ jobs:
     - stage: stage19
       env: REPO=boost_cycle_group_d
       <<: *linux
-    - stage: stage19
-      env:
-        - REPO=boost_log
-        - CONAN_ARCHS=x86
-        - CONAN_DOCKER_32_IMAGES=1
-      <<: *linux
-    - stage: stage19
-      env:
-        - REPO=boost_log
-        - CONAN_ARCHS=x86_64
-      <<: *linux
     - stage: stage20
       env: REPO=boost_beast
       <<: *linux
@@ -549,6 +538,17 @@ jobs:
       <<: *linux
     - stage: stage20
       env: REPO=boost_graph_parallel
+      <<: *linux
+    - stage: stage20
+      env:
+        - REPO=boost_log
+        - CONAN_ARCHS=x86
+        - CONAN_DOCKER_32_IMAGES=1
+      <<: *linux
+    - stage: stage20
+      env:
+        - REPO=boost_log
+        - CONAN_ARCHS=x86_64
       <<: *linux
     - stage: stage20
       env:
