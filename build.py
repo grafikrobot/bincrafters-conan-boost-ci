@@ -82,7 +82,7 @@ if __name__ == "__main__":
         channel=os.getenv("CONAN_CHANNEL", channel),
         reference=os.getenv("CONAN_REFERENCE", reference),
         upload=os.getenv("CONAN_UPLOAD", upload),
-        remotes=os.getenv("CONAN_REMOTES", upload),
+        remotes=if os.getenv("CONAN_REMOTES") upload+","+os.getenv("CONAN_REMOTES") else upload,
         upload_only_when_stable=upload_only_when_stable,
         stable_branch_pattern=stable_branch_pattern)
 
