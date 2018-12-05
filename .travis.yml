@@ -95,7 +95,6 @@ stages:
   - stage18
   - stage19
   - stage20
-  - stage21
 
 
 jobs:
@@ -506,21 +505,12 @@ jobs:
       env: REPO=boost_graph
       <<: *xcode90
     - stage: stage20
-      env: REPO=boost_graph_parallel
-      <<: *xcode90
-    - stage: stage20
       env: REPO=boost_log
-      <<: *xcode90
-    - stage: stage20
-      env: REPO=boost_mpi
       <<: *xcode90
     - stage: stage20
       env: REPO=boost_process
       <<: *xcode90
     - stage: stage20
       env: REPO=boost_property_map
-      <<: *xcode90
-    - stage: stage21
-      env: REPO=boost_numeric_odeint
       <<: *xcode90
 
