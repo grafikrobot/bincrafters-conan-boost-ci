@@ -104,12 +104,9 @@ stages_libs = [
       'bimap',
       'disjoint_sets',
       'graph',
-      'graph_parallel',
       'log',
-      'mpi',
       'process',
-      'property_map']),
- set(['numeric_odeint'])
+      'property_map'])
 ]
 
 stages_names = [
