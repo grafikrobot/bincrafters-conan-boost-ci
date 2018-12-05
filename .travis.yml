@@ -95,7 +95,6 @@ stages:
   - stage18
   - stage19
   - stage20
-  - stage21
 
 
 jobs:
@@ -538,9 +537,6 @@ jobs:
         - CONAN_ARCHS=x86_64
       <<: *linux
     - stage: stage20
-      env: REPO=boost_graph_parallel
-      <<: *linux
-    - stage: stage20
       env:
         - REPO=boost_log
         - CONAN_ARCHS=x86
@@ -549,17 +545,6 @@ jobs:
     - stage: stage20
       env:
         - REPO=boost_log
-        - CONAN_ARCHS=x86_64
-      <<: *linux
-    - stage: stage20
-      env:
-        - REPO=boost_mpi
-        - CONAN_ARCHS=x86
-        - CONAN_DOCKER_32_IMAGES=1
-      <<: *linux
-    - stage: stage20
-      env:
-        - REPO=boost_mpi
         - CONAN_ARCHS=x86_64
       <<: *linux
     - stage: stage20
@@ -575,8 +560,5 @@ jobs:
       env:
         - REPO=boost_property_map
         - CONAN_ARCHS=x86_64
-      <<: *linux
-    - stage: stage21
-      env: REPO=boost_numeric_odeint
       <<: *linux
 
