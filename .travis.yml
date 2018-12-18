@@ -102,9 +102,6 @@ jobs:
     - stage: bootstrap0
       env: REPO=boost_build
       <<: *xcode90
-    - stage: bootstrap0
-      env: REPO=boost-package-tools
-      <<: *xcode90
     - stage: bootstrap1
       env: REPO=boost_generator
       <<: *xcode90
@@ -124,6 +121,9 @@ jobs:
       env: REPO=boost_hof
       <<: *xcode90
     - stage: stage0
+      env: REPO=boost_mp11
+      <<: *xcode90
+    - stage: stage0
       env: REPO=boost_predef
       <<: *xcode90
     - stage: stage0
@@ -136,7 +136,7 @@ jobs:
       env: REPO=boost_io
       <<: *xcode90
     - stage: stage1
-      env: REPO=boost_mp11
+      env: REPO=boost_polygon
       <<: *xcode90
     - stage: stage1
       env: REPO=boost_static_assert
@@ -151,7 +151,13 @@ jobs:
       env: REPO=boost_core
       <<: *xcode90
     - stage: stage2
+      env: REPO=boost_system
+      <<: *xcode90
+    - stage: stage2
       env: REPO=boost_throw_exception
+      <<: *xcode90
+    - stage: stage2
+      env: REPO=boost_type_traits
       <<: *xcode90
     - stage: stage3
       env: REPO=boost_align
@@ -160,7 +166,16 @@ jobs:
       env: REPO=boost_array
       <<: *xcode90
     - stage: stage3
+      env: REPO=boost_atomic
+      <<: *xcode90
+    - stage: stage3
       env: REPO=boost_bind
+      <<: *xcode90
+    - stage: stage3
+      env: REPO=boost_concept_check
+      <<: *xcode90
+    - stage: stage3
+      env: REPO=boost_detail
       <<: *xcode90
     - stage: stage3
       env: REPO=boost_integer
@@ -172,109 +187,112 @@ jobs:
       env: REPO=boost_move
       <<: *xcode90
     - stage: stage3
-      env: REPO=boost_system
+      env: REPO=boost_tuple
       <<: *xcode90
     - stage: stage3
-      env: REPO=boost_type_traits
+      env: REPO=boost_typeof
       <<: *xcode90
     - stage: stage4
-      env: REPO=boost_atomic
+      env: REPO=boost_circular_buffer
+      <<: *xcode90
+    - stage: stage4
+      env: REPO=boost_container_hash
       <<: *xcode90
     - stage: stage4
       env: REPO=boost_crc
       <<: *xcode90
     - stage: stage4
+      env: REPO=boost_numeric_interval
+      <<: *xcode90
+    - stage: stage4
+      env: REPO=boost_pool
+      <<: *xcode90
+    - stage: stage4
       env: REPO=boost_smart_ptr
       <<: *xcode90
-    - stage: stage4
-      env: REPO=boost_tuple
-      <<: *xcode90
-    - stage: stage4
-      env: REPO=boost_utility
-      <<: *xcode90
     - stage: stage5
-      env: REPO=boost_endian
+      env: REPO=boost_conversion
       <<: *xcode90
     - stage: stage5
       env: REPO=boost_exception
       <<: *xcode90
     - stage: stage5
-      env: REPO=boost_mpl
+      env: REPO=boost_intrusive
       <<: *xcode90
     - stage: stage5
-      env: REPO=boost_rational
+      env: REPO=boost_stacktrace
+      <<: *xcode90
+    - stage: stage5
+      env: REPO=boost_type_index
+      <<: *xcode90
+    - stage: stage5
+      env: REPO=boost_utility
       <<: *xcode90
     - stage: stage6
-      env: REPO=boost_concept_check
+      env: REPO=boost_any
       <<: *xcode90
     - stage: stage6
-      env: REPO=boost_detail
+      env: REPO=boost_container
       <<: *xcode90
     - stage: stage6
-      env: REPO=boost_metaparse
+      env: REPO=boost_endian
       <<: *xcode90
     - stage: stage6
-      env: REPO=boost_polygon
+      env: REPO=boost_function
+      <<: *xcode90
+    - stage: stage6
+      env: REPO=boost_mpl
+      <<: *xcode90
+    - stage: stage6
+      env: REPO=boost_optional
       <<: *xcode90
     - stage: stage6
       env: REPO=boost_qvm
       <<: *xcode90
     - stage: stage6
-      env: REPO=boost_ratio
-      <<: *xcode90
-    - stage: stage6
-      env: REPO=boost_typeof
+      env: REPO=boost_rational
       <<: *xcode90
     - stage: stage7
-      env: REPO=boost_chrono
-      <<: *xcode90
-    - stage: stage7
-      env: REPO=boost_container_hash
-      <<: *xcode90
-    - stage: stage7
-      env: REPO=boost_conversion
+      env: REPO=boost_format
       <<: *xcode90
     - stage: stage7
       env: REPO=boost_function_types
       <<: *xcode90
     - stage: stage7
-      env: REPO=boost_numeric_interval
+      env: REPO=boost_metaparse
       <<: *xcode90
     - stage: stage7
-      env: REPO=boost_optional
+      env: REPO=boost_numeric_conversion
+      <<: *xcode90
+    - stage: stage7
+      env: REPO=boost_parameter
+      <<: *xcode90
+    - stage: stage7
+      env: REPO=boost_ratio
+      <<: *xcode90
+    - stage: stage7
+      env: REPO=boost_safe_numerics
+      <<: *xcode90
+    - stage: stage7
+      env: REPO=boost_scope_exit
+      <<: *xcode90
+    - stage: stage7
+      env: REPO=boost_unordered
+      <<: *xcode90
+    - stage: stage7
+      env: REPO=boost_variant
       <<: *xcode90
     - stage: stage8
-      env: REPO=boost_format
+      env: REPO=boost_chrono
       <<: *xcode90
     - stage: stage8
       env: REPO=boost_fusion
       <<: *xcode90
     - stage: stage8
-      env: REPO=boost_intrusive
-      <<: *xcode90
-    - stage: stage8
-      env: REPO=boost_numeric_conversion
-      <<: *xcode90
-    - stage: stage8
-      env: REPO=boost_stacktrace
-      <<: *xcode90
-    - stage: stage8
-      env: REPO=boost_timer
+      env: REPO=boost_local_function
       <<: *xcode90
     - stage: stage8
       env: REPO=boost_tti
-      <<: *xcode90
-    - stage: stage8
-      env: REPO=boost_type_index
-      <<: *xcode90
-    - stage: stage9
-      env: REPO=boost_any
-      <<: *xcode90
-    - stage: stage9
-      env: REPO=boost_container
-      <<: *xcode90
-    - stage: stage9
-      env: REPO=boost_function
       <<: *xcode90
     - stage: stage9
       env: REPO=boost_hana
@@ -283,13 +301,16 @@ jobs:
       env: REPO=boost_iterator
       <<: *xcode90
     - stage: stage9
-      env: REPO=boost_variant
+      env: REPO=boost_timer
       <<: *xcode90
     - stage: stage10
-      env: REPO=boost_circular_buffer
+      env: REPO=boost_filesystem
       <<: *xcode90
     - stage: stage10
       env: REPO=boost_functional
+      <<: *xcode90
+    - stage: stage10
+      env: REPO=boost_heap
       <<: *xcode90
     - stage: stage10
       env: REPO=boost_lambda
@@ -298,19 +319,13 @@ jobs:
       env: REPO=boost_locale
       <<: *xcode90
     - stage: stage10
+      env: REPO=boost_lockfree
+      <<: *xcode90
+    - stage: stage10
       env: REPO=boost_regex
       <<: *xcode90
     - stage: stage10
-      env: REPO=boost_scope_exit
-      <<: *xcode90
-    - stage: stage10
-      env: REPO=boost_signals
-      <<: *xcode90
-    - stage: stage10
       env: REPO=boost_tokenizer
-      <<: *xcode90
-    - stage: stage10
-      env: REPO=boost_unordered
       <<: *xcode90
     - stage: stage10
       env: REPO=boost_yap
@@ -319,7 +334,7 @@ jobs:
       env: REPO=boost_cycle_group_a
       <<: *xcode90
     - stage: stage11
-      env: REPO=boost_local_function
+      env: REPO=boost_gil
       <<: *xcode90
     - stage: stage11
       env: REPO=boost_multi_array
@@ -334,9 +349,6 @@ jobs:
       env: REPO=boost_cycle_group_b
       <<: *xcode90
     - stage: stage13
-      env: REPO=boost_filesystem
-      <<: *xcode90
-    - stage: stage13
       env: REPO=boost_foreach
       <<: *xcode90
     - stage: stage13
@@ -344,9 +356,6 @@ jobs:
       <<: *xcode90
     - stage: stage13
       env: REPO=boost_test
-      <<: *xcode90
-    - stage: stage14
-      env: REPO=boost_gil
       <<: *xcode90
     - stage: stage14
       env: REPO=boost_lexical_cast
@@ -382,10 +391,7 @@ jobs:
       env: REPO=boost_multiprecision
       <<: *xcode90
     - stage: stage16
-      env: REPO=boost_parameter
-      <<: *xcode90
-    - stage: stage16
-      env: REPO=boost_pool
+      env: REPO=boost_parameter_python
       <<: *xcode90
     - stage: stage16
       env: REPO=boost_random
@@ -415,16 +421,10 @@ jobs:
       env: REPO=boost_geometry
       <<: *xcode90
     - stage: stage17
-      env: REPO=boost_heap
-      <<: *xcode90
-    - stage: stage17
       env: REPO=boost_icl
       <<: *xcode90
     - stage: stage17
       env: REPO=boost_interprocess
-      <<: *xcode90
-    - stage: stage17
-      env: REPO=boost_lockfree
       <<: *xcode90
     - stage: stage17
       env: REPO=boost_msm
